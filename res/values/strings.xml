@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">PIC-CHE</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+    <string name="pic_desc">Phrase illustration</string>
+    <string name="arrow_desc">Navigation arrow</string>
+    <string name="hokkien">Hokkien</string>
+    <string name="cantonese">Cantonese</string>
+	<string name="chinese">中文</string>
+	<string name="english">English</string>
+    
+</resources>
