@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
-    android:layout_height="130dip"
-    android:padding="6dip">
+    android:layout_height="120dip"
+    android:padding="6dip" >
     
     <ImageView
-        android:id="@+id/listImage"
+        android:id="@+id/groupImage"
         android:layout_width="wrap_content"
         android:layout_height="fill_parent"
         android:layout_alignParentTop="true"
@@ -14,48 +14,40 @@
         android:src="@drawable/ic_launcher" />
 
     <TextView
-        android:id="@+id/hokkien"
+        android:id="@+id/groupHokkien"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignTop="@id/listImage"
-        android:layout_toRightOf="@id/listImage"
+        android:layout_alignTop="@id/groupImage"
+        android:layout_toRightOf="@id/groupImage"
         android:text="@string/hokkien"
         android:textAppearance="?android:attr/textAppearanceLarge" />
 
     <TextView
-        android:id="@+id/cantonese"
+        android:id="@+id/groupCantonese"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignLeft="@id/hokkien"
-        android:layout_below="@id/hokkien"
+        android:layout_alignLeft="@id/groupHokkien"
+        android:layout_below="@id/groupHokkien"
         android:text="@string/cantonese"
         android:textAppearance="?android:attr/textAppearanceLarge" />
 
     <TextView
-        android:id="@+id/chinese"
+        android:id="@+id/groupChinese"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignLeft="@id/cantonese"
-        android:layout_below="@id/cantonese"
+        android:layout_alignLeft="@id/groupCantonese"
+        android:layout_below="@id/groupCantonese"
         android:text="@string/chinese"
         android:textAppearance="?android:attr/textAppearanceLarge" />
 
     <TextView
-        android:id="@+id/english"
+        android:id="@+id/groupEnglish"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignLeft="@id/chinese"
-        android:layout_below="@id/chinese"
+        android:layout_alignLeft="@id/groupChinese"
+        android:layout_below="@id/groupChinese"
         android:text="@string/english"
         android:textAppearance="?android:attr/textAppearanceLarge" />
-
-    <ImageView
-        android:id="@+id/imageView1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentRight="true"
-        android:layout_centerVertical="true"
-        android:contentDescription="@string/arrow_desc"
-        android:src="@drawable/ic_action_forward" />
+    
 
 </RelativeLayout>
