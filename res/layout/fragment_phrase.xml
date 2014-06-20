@@ -1,52 +1,48 @@
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="fill_parent"
-    android:layout_height="fill_parent"
-    android:orientation="vertical" >
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/scrollView1"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content" >
 
-    <ScrollView
-        android:id="@+id/scrollView1"
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" >
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="vertical" >
 
-        <LinearLayout
-            android:layout_width="match_parent"
+        <ImageView
+            android:id="@+id/phraseImageView"
+            android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical" 
-            android:gravity="center">
+            android:adjustViewBounds="true"
+            android:scaleType="fitCenter"
+            android:src="@drawable/ic_launcher" />
 
-            <ImageView
-                android:id="@+id/phraseImageView"
-                android:layout_width="fill_parent"
-    			android:layout_height="wrap_content"
-    			android:scaleType="fitCenter"
-    			android:adjustViewBounds="true"
-                android:src="@drawable/ic_launcher" />
+        <Button
+            android:id="@+id/phraseHokButton"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:onClick="playAudio"
+            android:text="@string/hokkien" />
 
-            <Button
-                android:id="@+id/phraseHokButton"
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:text="@string/hokkien" />
-            
-            <Button
-                android:id="@+id/phraseCanButton"
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:text="@string/cantonese" />
-            
-            <Button
-                android:id="@+id/phraseChiButton"
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:text="@string/chinese" />
-            
-            <Button
-                android:id="@+id/phraseEngButton"
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:text="@string/english" />
+        <Button
+            android:id="@+id/phraseCanButton"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/cantonese" />
 
-        </LinearLayout>
-    </ScrollView>
+        <Button
+            android:id="@+id/phraseChiButton"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:onClick="playAudio"
+            android:text="@string/chinese" />
 
-</LinearLayout>
+        <Button
+            android:id="@+id/phraseEngButton"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:onClick="playAudio"
+            android:text="@string/english" />
+    </LinearLayout>
+
+</ScrollView>
