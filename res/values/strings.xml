@@ -8,7 +8,8 @@
     <string name="arrow_desc">Navigation arrow</string>
     <string name="hokkien">Hokkien</string>
     <string name="cantonese">Cantonese</string>
-	<string name="chinese">中文</string>
-	<string name="english">English</string>
-    
+    <string name="chinese">中文</string>
+    <string name="english">English</string>
+    <string name="title_activity_phrase">Phrase</string>
+
 </resources>

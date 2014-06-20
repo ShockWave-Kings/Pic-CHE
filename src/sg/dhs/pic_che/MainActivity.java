@@ -1,8 +1,15 @@
 package sg.dhs.pic_che;
 
 import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.net.HttpURLConnection;
+import java.net.MalformedURLException;
+import java.net.ProtocolException;
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -18,8 +25,12 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import android.content.Context;
+import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.os.Environment;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.ActionBarActivity;
 import android.util.Log;
@@ -28,14 +39,20 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
-import android.widget.LinearLayout;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
 public class MainActivity extends ActionBarActivity {
 	
+	public static String EXTRA_HOKKIEN = "sg.dhs.pic_che.HOKKIEN";
+	public static String EXTRA_CANTONESE = "sg.dhs.pic_che.CANTONESE";
+	public static String EXTRA_CHINESE = "sg.dhs.pic_che.CHINESE";
+	public static String EXTRA_ENGLISH = "sg.dhs.pic_che.ENGLISH";
+	public static String EXTRA_ID = "sg.dhs.pic_che.ID";
 	protected List<String> P_ID = new ArrayList<String>();
 	protected List<String> CAT = new ArrayList<String>();
 	protected List<String> HOK = new ArrayList<String>();
@@ -101,6 +118,15 @@ public class MainActivity extends ActionBarActivity {
 		
 		@Override
 		protected String doInBackground(String... urls) {
+			/**
+			 * Downloads JSON data into String from server 
+			 * via a HTTPPost connection
+			 * Returns String for PostExecute to process
+			 * 
+			 * FYI, urls[0] should be the url to the server with the phrases
+			 * in JSON form
+			 */
+			
 			//Array to be used to convert JSON into string
 			ArrayList<NameValuePair> nameValuePairs = new ArrayList<NameValuePair>();
 			
@@ -145,6 +171,72 @@ public class MainActivity extends ActionBarActivity {
 			catch (Exception e){ //Error converting result to String
 	            Log.e("log_tag", "Error converting result: "+e.toString());
 			}
+			
+			/**
+			 * 1. Get number of phrases
+			 * 2. Check how many no. of phrases is there locally
+			 * 3. Download missing phrases
+			 */
+			
+			int phraseNum = 0;
+			
+			try {
+				JSONArray jArr = new JSONArray(result);
+				phraseNum = jArr.length(); //No. of phrases
+				
+			} catch (JSONException e) {
+				Log.e(LOGTAG, "JSONException in Background Thread:"+e);
+			}
+			
+			try {
+				File oldDir = new File(Environment.getExternalStorageDirectory().getAbsolutePath()+"/PICCHEImg");
+				if(oldDir.isDirectory()){
+					String[] children = oldDir.list();
+					for (int i = 0; i < children.length; i++) {
+			            new File(oldDir, children[i]).delete();
+			        }
+					oldDir.delete();
+				}
+				
+				File ImageDirectory = new File(Environment.getExternalStorageDirectory().getAbsolutePath()+"/PICCHE/img");
+				if(!ImageDirectory.exists()){
+					ImageDirectory.mkdirs();
+				}
+				
+				for(int i=1; i<=phraseNum; i++){
+					File img = new File(ImageDirectory, i+".png");
+					if(!img.exists()){//image file doesn't exist and must be downloaded
+						
+						img.createNewFile();
+						URL url = new URL("http://www.awesome.jerome.yukazunori.com/PICCHE/img/"+i+".png");
+						HttpURLConnection urlConnection = (HttpURLConnection) url.openConnection();
+						urlConnection.setRequestMethod("GET");
+						urlConnection.setDoOutput(true);                   
+						urlConnection.connect();
+						FileOutputStream fileOutput = new FileOutputStream(img);
+						InputStream inputStream = urlConnection.getInputStream();
+						int totalSize = urlConnection.getContentLength();
+						int downloadedSize = 0;   
+						byte[] buffer = new byte[1024];
+						int bufferLength = 0;
+						while ( (bufferLength = inputStream.read(buffer)) > 0 ) 
+						{                 
+							fileOutput.write(buffer, 0, bufferLength);                  
+							downloadedSize += bufferLength;                 
+							Log.i("Progress:","downloadedSize:"+downloadedSize+"totalSize:"+ totalSize) ;
+						}             
+						fileOutput.close();
+					}
+				}
+				
+			} catch (MalformedURLException e) {
+				Log.e(LOGTAG, "MalformedURLException: "+e);
+			} catch (ProtocolException e) {
+				Log.e(LOGTAG, "ProtocolException: "+e);
+			} catch (IOException e) {
+				Log.e(LOGTAG, "IOException: "+e);
+			}
+			
 			return result;
 	    }
 		
@@ -180,15 +272,6 @@ public class MainActivity extends ActionBarActivity {
 				String[] english = new String[phraseLength];
 				ENG.toArray(english);
 				
-				Log.d("arrayAdapter", "Hok[0]: "+hokkien[0]);
-				Log.d("arrayAdapter", "Hok[1]: "+hokkien[1]);
-				Log.d("arrayAdapter", "Can[0]: "+cantonese[0]);
-				Log.d("arrayAdapter", "Can[1]: "+cantonese[1]);
-				Log.d("arrayAdapter", "Chi[0]: "+chinese[0]);
-				Log.d("arrayAdapter", "Chi[1]: "+chinese[1]);
-				Log.d("arrayAdapter", "Eng[0]: "+english[0]);
-				Log.d("arrayAdapter", "Eng[1]: "+english[1]);
-				
 				PhraseAdapter adapter = new PhraseAdapter(getBaseContext(), hokkien, cantonese, chinese, english);
 				
 				ListView listView = (ListView) findViewById(R.id.listView);
@@ -196,6 +279,25 @@ public class MainActivity extends ActionBarActivity {
 			} catch (JSONException e) {
 				Log.e(LOGTAG, "JSONException: "+e);
 			}
+			
+			ListView listView = (ListView) findViewById(R.id.listView);
+			
+			//Define what happens when an item is clicked
+			listView.setOnItemClickListener(new AdapterView.OnItemClickListener(){
+				
+				@Override
+				public void onItemClick(AdapterView<?> parent, View view, int position, long id){
+					
+					Intent intent = new Intent(MainActivity.this, PhraseActivity.class);
+					intent.putExtra(EXTRA_HOKKIEN, HOK.get(position));
+					intent.putExtra(EXTRA_CANTONESE, CAN.get(position));
+					intent.putExtra(EXTRA_CHINESE, CHI.get(position));
+					intent.putExtra(EXTRA_ENGLISH, ENG.get(position));
+					intent.putExtra(EXTRA_ID, P_ID.get(position));
+					MainActivity.this.startActivity(intent);
+				}
+			});
+			
 			
 		}
 
@@ -233,6 +335,10 @@ public class MainActivity extends ActionBarActivity {
 	    		holder = (RowHolder) row.getTag();
 	    	}
 	    	
+	    	String fileName = (position+1)+".png";
+	    	File dir = new File(Environment.getExternalStorageDirectory().getAbsolutePath()+"/PICCHE/img/"+fileName);
+	    	Bitmap bmp = BitmapFactory.decodeFile(dir.getAbsolutePath());
+	    	holder.img.setImageBitmap(bmp);
 	    	holder.hokkien.setText(hokkienArray[position]);
 	    	holder.cantonese.setText(cantoneseArray[position]);
 	    	holder.chinese.setText(chineseArray[position]);
@@ -242,12 +348,16 @@ public class MainActivity extends ActionBarActivity {
 	    }
 	    
 	    class RowHolder {
+	    	
+	    	ImageView img;
 	    	TextView hokkien;
 	    	TextView cantonese;
 	    	TextView chinese;
 	    	TextView english;
 	    	
 	    	RowHolder(View v){
+	    		
+	    		img = (ImageView) v.findViewById(R.id.listImage);
 	    		hokkien = (TextView) v.findViewById(R.id.hokkien);
 	    		cantonese = (TextView) v.findViewById(R.id.cantonese);
 	    		chinese = (TextView) v.findViewById(R.id.chinese);
