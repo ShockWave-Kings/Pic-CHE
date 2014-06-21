@@ -24,6 +24,9 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import sg.dhs.pic_che.db.PhraseDataSource;
+import sg.dhs.pic_che.model.Phrase;
+
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
@@ -59,11 +62,11 @@ public class MainActivity extends ActionBarActivity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
-		
+
 		if (savedInstanceState == null)
-        {
-            getSupportFragmentManager().beginTransaction().add (R.id.container,new PlaceholderFragment()).commit();
-        }
+		{
+			getSupportFragmentManager().beginTransaction().add (R.id.container,new PlaceholderFragment()).commit();
+		}
 	}
 
 	@Override
@@ -90,13 +93,16 @@ public class MainActivity extends ActionBarActivity {
 	 * A placeholder fragment containing a simple view.
 	 */
 	public static class PlaceholderFragment extends Fragment {
-		
+
 		List<String> P_ID = new ArrayList<String>();
 		List<String> HOK = new ArrayList<String>();
 		List<String> CAN = new ArrayList<String>();
 		List<String> CHI = new ArrayList<String>();
 		List<String> ENG = new ArrayList<String>();
-		
+		List<Phrase> PHRASES = new ArrayList<Phrase>();
+
+		PhraseDataSource datasource;
+
 		public PlaceholderFragment() {
 		}
 
@@ -105,12 +111,16 @@ public class MainActivity extends ActionBarActivity {
 				Bundle savedInstanceState) {
 			View rootView = inflater.inflate(R.layout.fragment_main, container,
 					false);
+			
+			datasource = new PhraseDataSource(getActivity());
+
+			datasource.open();
 
 			new ServerPhrases().execute("http://www.awesome.jerome.yukazunori.com/PICCHE/phrase.php");
-			
+
 			return rootView;
 		}
-		
+
 		class ServerPhrases extends AsyncTask<String, Void, String> {
 
 			String LOGTAG = "ServerPhrases";
@@ -204,7 +214,7 @@ public class MainActivity extends ActionBarActivity {
 						if(!ImageDirectory.exists()){
 							ImageDirectory.mkdirs();
 						}
-						
+
 						File AudioDirectory = new File(Environment.getExternalStorageDirectory().getAbsolutePath()+"/PICCHE/audio");
 						if(!AudioDirectory.exists()){
 							AudioDirectory.mkdirs();
@@ -234,7 +244,7 @@ public class MainActivity extends ActionBarActivity {
 								}             
 								fileOutput.close();
 							}
-							
+
 							File hokAudio = new File(AudioDirectory, i+"_hok.mp3");
 							if(!hokAudio.exists()){//image file doesn't exist and must be downloaded
 								hokAudio.createNewFile();
@@ -257,7 +267,7 @@ public class MainActivity extends ActionBarActivity {
 								}             
 								fileOutput.close();
 							}
-							
+
 							File chiAudio = new File(AudioDirectory, i+"_chi.mp3");
 							if(!chiAudio.exists()){//image file doesn't exist and must be downloaded
 								chiAudio.createNewFile();
@@ -280,7 +290,7 @@ public class MainActivity extends ActionBarActivity {
 								}             
 								fileOutput.close();
 							}
-							
+
 							File engAudio = new File(AudioDirectory, i+"_eng.mp3");
 							if(!engAudio.exists()){//image file doesn't exist and must be downloaded
 								engAudio.createNewFile();
@@ -303,9 +313,9 @@ public class MainActivity extends ActionBarActivity {
 								}             
 								fileOutput.close();
 							}
-							
-							
-							
+
+
+
 						}
 
 					} catch (MalformedURLException e) {
@@ -324,45 +334,71 @@ public class MainActivity extends ActionBarActivity {
 
 			@Override
 			protected void onPostExecute(String result) {
+				/**
+				 * If connected to internet:
+				 * 	Check local DB count with server DB count to check if updated
+				 * 		If not updated, update
+				 * 		If updated, leave be
+				 * 
+				 * Get results from Local DB
+				 */
 				if(result!=null){
 					//Declaring JSON Array and name string and linear layout to add into activity
 					JSONArray jArray = null;
+
+					datasource = new PhraseDataSource(getActivity());
+					datasource.open();
 
 					try {
 						jArray = new JSONArray(result);
 						JSONObject json_data = null;
 
 						int jArrayLength = jArray.length();
-						//Takes all the data and puts them in arrays
-						for(int i=0;i<jArrayLength;i++){
-							json_data = jArray.getJSONObject(i);
-							P_ID.add(json_data.getString("_ID"));
-							HOK.add(json_data.getString("HOK"));
-							CAN.add(json_data.getString("CAN"));
-							CHI.add(json_data.getString("CHI"));
-							ENG.add(json_data.getString("ENG"));
+						
+						Log.d(LOGTAG,"Downloaded JSON!");
+						
+						int localDBCount = datasource.getPhraseCount();
+						if(localDBCount<jArrayLength){
+							
+							//Takes all the data and puts them in arrays
+							for(int i=localDBCount;i<jArrayLength;i++){
+								json_data = jArray.getJSONObject(i);
+								/*P_ID.add(json_data.getString("_ID"));
+								HOK.add(json_data.getString("HOK"));
+								CAN.add(json_data.getString("CAN"));
+								CHI.add(json_data.getString("CHI"));
+								ENG.add(json_data.getString("ENG"));*/
+								Phrase phrase = new Phrase();
+								phrase.setHokkien(json_data.getString("HOK"));
+								phrase.setCantonese(json_data.getString("CAN"));
+								phrase.setChinese(json_data.getString("CHI"));
+								phrase.setEnglish(json_data.getString("ENG"));
+								datasource.createPhrase(phrase);
+								Log.d(LOGTAG,"Inserted phrase into DB");
+							}
+
+							/*//make arrays of phrases
+							int phraseLength = HOK.size();
+							String[] hokkien = new String[phraseLength];
+							HOK.toArray(hokkien);
+							String[] cantonese = new String[phraseLength];
+							CAN.toArray(cantonese);
+							String[] chinese = new String[phraseLength];
+							CHI.toArray(chinese);
+							String[] english = new String[phraseLength];
+							ENG.toArray(english);
+
+							PhraseAdapter adapter = new PhraseAdapter(getActivity(), hokkien, cantonese, chinese, english);
+
+							ListView listView = (ListView) getView().findViewById(R.id.listView);
+							listView.setAdapter(adapter);*/
+
 						}
-
-						//make arrays of phrases
-						int phraseLength = HOK.size();
-						String[] hokkien = new String[phraseLength];
-						HOK.toArray(hokkien);
-						String[] cantonese = new String[phraseLength];
-						CAN.toArray(cantonese);
-						String[] chinese = new String[phraseLength];
-						CHI.toArray(chinese);
-						String[] english = new String[phraseLength];
-						ENG.toArray(english);
-
-						PhraseAdapter adapter = new PhraseAdapter(getActivity(), hokkien, cantonese, chinese, english);
-
-						ListView listView = (ListView) getView().findViewById(R.id.listView);
-						listView.setAdapter(adapter);
 					} catch (JSONException e) {
 						Log.e(LOGTAG, "JSONException: "+e);
 					}
 
-					ListView listView = (ListView) getView().findViewById(R.id.listView);
+					/*ListView listView = (ListView) getView().findViewById(R.id.listView);
 
 					//Define what happens when an item is clicked
 					listView.setOnItemClickListener(new AdapterView.OnItemClickListener(){
@@ -378,14 +414,57 @@ public class MainActivity extends ActionBarActivity {
 							intent.putExtra(EXTRA_ID, P_ID.get(position));
 							getActivity().startActivity(intent);
 						}
-					});
+					});*/
 
 
 				}
 				else {
-					Toast.makeText(getActivity(), "No data found!", Toast.LENGTH_LONG).show();
-					Log.e("Data", "Connection status: "+isNetworkConnected());
+					Toast.makeText(getActivity(), "Not connected to internet!", Toast.LENGTH_LONG).show();
+					Log.i("Data", "Connection status: "+isNetworkConnected());
 				}
+				
+				List<Phrase> phrases = datasource.findAllPhrases();
+				int localDBCount = datasource.getPhraseCount();
+				
+				for(int i=0; i<localDBCount; i++) {
+					P_ID.add(Long.toString(phrases.get(i).getId()));
+					HOK.add(phrases.get(i).getHokkien());
+					CAN.add(phrases.get(i).getCantonese());
+					CHI.add(phrases.get(i).getChinese());
+					ENG.add(phrases.get(i).getEnglish());
+				}
+				
+				//make arrays of phrases
+				String[] hokkien = new String[localDBCount];
+				HOK.toArray(hokkien);
+				String[] cantonese = new String[localDBCount];
+				CAN.toArray(cantonese);
+				String[] chinese = new String[localDBCount];
+				CHI.toArray(chinese);
+				String[] english = new String[localDBCount];
+				ENG.toArray(english);
+				
+				PhraseAdapter adapter = new PhraseAdapter(getActivity(), hokkien, cantonese, chinese, english);
+
+				ListView listView = (ListView) getView().findViewById(R.id.listView);
+				listView.setAdapter(adapter);
+				
+				//Define what happens when an item is clicked
+				listView.setOnItemClickListener(new AdapterView.OnItemClickListener(){
+
+					@Override
+					public void onItemClick(AdapterView<?> parent, View view, int position, long id){
+
+						Intent intent = new Intent(getActivity(), PhraseActivity.class);
+						intent.putExtra(EXTRA_HOKKIEN, HOK.get(position));
+						intent.putExtra(EXTRA_CANTONESE, CAN.get(position));
+						intent.putExtra(EXTRA_CHINESE, CHI.get(position));
+						intent.putExtra(EXTRA_ENGLISH, ENG.get(position));
+						intent.putExtra(EXTRA_ID, P_ID.get(position));
+						getActivity().startActivity(intent);
+					}
+				});
+
 			}
 
 		}
@@ -456,6 +535,18 @@ public class MainActivity extends ActionBarActivity {
 		private boolean isNetworkConnected() { //Checks if device is connected to the internet
 			ConnectivityManager cm = (ConnectivityManager) getActivity().getSystemService(Context.CONNECTIVITY_SERVICE);
 			return (cm.getNetworkInfo(ConnectivityManager.TYPE_WIFI).isConnected());
+		}
+
+		@Override
+		public void onPause() {
+			super.onPause();
+			datasource.close();
+		}
+
+		@Override
+		public void onResume() {
+			super.onResume();
+			datasource.open();
 		}
 	}
 
