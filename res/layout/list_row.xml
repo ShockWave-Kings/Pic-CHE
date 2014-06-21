@@ -56,6 +56,6 @@
         android:layout_alignParentRight="true"
         android:layout_centerVertical="true"
         android:contentDescription="@string/arrow_desc"
-        android:src="@drawable/ic_action_forward" />
+        android:src="@drawable/ic_action_next_item" />
 
 </RelativeLayout>

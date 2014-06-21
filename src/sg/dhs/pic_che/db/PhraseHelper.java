@@ -11,13 +11,16 @@ public class PhraseHelper extends SQLiteOpenHelper {
 	private static final String LOGTAG = "PHRASEHELPER";
 	
 	private static final String DATABASE_NAME = "picchedatabase.db";
-	private static final int DATABASE_VERSION = 1;
+	private static final int DATABASE_VERSION = 2;
 	
 	private static final String TABLE_NAME = "PICCHEPHRASES";
 	private static final String TABLE2_NAME = "PICCHECATEGORIES";
 	private static final String id = "_ID";
 	private static final String cid = "CAT_ID";
-	private static final String cName = "NAME";
+	private static final String cHOK = "HOK";
+	private static final String cCAN = "CAN";
+	private static final String cCHI = "CHI";
+	private static final String cENG = "ENG";
 	private static final String category = "CAT_ID";
 	private static final String hokkien = "HOK";
 	private static final String cantonese = "CAN";
@@ -34,7 +37,10 @@ public class PhraseHelper extends SQLiteOpenHelper {
 												english+" VARCHAR(255));";
 	private static final String CREATE_TABLE2 = "CREATE TABLE "+TABLE2_NAME+" ("+
 												cid+" INTEGER PRIMARY KEY AUTROINCREMENT, "+
-												cName+" INTEGER);";
+												cHOK+" VARCHAR(255), "+
+												cCAN+" VARCHAR(255), "+
+												cCHI+" VARCHAR(255), "+
+												cENG+" VARCHAR(255));";
 	
 	private static final String DROP_TABLE = "DROP TABLE IF EXIST "+TABLE_NAME+";";
 	private static final String DROP_TABLE2 = "DROP TABLE IF EXIST "+TABLE2_NAME+";";

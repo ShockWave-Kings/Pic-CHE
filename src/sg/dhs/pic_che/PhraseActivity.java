@@ -84,7 +84,7 @@ public class PhraseActivity extends ActionBarActivity {
 			String english = args.getString(MainActivity.EXTRA_ENGLISH);
 			final String ID = args.getString(MainActivity.EXTRA_ID);
 
-			Button hok = (Button) rootView.findViewById(R.id.phraseHokButton); //NullPointerException: cannot findViewByID
+			Button hok = (Button) rootView.findViewById(R.id.phraseHokButton);
 			hok.setText(hokkien);
 			hok.setOnClickListener(new OnClickListener() {
 				@Override
@@ -92,9 +92,9 @@ public class PhraseActivity extends ActionBarActivity {
 					playAudio("hok", ID);
 				}
 			});
-			
+
 			playAll(ID);
-			
+
 			Button can = (Button) rootView.findViewById(R.id.phraseCanButton);
 			can.setText(cantonese);
 
@@ -115,24 +115,37 @@ public class PhraseActivity extends ActionBarActivity {
 					playAudio("eng", ID);
 				}
 			});
+			
+			Button all = (Button) rootView.findViewById(R.id.phrasePlayAllButton);
+			all.setOnClickListener(new OnClickListener(){
+				@Override
+				public void onClick(View v) {
+					playAll(ID);					
+				}
+			});
 
 			ImageView img = (ImageView) rootView.findViewById(R.id.phraseImageView);
 			int width = getActivity().getWindowManager().getDefaultDisplay().getWidth();
 			img.getLayoutParams().height = width;
-
-
 			String fileName = ID+".png";
 			File dir = new File(Environment.getExternalStorageDirectory().getAbsolutePath()+"/PICCHE/img/"+fileName);
 			Bitmap bmp = BitmapFactory.decodeFile(dir.getAbsolutePath());
 			img.setImageBitmap(bmp);
+			img.setOnClickListener(new OnClickListener() {
+				@Override
+				public void onClick(View v) {
+					playAll(ID);
+				}
+			});
 
 			return rootView;
 		}
 
-		void playAudio(String language, String ID){
+		MediaPlayer playAudio(String language, String ID){
+			MediaPlayer mp = null;
 			try {
 				File audio = new File(Environment.getExternalStorageDirectory().getAbsolutePath()+"/PICCHE/audio/"+ID+"_"+language+".mp3");
-				MediaPlayer mp = new MediaPlayer();
+				mp = new MediaPlayer();
 				mp.setDataSource(audio.getAbsolutePath());
 				mp.setOnCompletionListener(new MediaPlayer.OnCompletionListener(){
 					public void onCompletion(MediaPlayer player) {
@@ -152,72 +165,29 @@ public class PhraseActivity extends ActionBarActivity {
 			} catch (IOException e) {
 				Log.e(LOGTAG, "IOException "+e);
 			}
+			return mp;
 		}
 
 		void playAll(String _ID) {
-			try {
-				final String ID = _ID;
-				File audio = new File(Environment.getExternalStorageDirectory().getAbsolutePath()+"/PICCHE/audio/"+ID+"_hok.mp3");
-				MediaPlayer mp = new MediaPlayer();
-				mp.setDataSource(audio.getAbsolutePath());
-				mp.setOnCompletionListener(new MediaPlayer.OnCompletionListener(){
-					public void onCompletion(MediaPlayer player) {
-						player.stop();
-						player.release();
-
-						try {
-							File audio = new File(Environment.getExternalStorageDirectory().getAbsolutePath()+"/PICCHE/audio/"+ID+"_chi.mp3");
-							MediaPlayer mp = new MediaPlayer();
-							mp.setDataSource(audio.getAbsolutePath());
-
-							mp.setOnCompletionListener(new MediaPlayer.OnCompletionListener(){
-								public void onCompletion(MediaPlayer player) {
-									player.stop();
-									player.release();
-
-									try {
-										File audio = new File(Environment.getExternalStorageDirectory().getAbsolutePath()+"/PICCHE/audio/"+ID+"_eng.mp3");
-										MediaPlayer mp = new MediaPlayer();
-										mp.setDataSource(audio.getAbsolutePath());
-
-										mp.prepare();
-										mp.start();
-									} catch (IllegalArgumentException e) {
-										Log.e(LOGTAG, "IllegalArgumentException "+e);
-									} catch (SecurityException e) {
-										Log.e(LOGTAG, "SecurityException "+e);
-									} catch (IllegalStateException e) {
-										Log.e(LOGTAG, "IllegalStateException "+e);
-									} catch (IOException e) {
-										Log.e(LOGTAG, "IOException "+e);
-									}
-								}
-							});
-
-							mp.prepare();
-							mp.start();
-						} catch (IllegalArgumentException e) {
-							Log.e(LOGTAG, "IllegalArgumentException "+e);
-						} catch (SecurityException e) {
-							Log.e(LOGTAG, "SecurityException "+e);
-						} catch (IllegalStateException e) {
-							Log.e(LOGTAG, "IllegalStateException "+e);
-						} catch (IOException e) {
-							Log.e(LOGTAG, "IOException "+e);
+			final String ID = _ID;
+			playAudio("hok", ID).setOnCompletionListener(new MediaPlayer.OnCompletionListener(){
+				public void onCompletion(MediaPlayer player) {
+					player.stop();
+					player.release();
+					playAudio("chi", ID).setOnCompletionListener(new MediaPlayer.OnCompletionListener(){
+						public void onCompletion(MediaPlayer player) {
+							player.stop();
+							player.release();
+							playAudio("eng", ID);
 						}
-					}
-				});
-				mp.prepare();
-				mp.start();
-			} catch (IllegalArgumentException e) {
-				Log.e(LOGTAG, "IllegalArgumentException "+e);
-			} catch (SecurityException e) {
-				Log.e(LOGTAG, "SecurityException "+e);
-			} catch (IllegalStateException e) {
-				Log.e(LOGTAG, "IllegalStateException "+e);
-			} catch (IOException e) {
-				Log.e(LOGTAG, "IOException "+e);
-			}
+					});
+				}
+			});
 		}
+	}
+
+	public OnClickListener OnClickListener() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 }
