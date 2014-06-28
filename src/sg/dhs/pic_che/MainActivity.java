@@ -363,11 +363,6 @@ public class MainActivity extends ActionBarActivity {
 							//Takes all the data and puts them in arrays
 							for(int i=localDBCount;i<jArrayLength;i++){
 								json_data = jArray.getJSONObject(i);
-								/*P_ID.add(json_data.getString("_ID"));
-								HOK.add(json_data.getString("HOK"));
-								CAN.add(json_data.getString("CAN"));
-								CHI.add(json_data.getString("CHI"));
-								ENG.add(json_data.getString("ENG"));*/
 								Phrase phrase = new Phrase();
 								phrase.setHokkien(json_data.getString("HOK"));
 								phrase.setCantonese(json_data.getString("CAN"));
@@ -377,45 +372,10 @@ public class MainActivity extends ActionBarActivity {
 								Log.d(LOGTAG,"Inserted phrase into DB");
 							}
 
-							/*//make arrays of phrases
-							int phraseLength = HOK.size();
-							String[] hokkien = new String[phraseLength];
-							HOK.toArray(hokkien);
-							String[] cantonese = new String[phraseLength];
-							CAN.toArray(cantonese);
-							String[] chinese = new String[phraseLength];
-							CHI.toArray(chinese);
-							String[] english = new String[phraseLength];
-							ENG.toArray(english);
-
-							PhraseAdapter adapter = new PhraseAdapter(getActivity(), hokkien, cantonese, chinese, english);
-
-							ListView listView = (ListView) getView().findViewById(R.id.listView);
-							listView.setAdapter(adapter);*/
-
 						}
 					} catch (JSONException e) {
 						Log.e(LOGTAG, "JSONException: "+e);
 					}
-
-					/*ListView listView = (ListView) getView().findViewById(R.id.listView);
-
-					//Define what happens when an item is clicked
-					listView.setOnItemClickListener(new AdapterView.OnItemClickListener(){
-
-						@Override
-						public void onItemClick(AdapterView<?> parent, View view, int position, long id){
-
-							Intent intent = new Intent(getActivity(), PhraseActivity.class);
-							intent.putExtra(EXTRA_HOKKIEN, HOK.get(position));
-							intent.putExtra(EXTRA_CANTONESE, CAN.get(position));
-							intent.putExtra(EXTRA_CHINESE, CHI.get(position));
-							intent.putExtra(EXTRA_ENGLISH, ENG.get(position));
-							intent.putExtra(EXTRA_ID, P_ID.get(position));
-							getActivity().startActivity(intent);
-						}
-					});*/
-
 
 				}
 				else {

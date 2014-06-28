@@ -85,6 +85,7 @@ public class PhraseActivity extends ActionBarActivity {
 
 			Button hok = (Button) rootView.findViewById(R.id.phraseHokButton);
 			hok.setText(hokkien);
+			hok.setTextSize(22);
 			hok.setOnClickListener(new OnClickListener() {
 				@Override
 				public void onClick(View v) {
@@ -96,9 +97,11 @@ public class PhraseActivity extends ActionBarActivity {
 
 			Button can = (Button) rootView.findViewById(R.id.phraseCanButton);
 			can.setText(cantonese);
+			can.setTextSize(22);
 
 			Button chi = (Button) rootView.findViewById(R.id.phraseChiButton);
 			chi.setText(chinese);
+			chi.setTextSize(22);
 			chi.setOnClickListener(new OnClickListener() {
 				@Override
 				public void onClick(View v) {
@@ -108,6 +111,7 @@ public class PhraseActivity extends ActionBarActivity {
 
 			Button eng = (Button) rootView.findViewById(R.id.phraseEngButton);
 			eng.setText(english);
+			eng.setTextSize(22);
 			eng.setOnClickListener(new OnClickListener() {
 				@Override
 				public void onClick(View v) {
@@ -124,11 +128,11 @@ public class PhraseActivity extends ActionBarActivity {
 			});
 
 			ImageView img = (ImageView) rootView.findViewById(R.id.phraseImageView);
-			int width = getActivity().getWindowManager().getDefaultDisplay().getWidth();
+			int width = getActivity().getWindowManager().getDefaultDisplay().getWidth(); //Set width to be same as height
 			img.getLayoutParams().height = width;
 			String fileName = ID+".png";
 			File dir = new File(Environment.getExternalStorageDirectory().getAbsolutePath()+"/PICCHE/img/"+fileName);
-			Bitmap bmp = BitmapFactory.decodeFile(dir.getAbsolutePath());
+			Bitmap bmp = BitmapFactory.decodeFile(dir.getAbsolutePath()); //Set imageview location to be file on sd card
 			img.setImageBitmap(bmp);
 			img.setOnClickListener(new OnClickListener() {
 				@Override
