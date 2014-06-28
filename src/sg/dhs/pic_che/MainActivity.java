@@ -137,7 +137,7 @@ public class MainActivity extends ActionBarActivity {
 				 * via a HTTPPost connection
 				 * Returns String for PostExecute to process
 				 * 
-				 * urls[0] should be the url to the server that contains imgs in img folder,
+				 * FYI, urls[0] should be the url to the server that contains imgs in img folder,
 				 * audio files in audio folder, and php scripts phrases.php that contains phrases in JSON format
 				 * 
 				 * Should only use HTTPPOST if wifi connection to internet exists

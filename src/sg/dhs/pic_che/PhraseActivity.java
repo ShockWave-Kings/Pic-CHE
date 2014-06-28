@@ -120,6 +120,7 @@ public class PhraseActivity extends ActionBarActivity {
 			});
 			
 			Button all = (Button) rootView.findViewById(R.id.phrasePlayAllButton);
+			all.setTextSize(22);
 			all.setOnClickListener(new OnClickListener(){
 				@Override
 				public void onClick(View v) {
