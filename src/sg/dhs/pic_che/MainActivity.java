@@ -116,7 +116,7 @@ public class MainActivity extends ActionBarActivity {
 
 			datasource.open();
 
-			new ServerPhrases().execute("http://www.awesome.jerome.yukazunori.com/PICCHE/phrase.php");
+			new ServerPhrases().execute("http://www.awesome.jerome.yukazunori.com/PICCHE/");
 
 			return rootView;
 		}
@@ -137,10 +137,10 @@ public class MainActivity extends ActionBarActivity {
 				 * via a HTTPPost connection
 				 * Returns String for PostExecute to process
 				 * 
-				 * FYI, urls[0] should be the url to the server with the phrases
-				 * in JSON form
+				 * urls[0] should be the url to the server that contains imgs in img folder,
+				 * audio files in audio folder, and php scripts phrases.php that contains phrases in JSON format
 				 * 
-				 * Should only use HTTPPOST if connection to internet exists
+				 * Should only use HTTPPOST if wifi connection to internet exists
 				 * else, just return null
 				 */
 
@@ -160,7 +160,7 @@ public class MainActivity extends ActionBarActivity {
 
 					try {
 						HttpClient httpclient = new DefaultHttpClient();
-						HttpPost httppost = new HttpPost(urls[0]);
+						HttpPost httppost = new HttpPost(urls[0]+"phrase.php");
 						httppost.setEntity(new UrlEncodedFormEntity(nameValuePairs));
 						HttpResponse response = httpclient.execute(httppost);
 						HttpEntity entity = response.getEntity();
@@ -225,7 +225,7 @@ public class MainActivity extends ActionBarActivity {
 							if(!img.exists()){//image file doesn't exist and must be downloaded
 
 								img.createNewFile();
-								URL url = new URL("http://www.awesome.jerome.yukazunori.com/PICCHE/img/"+i+".png");
+								URL url = new URL(urls[0]+"img/"+i+".png");
 								HttpURLConnection urlConnection = (HttpURLConnection) url.openConnection();
 								urlConnection.setRequestMethod("GET");
 								urlConnection.setDoOutput(true);                   
@@ -248,7 +248,7 @@ public class MainActivity extends ActionBarActivity {
 							File hokAudio = new File(AudioDirectory, i+"_hok.mp3");
 							if(!hokAudio.exists()){//image file doesn't exist and must be downloaded
 								hokAudio.createNewFile();
-								URL url = new URL("http://www.awesome.jerome.yukazunori.com/PICCHE/audio/"+i+"_hok.mp3");
+								URL url = new URL(urls[0]+"audio/"+i+"_hok.mp3");
 								HttpURLConnection urlConnection = (HttpURLConnection) url.openConnection();
 								urlConnection.setRequestMethod("GET");
 								urlConnection.setDoOutput(true);                   
@@ -271,7 +271,7 @@ public class MainActivity extends ActionBarActivity {
 							File chiAudio = new File(AudioDirectory, i+"_chi.mp3");
 							if(!chiAudio.exists()){//image file doesn't exist and must be downloaded
 								chiAudio.createNewFile();
-								URL url = new URL("http://www.awesome.jerome.yukazunori.com/PICCHE/audio/"+i+"_chi.mp3");
+								URL url = new URL(urls[0]+"audio/"+i+"_chi.mp3");
 								HttpURLConnection urlConnection = (HttpURLConnection) url.openConnection();
 								urlConnection.setRequestMethod("GET");
 								urlConnection.setDoOutput(true);                   
@@ -294,7 +294,7 @@ public class MainActivity extends ActionBarActivity {
 							File engAudio = new File(AudioDirectory, i+"_eng.mp3");
 							if(!engAudio.exists()){//image file doesn't exist and must be downloaded
 								engAudio.createNewFile();
-								URL url = new URL("http://www.awesome.jerome.yukazunori.com/PICCHE/audio/"+i+"_eng.mp3");
+								URL url = new URL(urls[0]+"audio/"+i+"_eng.mp3");
 								HttpURLConnection urlConnection = (HttpURLConnection) url.openConnection();
 								urlConnection.setRequestMethod("GET");
 								urlConnection.setDoOutput(true);                   
