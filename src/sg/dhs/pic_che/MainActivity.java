@@ -90,7 +90,7 @@ public class MainActivity extends ActionBarActivity {
 	}
 
 	/**
-	 * A placeholder fragment containing a simple view.
+	 * Fragment of the ListView of phrases
 	 */
 	public static class PlaceholderFragment extends Fragment {
 
@@ -116,12 +116,13 @@ public class MainActivity extends ActionBarActivity {
 
 			datasource.open();
 
-			new ServerPhrases().execute("http://www.awesome.jerome.yukazunori.com/PICCHE/");
+			String url = "http://www.awesome.jerome.yukazunori.com/PICCHE/";
+			new ServerPhrases().execute(url);
 
 			return rootView;
 		}
 
-		class ServerPhrases extends AsyncTask<String, Void, String> {
+		private class ServerPhrases extends AsyncTask<String, Void, String> {
 
 			String LOGTAG = "ServerPhrases";
 
@@ -142,6 +143,9 @@ public class MainActivity extends ActionBarActivity {
 				 * 
 				 * Should only use HTTPPOST if wifi connection to internet exists
 				 * else, just return null
+				 * 
+				 * After downloading JSON data, checks how many pictures and audio needs to be downloaded
+				 * and downloads them
 				 */
 
 				if(isNetworkConnected()){
@@ -329,7 +333,8 @@ public class MainActivity extends ActionBarActivity {
 					return result;
 
 				}
-				else return null;
+				else 
+					return null;
 			}
 
 			@Override
@@ -428,7 +433,20 @@ public class MainActivity extends ActionBarActivity {
 			}
 
 		}
+		
+		private class ServerCategories extends AsyncTask<String, Void, String>{
 
+			@Override
+			protected String doInBackground(String... urls) {
+				if(isNetworkConnected()){
+					return null;
+				}
+				else
+					return null;
+			}
+			
+		}
+		
 		class PhraseAdapter extends ArrayAdapter<String>{
 
 			Context context;

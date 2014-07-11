@@ -6,7 +6,7 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
 
-public class PhraseHelper extends SQLiteOpenHelper {
+public class PhraseOpenHelper extends SQLiteOpenHelper {
 	
 	private static final String LOGTAG = "PHRASEHELPER";
 	
@@ -45,7 +45,7 @@ public class PhraseHelper extends SQLiteOpenHelper {
 	private static final String DROP_TABLE = "DROP TABLE IF EXIST "+TABLE_PHRASE+";";
 	private static final String DROP_TABLE2 = "DROP TABLE IF EXIST "+TABLE_CATEGORY+";";
 	
-	public PhraseHelper(Context c) {
+	public PhraseOpenHelper(Context c) {
 		super(c, DATABASE_NAME, null, DATABASE_VERSION);
 	}
 	
