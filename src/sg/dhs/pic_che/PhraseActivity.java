@@ -93,8 +93,6 @@ public class PhraseActivity extends ActionBarActivity {
 				}
 			});
 
-			playAll(ID);
-
 			Button can = (Button) rootView.findViewById(R.id.phraseCanButton);
 			can.setText(cantonese);
 			can.setTextSize(22);

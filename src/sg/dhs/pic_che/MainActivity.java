@@ -156,10 +156,10 @@ public class MainActivity extends ActionBarActivity {
 					//result is the raw JSON data that will be collected by HTTPPost
 					String result = null;
 
-					//StringBuilder will help in turning the webdata into a string
+					//StringBuilder will help in turning the web data into a string
 					StringBuilder sb = null;
 
-					//The InputStream that wil help parse the data
+					//The InputStream that will help parse the data
 					InputStream is = null;
 
 					try {
@@ -511,8 +511,9 @@ public class MainActivity extends ActionBarActivity {
 		}
 
 		private boolean isNetworkConnected() { //Checks if device is connected to the internet
-			ConnectivityManager cm = (ConnectivityManager) getActivity().getSystemService(Context.CONNECTIVITY_SERVICE);
-			return (cm.getNetworkInfo(ConnectivityManager.TYPE_WIFI).isConnected());
+			return true;
+			//ConnectivityManager cm = (ConnectivityManager) getActivity().getSystemService(Context.CONNECTIVITY_SERVICE);
+			//return (cm.getNetworkInfo(ConnectivityManager.TYPE_WIFI).isConnected());
 		}
 
 		@Override

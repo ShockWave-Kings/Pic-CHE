@@ -36,18 +36,18 @@ public class PhraseDataSource {
 	}
 	
 	/**
-	 * DB management functions:
+	 * DB management methods:
 	 * All Columns
 	 * Create
 	 * Find All
 	 * Get Count
 	 * 
-	 * Functions should cover both Phrase table and Category table
+	 * Methods should cover both Phrase table and Category table
 	 */
 	
 	public static final String[] allColumnsPhrases = {
 		PhraseOpenHelper.id,
-		PhraseOpenHelper.cid,
+		PhraseOpenHelper.category,
 		PhraseOpenHelper.hokkien,
 		PhraseOpenHelper.cantonese,
 		PhraseOpenHelper.chinese,
@@ -94,20 +94,24 @@ public class PhraseDataSource {
 		return cursor.getCount();
 	}
 	
+	/**
+	 * Category methods
+	 */
+	
 	public static final String[] allColumnsCategories = {
-		PhraseOpenHelper.cid,
-		PhraseOpenHelper.cHOK,
-		PhraseOpenHelper.cCAN,
-		PhraseOpenHelper.cCHI,
-		PhraseOpenHelper.cENG
+		PhraseOpenHelper.catID,
+		PhraseOpenHelper.catHokkien,
+		PhraseOpenHelper.catCantonese,
+		PhraseOpenHelper.catChinese,
+		PhraseOpenHelper.catEnglish
 	};
 	
 	public Category createCategory(Category category) {
 		ContentValues values = new ContentValues();
-		values.put(PhraseOpenHelper.hokkien, category.getHokkien());
-		values.put(PhraseOpenHelper.cantonese, category.getCantonese());
-		values.put(PhraseOpenHelper.chinese, category.getChinese());
-		values.put(PhraseOpenHelper.english, category.getEnglish());
+		values.put(PhraseOpenHelper.catHokkien, category.getHokkien());
+		values.put(PhraseOpenHelper.catCantonese, category.getCantonese());
+		values.put(PhraseOpenHelper.catChinese, category.getChinese());
+		values.put(PhraseOpenHelper.catEnglish, category.getEnglish());
 		long insertid = database.insert(PhraseOpenHelper.TABLE_CATEGORY, null, values);
 		category.setId(insertid);
 		Log.i(LOGTAG, "Category inserted into DB with ID: "+insertid);
@@ -122,11 +126,11 @@ public class PhraseDataSource {
 		if(cursor.getCount()>0){
 			while(cursor.moveToNext()){
 				Category category = new Category();
-				category.setId(cursor.getLong(cursor.getColumnIndex(PhraseOpenHelper.cid)));
-				category.setHokkien(cursor.getString(cursor.getColumnIndex(PhraseOpenHelper.cHOK)));
-				category.setCantonese(cursor.getString(cursor.getColumnIndex(PhraseOpenHelper.cCAN)));
-				category.setChinese(cursor.getString(cursor.getColumnIndex(PhraseOpenHelper.cCHI)));
-				category.setEnglish(cursor.getString(cursor.getColumnIndex(PhraseOpenHelper.cENG)));
+				category.setId(cursor.getLong(cursor.getColumnIndex(PhraseOpenHelper.catID)));
+				category.setHokkien(cursor.getString(cursor.getColumnIndex(PhraseOpenHelper.catHokkien)));
+				category.setCantonese(cursor.getString(cursor.getColumnIndex(PhraseOpenHelper.catCantonese)));
+				category.setChinese(cursor.getString(cursor.getColumnIndex(PhraseOpenHelper.catChinese)));
+				category.setEnglish(cursor.getString(cursor.getColumnIndex(PhraseOpenHelper.catEnglish)));
 				categories.add(category);
 			}
 		}

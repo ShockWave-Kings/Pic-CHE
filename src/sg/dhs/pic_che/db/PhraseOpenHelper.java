@@ -15,12 +15,12 @@ public class PhraseOpenHelper extends SQLiteOpenHelper {
 	
 	public static final String TABLE_PHRASE = "PICCHEPHRASES";
 	public static final String TABLE_CATEGORY = "PICCHECATEGORIES";
+	public static final String catID = "CAT_ID";
+	public static final String catHokkien = "HOK";
+	public static final String catCantonese = "CAN";
+	public static final String catChinese = "CHI";
+	public static final String catEnglish = "ENG";
 	public static final String id = "_ID";
-	public static final String cid = "CAT_ID";
-	public static final String cHOK = "HOK";
-	public static final String cCAN = "CAN";
-	public static final String cCHI = "CHI";
-	public static final String cENG = "ENG";
 	public static final String category = "CAT_ID";
 	public static final String hokkien = "HOK";
 	public static final String cantonese = "CAN";
@@ -36,11 +36,11 @@ public class PhraseOpenHelper extends SQLiteOpenHelper {
 												chinese+" VARCHAR(255), "+
 												english+" VARCHAR(255));";
 	private static final String CREATE_TABLE2 = "CREATE TABLE "+TABLE_CATEGORY+" ("+
-												cid+" INTEGER PRIMARY KEY AUTROINCREMENT, "+
-												cHOK+" VARCHAR(255), "+
-												cCAN+" VARCHAR(255), "+
-												cCHI+" VARCHAR(255), "+
-												cENG+" VARCHAR(255));";
+												catID+" INTEGER PRIMARY KEY AUTROINCREMENT, "+
+												catHokkien+" VARCHAR(255), "+
+												catCantonese+" VARCHAR(255), "+
+												catChinese+" VARCHAR(255), "+
+												catEnglish+" VARCHAR(255));";
 	
 	private static final String DROP_TABLE = "DROP TABLE IF EXIST "+TABLE_PHRASE+";";
 	private static final String DROP_TABLE2 = "DROP TABLE IF EXIST "+TABLE_CATEGORY+";";
