@@ -122,6 +122,7 @@ public class MainActivity extends ActionBarActivity {
 				new ServerPhrases().execute(url);
 			
 			}
+			
 			readDB(rootView);
 
 			return rootView;
@@ -217,12 +218,12 @@ public class MainActivity extends ActionBarActivity {
 
 				try {
 					//Making directories to store audio and images
-					File ImageDirectory = new File(Environment.getExternalStorageDirectory().getAbsolutePath()+"/PICCHE/img");
+					File ImageDirectory = new File(Environment.getExternalStorageDirectory().getAbsolutePath()+"/PICCHE/PIC-CHE_Images");
 					if(!ImageDirectory.exists()){
 						ImageDirectory.mkdirs();
 					}
 
-					File AudioDirectory = new File(Environment.getExternalStorageDirectory().getAbsolutePath()+"/PICCHE/audio");
+					File AudioDirectory = new File(Environment.getExternalStorageDirectory().getAbsolutePath()+"/PICCHE/PIC-CHE_Audio");
 					if(!AudioDirectory.exists()){
 						AudioDirectory.mkdirs();
 					}
