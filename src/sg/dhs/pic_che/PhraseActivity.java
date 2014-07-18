@@ -130,7 +130,7 @@ public class PhraseActivity extends ActionBarActivity {
 			int width = getActivity().getWindowManager().getDefaultDisplay().getWidth(); //Set width to be same as height
 			img.getLayoutParams().height = width;
 			String fileName = ID+".png";
-			File dir = new File(Environment.getExternalStorageDirectory().getAbsolutePath()+"/PICCHE/img/"+fileName);
+			File dir = new File(Environment.getExternalStorageDirectory().getAbsolutePath()+"/PICCHE/PIC-CHE_Images/"+fileName);
 			Bitmap bmp = BitmapFactory.decodeFile(dir.getAbsolutePath()); //Set imageview location to be file on sd card
 			img.setImageBitmap(bmp);
 			img.setOnClickListener(new OnClickListener() {
@@ -146,7 +146,7 @@ public class PhraseActivity extends ActionBarActivity {
 		MediaPlayer playAudio(String language, String ID){
 			MediaPlayer mp = null;
 			try {
-				File audio = new File(Environment.getExternalStorageDirectory().getAbsolutePath()+"/PICCHE/audio/"+ID+"_"+language+".mp3");
+				File audio = new File(Environment.getExternalStorageDirectory().getAbsolutePath()+"/PICCHE/PIC-CHE_Audio/"+ID+"_"+language+".mp3");
 				mp = new MediaPlayer();
 				mp.setDataSource(audio.getAbsolutePath());
 				mp.setOnCompletionListener(new MediaPlayer.OnCompletionListener(){

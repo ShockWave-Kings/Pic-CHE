@@ -381,7 +381,7 @@ public class MainActivity extends ActionBarActivity {
 					} catch (JSONException e) {
 						Log.e(LOGTAG, "JSONException: "+e);
 					}
-
+					
 				}
 				else {
 					Toast.makeText(getActivity(), "Not connected to internet!", Toast.LENGTH_LONG).show();
@@ -438,7 +438,7 @@ public class MainActivity extends ActionBarActivity {
 				}
 
 				String fileName = (position+1)+".png";
-				File dir = new File(Environment.getExternalStorageDirectory().getAbsolutePath()+"/PICCHE/img/"+fileName);
+				File dir = new File(Environment.getExternalStorageDirectory().getAbsolutePath()+"/PICCHE/PIC-CHE_Images/"+fileName);
 				Bitmap bmp = BitmapFactory.decodeFile(dir.getAbsolutePath());
 				holder.img.setImageBitmap(bmp);
 				holder.hokkien.setText(hokkienArray[position]);
