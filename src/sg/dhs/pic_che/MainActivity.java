@@ -115,15 +115,15 @@ public class MainActivity extends ActionBarActivity {
 			datasource = new PhraseDataSource(getActivity());
 
 			datasource.open();
-			
+
 			if(isNetworkConnected()){
-				
+
 				String url = "http://www.awesome.jerome.yukazunori.com/PICCHE/";
 				new ServerPhrases().execute(url);
 				new ServerCategory().execute(url);
-			
+
 			}
-			
+
 			readDB(rootView);
 
 			return rootView;
@@ -362,27 +362,24 @@ public class MainActivity extends ActionBarActivity {
 						int jArrayLength = jArray.length();
 
 						Log.d(LOGTAG,"Downloaded JSON!");
+						datasource.deletePhrases();
 
-						int localDBCount = datasource.getPhraseCount();
-						if(localDBCount<jArrayLength){
-
-							//Takes all the data and puts them in arrays
-							for(int i=localDBCount;i<jArrayLength;i++){
-								json_data = jArray.getJSONObject(i);
-								Phrase phrase = new Phrase();
-								phrase.setHokkien(json_data.getString("HOK"));
-								phrase.setCantonese(json_data.getString("CAN"));
-								phrase.setChinese(json_data.getString("CHI"));
-								phrase.setEnglish(json_data.getString("ENG"));
-								datasource.createPhrase(phrase);
-								Log.d(LOGTAG,"Inserted phrase into DB");
-							}
-
+						//Takes all the data and puts them in arrays
+						for(int i=0;i<jArrayLength;i++){
+							json_data = jArray.getJSONObject(i);
+							Phrase phrase = new Phrase();
+							phrase.setHokkien(json_data.getString("HOK"));
+							phrase.setCantonese(json_data.getString("CAN"));
+							phrase.setChinese(json_data.getString("CHI"));
+							phrase.setEnglish(json_data.getString("ENG"));
+							datasource.createPhrase(phrase);
+							Log.d(LOGTAG,"Inserted phrase into DB");
 						}
+						
 					} catch (JSONException e) {
 						Log.e(LOGTAG, "JSONException: "+e);
 					}
-					
+
 				}
 				else {
 					Toast.makeText(getActivity(), "Not connected to internet!", Toast.LENGTH_LONG).show();
@@ -394,7 +391,7 @@ public class MainActivity extends ActionBarActivity {
 		}
 
 		private class ServerCategory extends AsyncTask<String, Void, String>{
-			
+
 			String LOGTAG = "ServerCategories";
 
 			@Override
@@ -422,7 +419,7 @@ public class MainActivity extends ActionBarActivity {
 				catch (Exception e){ //Error in connecting to HTTP
 					Log.e("log_tag", "Error in http connection: "+e.toString());
 				}
-				
+
 				//Converting response to string
 				try{
 					BufferedReader reader = new BufferedReader(new InputStreamReader(is,"iso-8859-1"),8);
@@ -443,15 +440,15 @@ public class MainActivity extends ActionBarActivity {
 				catch (Exception e){ //Error converting result to String
 					Log.e("log_tag", "Error converting result: "+e.toString());
 				}
-				
+
 				return result;
 			}
-			
+
 			@Override
 			protected void onPostExecute(String result) {
-				
+
 				Log.d(LOGTAG, result);
-				
+
 			}
 
 		}
@@ -518,9 +515,9 @@ public class MainActivity extends ActionBarActivity {
 				}
 			}
 		}
-		
+
 		private void readDB(View v) {
-			
+
 			List<Phrase> phrases = datasource.findAllPhrases();
 			int localDBCount = datasource.getPhraseCount();
 

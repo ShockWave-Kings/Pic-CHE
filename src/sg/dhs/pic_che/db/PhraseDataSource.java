@@ -95,6 +95,8 @@ public class PhraseDataSource {
 	}
 	
 	public void deletePhrases() {
+		String delete = "DELETE FROM SQLITE_SEQUENCE WHERE NAME = '" + PhraseOpenHelper.TABLE_PHRASE+"'";
+		database.execSQL(delete);
 		database.delete(PhraseOpenHelper.TABLE_PHRASE, null, null);
 	}
 	
