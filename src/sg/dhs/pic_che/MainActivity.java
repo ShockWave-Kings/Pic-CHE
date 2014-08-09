@@ -25,6 +25,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import sg.dhs.pic_che.db.PhraseDataSource;
+import sg.dhs.pic_che.model.Category;
 import sg.dhs.pic_che.model.Phrase;
 
 import android.content.Context;
@@ -341,12 +342,8 @@ public class MainActivity extends ActionBarActivity {
 			@Override
 			protected void onPostExecute(String result) {
 				/**
-				 * If connected to internet:
-				 * 	Check local DB count with server DB count to check if updated
-				 * 		If not updated, update
-				 * 		If updated, leave be
-				 * 
-				 * Get results from Local DB
+				 * If there is something
+				 * 	Replace Table Data w/ new data
 				 */
 				if(result!=null){
 					//Declaring JSON Array and name string and linear layout to add into activity
@@ -446,7 +443,42 @@ public class MainActivity extends ActionBarActivity {
 
 			@Override
 			protected void onPostExecute(String result) {
+				
+				//Declaring JSON Array and name string and linear layout to add into activity
+				JSONArray jArray = null;
+				
+				datasource = new PhraseDataSource(getActivity());
+				datasource.open();
+				
+				try {
+					jArray = new JSONArray(result);
+					JSONObject json_data = null;
 
+					int jArrayLength = jArray.length();
+					
+					int DBCount = datasource.getServerCount();
+
+					Log.d(LOGTAG,"Downloaded JSON!");
+					
+					if(DBCount>0)
+						datasource.deleteCategories();
+
+					//Takes all the data and puts them in arrays
+					for(int i=0;i<jArrayLength;i++){
+						json_data = jArray.getJSONObject(i);
+						Category category = new Category();
+						category.setHokkien(json_data.getString("HOK"));
+						category.setCantonese(json_data.getString("CAN"));
+						category.setChinese(json_data.getString("CHI"));
+						category.setEnglish(json_data.getString("ENG"));
+						datasource.createCategory(category);
+						Log.d(LOGTAG,"Inserted category into DB");
+					}
+					
+				} catch (JSONException e) {
+					Log.e(LOGTAG, "JSONException: "+e);
+				}
+				
 				Log.d(LOGTAG, result);
 
 			}

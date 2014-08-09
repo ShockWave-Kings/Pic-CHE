@@ -145,4 +145,16 @@ public class PhraseDataSource {
 		return categories;
 	}
 	
+	public int getServerCount(){
+		Cursor cursor = database.query(PhraseOpenHelper.TABLE_CATEGORY, allColumnsCategories,
+				null, null, null, null, null);
+		return cursor.getCount();
+	}
+	
+	public void deleteCategories(){
+		String delete = "DELETE FROM SQLITE_SEQUENCE WHERE NAME = '" + PhraseOpenHelper.TABLE_CATEGORY+"'";
+		database.execSQL(delete);
+		database.delete(PhraseOpenHelper.TABLE_CATEGORY, null, null);
+	}
+	
 }

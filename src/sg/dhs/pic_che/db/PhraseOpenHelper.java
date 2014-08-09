@@ -11,7 +11,7 @@ public class PhraseOpenHelper extends SQLiteOpenHelper {
 	private static final String LOGTAG = "PHRASEHELPER";
 	
 	private static final String DATABASE_NAME = "picchedatabase.db";
-	private static final int DATABASE_VERSION = 2;
+	private static final int DATABASE_VERSION = 12;
 	
 	public static final String TABLE_PHRASE = "PICCHEPHRASES";
 	public static final String TABLE_CATEGORY = "PICCHECATEGORIES";
@@ -31,19 +31,20 @@ public class PhraseOpenHelper extends SQLiteOpenHelper {
 												TABLE_PHRASE+" ("+
 												id+" INTEGER PRIMARY KEY AUTOINCREMENT, "+
 												category+" INTEGER, "+
-												hokkien+" VARCHAR(255), "+
-												cantonese+" VARCHAR(255), "+
-												chinese+" VARCHAR(255), "+
-												english+" VARCHAR(255));";
-	private static final String CREATE_TABLE2 = "CREATE TABLE "+TABLE_CATEGORY+" ("+
-												catID+" INTEGER PRIMARY KEY AUTROINCREMENT, "+
-												catHokkien+" VARCHAR(255), "+
-												catCantonese+" VARCHAR(255), "+
-												catChinese+" VARCHAR(255), "+
-												catEnglish+" VARCHAR(255));";
+												hokkien+" TEXT, "+
+												cantonese+" TEXT, "+
+												chinese+" TEXT, "+
+												english+" TEXT )";
+	private static final String CREATE_TABLE2 = "CREATE TABLE "+
+												TABLE_CATEGORY+" ("+
+												catID+" INTEGER PRIMARY KEY AUTOINCREMENT, "+
+												catHokkien+" TEXT, "+
+												catCantonese+" TEXT, "+
+												catChinese+" TEXT, "+
+												catEnglish+" TEXT)";
 	
-	private static final String DROP_TABLE = "DROP TABLE IF EXIST "+TABLE_PHRASE+";";
-	private static final String DROP_TABLE2 = "DROP TABLE IF EXIST "+TABLE_CATEGORY+";";
+	private static final String DROP_TABLE = "DROP TABLE IF EXISTS "+TABLE_PHRASE;
+	private static final String DROP_TABLE2 = "DROP TABLE IF EXISTS "+TABLE_CATEGORY;
 	
 	public PhraseOpenHelper(Context c) {
 		super(c, DATABASE_NAME, null, DATABASE_VERSION);
@@ -53,8 +54,8 @@ public class PhraseOpenHelper extends SQLiteOpenHelper {
 	public void onCreate(SQLiteDatabase db) {
 		
 		try {
-			db.execSQL(CREATE_TABLE);
 			db.execSQL(CREATE_TABLE2);
+			db.execSQL(CREATE_TABLE);
 		} catch (SQLException e) {
 			Log.d(LOGTAG, "SQLException OnCreate: "+e);
 		}
