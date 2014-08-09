@@ -94,6 +94,10 @@ public class PhraseDataSource {
 		return cursor.getCount();
 	}
 	
+	public void deletePhrases() {
+		database.delete(PhraseOpenHelper.TABLE_PHRASE, null, null);
+	}
+	
 	/**
 	 * Category methods
 	 */

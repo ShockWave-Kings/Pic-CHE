@@ -120,6 +120,7 @@ public class MainActivity extends ActionBarActivity {
 				
 				String url = "http://www.awesome.jerome.yukazunori.com/PICCHE/";
 				new ServerPhrases().execute(url);
+				new ServerCategory().execute(url);
 			
 			}
 			
@@ -392,15 +393,65 @@ public class MainActivity extends ActionBarActivity {
 
 		}
 
-		private class ServerCategories extends AsyncTask<String, Void, String>{
+		private class ServerCategory extends AsyncTask<String, Void, String>{
+			
+			String LOGTAG = "ServerCategories";
 
 			@Override
 			protected String doInBackground(String... urls) {
-				if(isNetworkConnected()){
-					return null;
+				//Array to be used to convert JSON into string
+				ArrayList<NameValuePair> nameValuePairs = new ArrayList<NameValuePair>();
+
+				//result is the raw JSON data that will be collected by HTTPPost
+				String result = null;
+
+				//StringBuilder will help in turning the web data into a string
+				StringBuilder sb = null;
+
+				//The InputStream that will help parse the data
+				InputStream is = null;
+
+				try {
+					HttpClient httpclient = new DefaultHttpClient();
+					HttpPost httppost = new HttpPost(urls[0]+"category.php");
+					httppost.setEntity(new UrlEncodedFormEntity(nameValuePairs));
+					HttpResponse response = httpclient.execute(httppost);
+					HttpEntity entity = response.getEntity();
+					is = entity.getContent();
 				}
-				else
-					return null;
+				catch (Exception e){ //Error in connecting to HTTP
+					Log.e("log_tag", "Error in http connection: "+e.toString());
+				}
+				
+				//Converting response to string
+				try{
+					BufferedReader reader = new BufferedReader(new InputStreamReader(is,"iso-8859-1"),8);
+					sb = new StringBuilder(); //Declare a new StringBuilder
+					sb.append(reader.readLine() + "\n"); //Appending response into sb
+
+					String line="0";
+					line = reader.readLine();
+					while (line != null) { //Error may occur here. Scrutinize this
+						line = reader.readLine();
+						sb.append(line + "\n");
+					}
+
+					is.close(); //close the input stream
+					result=sb.toString(); //convert result to string
+
+				}
+				catch (Exception e){ //Error converting result to String
+					Log.e("log_tag", "Error converting result: "+e.toString());
+				}
+				
+				return result;
+			}
+			
+			@Override
+			protected void onPostExecute(String result) {
+				
+				Log.d(LOGTAG, result);
+				
 			}
 
 		}
