@@ -187,9 +187,4 @@ public class PhraseActivity extends ActionBarActivity {
 			});
 		}
 	}
-
-	public OnClickListener OnClickListener() {
-		// TODO Auto-generated method stub
-		return null;
-	}
 }

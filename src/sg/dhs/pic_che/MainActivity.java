@@ -87,6 +87,9 @@ public class MainActivity extends ActionBarActivity {
 		if (id == R.id.action_settings) {
 			return true;
 		}
+		if (id == R.id.action_refresh) {
+			
+		}
 		return super.onOptionsItemSelected(item);
 	}
 
@@ -95,12 +98,12 @@ public class MainActivity extends ActionBarActivity {
 	 */
 	public static class PlaceholderFragment extends Fragment {
 
-		List<String> P_ID = new ArrayList<String>();
-		List<String> HOK = new ArrayList<String>();
-		List<String> CAN = new ArrayList<String>();
-		List<String> CHI = new ArrayList<String>();
-		List<String> ENG = new ArrayList<String>();
-		List<Phrase> PHRASES = new ArrayList<Phrase>();
+		List<String> P_ID = new ArrayList<>();
+		List<String> HOK = new ArrayList<>();
+		List<String> CAN = new ArrayList<>();
+		List<String> CHI = new ArrayList<>();
+		List<String> ENG = new ArrayList<>();
+		List<Phrase> PHRASES = new ArrayList<>();
 
 		PhraseDataSource datasource;
 
@@ -157,13 +160,13 @@ public class MainActivity extends ActionBarActivity {
 				 */
 
 				//Array to be used to convert JSON into string
-				ArrayList<NameValuePair> nameValuePairs = new ArrayList<NameValuePair>();
+				ArrayList<NameValuePair> nameValuePairs = new ArrayList<>();
 
 				//result is the raw JSON data that will be collected by HTTPPost
 				String result = null;
 
 				//StringBuilder will help in turning the web data into a string
-				StringBuilder sb = null;
+				StringBuilder sb;
 
 				//The InputStream that will help parse the data
 				InputStream is = null;
@@ -184,13 +187,13 @@ public class MainActivity extends ActionBarActivity {
 				try{
 					BufferedReader reader = new BufferedReader(new InputStreamReader(is,"iso-8859-1"),8);
 					sb = new StringBuilder(); //Declare a new StringBuilder
-					sb.append(reader.readLine() + "\n"); //Appending response into sb
+					sb.append(reader.readLine()).append("\n"); //Appending response into sb
 
-					String line="0";
+					String line;
 					line = reader.readLine();
 					while (line != null) { //Error may occur here. Scrutinize this
 						line = reader.readLine();
-						sb.append(line + "\n");
+						sb.append(line).append("\n");
 					}
 
 					is.close(); //close the input stream
@@ -245,7 +248,7 @@ public class MainActivity extends ActionBarActivity {
 							int totalSize = urlConnection.getContentLength();
 							int downloadedSize = 0;   
 							byte[] buffer = new byte[1024];
-							int bufferLength = 0;
+							int bufferLength;
 							while ( (bufferLength = inputStream.read(buffer)) > 0 ) 
 							{                 
 								fileOutput.write(buffer, 0, bufferLength);                  
@@ -268,7 +271,7 @@ public class MainActivity extends ActionBarActivity {
 							int totalSize = urlConnection.getContentLength();
 							int downloadedSize = 0;   
 							byte[] buffer = new byte[1024];
-							int bufferLength = 0;
+							int bufferLength;
 							while ( (bufferLength = inputStream.read(buffer)) > 0 ) 
 							{                 
 								fileOutput.write(buffer, 0, bufferLength);                  
@@ -291,7 +294,7 @@ public class MainActivity extends ActionBarActivity {
 							int totalSize = urlConnection.getContentLength();
 							int downloadedSize = 0;   
 							byte[] buffer = new byte[1024];
-							int bufferLength = 0;
+							int bufferLength;
 							while ( (bufferLength = inputStream.read(buffer)) > 0 ) 
 							{                 
 								fileOutput.write(buffer, 0, bufferLength);                  
@@ -314,7 +317,7 @@ public class MainActivity extends ActionBarActivity {
 							int totalSize = urlConnection.getContentLength();
 							int downloadedSize = 0;   
 							byte[] buffer = new byte[1024];
-							int bufferLength = 0;
+							int bufferLength;
 							while ( (bufferLength = inputStream.read(buffer)) > 0 ) 
 							{                 
 								fileOutput.write(buffer, 0, bufferLength);                  
@@ -347,14 +350,14 @@ public class MainActivity extends ActionBarActivity {
 				 */
 				if(result!=null){
 					//Declaring JSON Array and name string and linear layout to add into activity
-					JSONArray jArray = null;
+					JSONArray jArray;
 
 					datasource = new PhraseDataSource(getActivity());
 					datasource.open();
 
 					try {
 						jArray = new JSONArray(result);
-						JSONObject json_data = null;
+						JSONObject json_data;
 
 						int jArrayLength = jArray.length();
 
@@ -394,13 +397,13 @@ public class MainActivity extends ActionBarActivity {
 			@Override
 			protected String doInBackground(String... urls) {
 				//Array to be used to convert JSON into string
-				ArrayList<NameValuePair> nameValuePairs = new ArrayList<NameValuePair>();
+				ArrayList<NameValuePair> nameValuePairs = new ArrayList<>();
 
 				//result is the raw JSON data that will be collected by HTTPPost
 				String result = null;
 
 				//StringBuilder will help in turning the web data into a string
-				StringBuilder sb = null;
+				StringBuilder sb;
 
 				//The InputStream that will help parse the data
 				InputStream is = null;
@@ -421,13 +424,13 @@ public class MainActivity extends ActionBarActivity {
 				try{
 					BufferedReader reader = new BufferedReader(new InputStreamReader(is,"iso-8859-1"),8);
 					sb = new StringBuilder(); //Declare a new StringBuilder
-					sb.append(reader.readLine() + "\n"); //Appending response into sb
+					sb.append(reader.readLine()).append("\n"); //Appending response into sb
 
-					String line="0";
+					String line;
 					line = reader.readLine();
 					while (line != null) { //Error may occur here. Scrutinize this
 						line = reader.readLine();
-						sb.append(line + "\n");
+						sb.append(line).append("\n");
 					}
 
 					is.close(); //close the input stream
@@ -445,14 +448,14 @@ public class MainActivity extends ActionBarActivity {
 			protected void onPostExecute(String result) {
 				
 				//Declaring JSON Array and name string and linear layout to add into activity
-				JSONArray jArray = null;
+				JSONArray jArray;
 				
 				datasource = new PhraseDataSource(getActivity());
 				datasource.open();
 				
 				try {
 					jArray = new JSONArray(result);
-					JSONObject json_data = null;
+					JSONObject json_data;
 
 					int jArrayLength = jArray.length();
 					
@@ -505,7 +508,7 @@ public class MainActivity extends ActionBarActivity {
 			@Override
 			public View getView(int position, View convertView, ViewGroup parent) {
 				View row = convertView;
-				RowHolder holder = null;
+				RowHolder holder;
 
 				if(row == null){ //1st time
 					LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
