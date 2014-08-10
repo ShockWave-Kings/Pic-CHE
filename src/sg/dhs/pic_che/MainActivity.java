@@ -24,6 +24,7 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import sg.dhs.pic_che.adapters.PhraseAdapter;
 import sg.dhs.pic_che.db.PhraseDataSource;
 import sg.dhs.pic_che.model.Category;
 import sg.dhs.pic_che.model.Phrase;
@@ -486,69 +487,6 @@ public class MainActivity extends ActionBarActivity {
 
 			}
 
-		}
-
-		class PhraseAdapter extends ArrayAdapter<String>{
-
-			Context context;
-			String[] hokkienArray;
-			String[] cantoneseArray;
-			String[] chineseArray;
-			String[] englishArray;
-
-			PhraseAdapter(Context c, String[] hokkien, String[] cantonese, String[] chinese, String[] english){
-				super(c, R.layout.list_row, R.id.hokkien, hokkien);
-				this.context = c;
-				this.hokkienArray = hokkien;
-				this.cantoneseArray = cantonese;
-				this.chineseArray = chinese;
-				this.englishArray = english;
-			}
-
-			@Override
-			public View getView(int position, View convertView, ViewGroup parent) {
-				View row = convertView;
-				RowHolder holder;
-
-				if(row == null){ //1st time
-					LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-					row = inflater.inflate(R.layout.list_row, parent, false);
-					holder = new RowHolder(row);
-					row.setTag(holder);
-				}
-				else{
-					holder = (RowHolder) row.getTag();
-				}
-
-				String fileName = (position+1)+".png";
-				File dir = new File(Environment.getExternalStorageDirectory().getAbsolutePath()+"/PICCHE/PIC-CHE_Images/"+fileName);
-				Bitmap bmp = BitmapFactory.decodeFile(dir.getAbsolutePath());
-				holder.img.setImageBitmap(bmp);
-				holder.hokkien.setText(hokkienArray[position]);
-				holder.cantonese.setText(cantoneseArray[position]);
-				holder.chinese.setText(chineseArray[position]);
-				holder.english.setText(englishArray[position]);
-
-				return row;
-			}
-
-			class RowHolder {
-
-				ImageView img;
-				TextView hokkien;
-				TextView cantonese;
-				TextView chinese;
-				TextView english;
-
-				RowHolder(View v){
-
-					img = (ImageView) v.findViewById(R.id.listImage);
-					hokkien = (TextView) v.findViewById(R.id.hokkien);
-					cantonese = (TextView) v.findViewById(R.id.cantonese);
-					chinese = (TextView) v.findViewById(R.id.chinese);
-					english = (TextView) v.findViewById(R.id.english);
-				}
-			}
 		}
 
 		private void readDB(View v) {
