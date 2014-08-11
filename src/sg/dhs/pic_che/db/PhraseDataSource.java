@@ -56,19 +56,20 @@ public class PhraseDataSource {
 	
 	public Phrase createPhrase(Phrase phrase){
 		ContentValues values = new ContentValues();
+        values.put(PhraseOpenHelper.catID, phrase.getCatId());
 		values.put(PhraseOpenHelper.hokkien, phrase.getHokkien());
 		values.put(PhraseOpenHelper.cantonese, phrase.getCantonese());
 		values.put(PhraseOpenHelper.chinese, phrase.getChinese());
 		values.put(PhraseOpenHelper.english, phrase.getEnglish());
 		long insertid = database.insert(PhraseOpenHelper.TABLE_PHRASE, null, values);
 		phrase.setId(insertid);
-		Log.i(LOGTAG, "Phrase inserted into DB with ID: "+insertid);
+		Log.i(LOGTAG, "Phrase inserted into DB with ID: "+insertid+" and CatID: "+phrase.getCatId());
 		
 		return phrase;
 	}
 	
 	public List<Phrase> findAllPhrases() {
-		List<Phrase> phrases = new ArrayList<Phrase>();
+		List<Phrase> phrases = new ArrayList<>();
 		Cursor cursor = database.query(PhraseOpenHelper.TABLE_PHRASE, allColumnsPhrases,
 				null, null, null, null, null);
 		Log.i(LOGTAG, "Returned "+cursor.getCount()+" rows");
@@ -77,6 +78,7 @@ public class PhraseDataSource {
 			while(cursor.moveToNext()){
 				Phrase phrase = new Phrase();
 				phrase.setId(cursor.getLong(cursor.getColumnIndex(PhraseOpenHelper.id)));
+                phrase.setCatId(cursor.getInt(cursor.getColumnIndex(PhraseOpenHelper.catID)));
 				phrase.setHokkien(cursor.getString(cursor.getColumnIndex(PhraseOpenHelper.hokkien)));
 				phrase.setCantonese(cursor.getString(cursor.getColumnIndex(PhraseOpenHelper.cantonese)));
 				phrase.setChinese(cursor.getString(cursor.getColumnIndex(PhraseOpenHelper.chinese)));

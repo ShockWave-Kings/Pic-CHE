@@ -74,10 +74,31 @@
     <bool name="abc_config_allowActionMenuItemTextWithIcon">false</bool>
     <bool name="abc_config_showMenuShortcutsWhenKeyboardPresent">false</bool>
     <bool name="abc_split_action_bar_is_narrow">true</bool>
+    <!-- From: file:/C:/Users/jeromeleow/workspace/PIC-CHE/res/values/strings.xml -->
+    <eat-comment />
+
+    <color name="P100">#ffe0b2</color>
+    <color name="P200">#ffcc80</color>
+    <color name="P300">#ffb74d</color>
+    <color name="P400">#ffa726</color>
+    <color name="P50">#fff3e0</color>
+    <color name="P500">#ff9800</color>
+    <color name="P600">#fb8c00</color>
+    <color name="P700">#f57c00</color>
+    <color name="P800">#ef6c00</color>
+    <!-- From: file:/C:/Users/jeromeleow/workspace/PIC-CHE/build/intermediates/exploded-aar/workspace/appcompat_v7_2/unspecified/res/values/values.xml -->
+    <eat-comment />
 
     <color name="abc_search_url_text_normal">#7fa87f</color>
     <color name="abc_search_url_text_pressed">@android:color/black</color>
     <color name="abc_search_url_text_selected">@android:color/black</color>
+    <!-- From: file:/C:/Users/jeromeleow/workspace/PIC-CHE/res/values/strings.xml -->
+    <eat-comment />
+
+    <color name="black">#000000</color>
+    <color name="white">#FFFFFF</color>
+    <!-- From: file:/C:/Users/jeromeleow/workspace/PIC-CHE/build/intermediates/exploded-aar/workspace/appcompat_v7_2/unspecified/res/values/values.xml -->
+    <eat-comment />
 
     <declare-styleable name="ActionBar">
 
@@ -520,6 +541,13 @@
     <item name="dialog_fixed_height_minor" type="dimen">100%</item>
     <item name="dialog_fixed_width_major" type="dimen">320dp</item>
     <item name="dialog_fixed_width_minor" type="dimen">320dp</item>
+    <!-- From: file:/C:/Users/jeromeleow/workspace/PIC-CHE/res/values/dimens.xml -->
+    <eat-comment />
+
+    <dimen name="list_height">130dp</dimen>
+    <!-- From: file:/C:/Users/jeromeleow/workspace/PIC-CHE/build/intermediates/exploded-aar/workspace/appcompat_v7_2/unspecified/res/values/values.xml -->
+    <eat-comment />
+
     <item name="action_bar_activity_content" type="id"/>
     <item name="action_menu_divider" type="id"/>
     <item name="action_menu_presenter" type="id"/>

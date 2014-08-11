@@ -2,6 +2,7 @@ package sg.dhs.pic_che.model;
 
 public class Phrase {
 	private long id;
+    private int catId;
 	private String hokkien;
 	private String cantonese;
 	private String chinese;
@@ -16,13 +17,15 @@ public class Phrase {
 		this.chinese = chinese;
 		this.english = english;
 	}
-	
+
 	public long getId() {
 		return id;
 	}
 	public void setId(long id) {
 		this.id = id;
 	}
+    public int getCatId() { return catId; }
+    public void setCatId(int id) { this.catId = id; }
 	public String getHokkien() {
 		return hokkien;
 	}

@@ -1,52 +1,58 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
-    android:layout_height="120dip"
-    android:padding="6dip" >
+    android:layout_height="@dimen/list_height"
+    android:padding="6dip"
+    android:background="@color/P500">
     
     <ImageView
         android:id="@+id/groupImage"
-        android:layout_width="wrap_content"
+        android:layout_width="130dip"
         android:layout_height="fill_parent"
-        android:layout_alignParentTop="true"
-        android:layout_marginRight="6dip"
         android:contentDescription="@string/pic_desc"
-        android:src="@drawable/ic_launcher" />
+        android:src="@drawable/ic_launcher"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
 
     <TextView
         android:id="@+id/groupHokkien"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignTop="@id/groupImage"
-        android:layout_toRightOf="@id/groupImage"
+        android:layout_toLeftOf="@id/groupImage"
         android:text="@string/hokkien"
+        android:textColor="@color/white"
         android:textAppearance="?android:attr/textAppearanceLarge" />
 
     <TextView
         android:id="@+id/groupCantonese"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignLeft="@id/groupHokkien"
+        android:layout_alignRight="@id/groupHokkien"
         android:layout_below="@id/groupHokkien"
         android:text="@string/cantonese"
+        android:textColor="@color/white"
         android:textAppearance="?android:attr/textAppearanceLarge" />
 
     <TextView
         android:id="@+id/groupChinese"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignLeft="@id/groupCantonese"
+        android:layout_alignRight="@id/groupCantonese"
         android:layout_below="@id/groupCantonese"
         android:text="@string/chinese"
+        android:textColor="@color/white"
         android:textAppearance="?android:attr/textAppearanceLarge" />
 
     <TextView
         android:id="@+id/groupEnglish"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignLeft="@id/groupChinese"
+        android:layout_alignRight="@id/groupChinese"
         android:layout_below="@id/groupChinese"
         android:text="@string/english"
+        android:textColor="@color/white"
         android:textAppearance="?android:attr/textAppearanceLarge" />
     
 

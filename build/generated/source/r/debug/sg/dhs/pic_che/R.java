@@ -809,10 +809,21 @@ containing a value of this type.
         public static final int abc_split_action_bar_is_narrow=0x7f050005;
     }
     public static final class color {
-        public static final int abc_search_url_text_holo=0x7f060003;
-        public static final int abc_search_url_text_normal=0x7f060000;
-        public static final int abc_search_url_text_pressed=0x7f060001;
-        public static final int abc_search_url_text_selected=0x7f060002;
+        public static final int P100=0x7f060000;
+        public static final int P200=0x7f060001;
+        public static final int P300=0x7f060002;
+        public static final int P400=0x7f060003;
+        public static final int P50=0x7f060004;
+        public static final int P500=0x7f060005;
+        public static final int P600=0x7f060006;
+        public static final int P700=0x7f060007;
+        public static final int P800=0x7f060008;
+        public static final int abc_search_url_text_holo=0x7f06000e;
+        public static final int abc_search_url_text_normal=0x7f060009;
+        public static final int abc_search_url_text_pressed=0x7f06000a;
+        public static final int abc_search_url_text_selected=0x7f06000b;
+        public static final int black=0x7f06000c;
+        public static final int white=0x7f06000d;
     }
     public static final class dimen {
         public static final int abc_action_bar_default_height=0x7f080000;
@@ -838,6 +849,7 @@ containing a value of this type.
         public static final int dialog_fixed_height_minor=0x7f080014;
         public static final int dialog_fixed_width_major=0x7f080015;
         public static final int dialog_fixed_width_minor=0x7f080016;
+        public static final int list_height=0x7f080017;
     }
     public static final class drawable {
         public static final int abc_ab_bottom_solid_dark_holo=0x7f020000;
@@ -959,6 +971,7 @@ containing a value of this type.
         public static final int edit_query=0x7f070030;
         public static final int end=0x7f07000c;
         public static final int english=0x7f07004e;
+        public static final int expListView=0x7f07003d;
         public static final int expand_activities_button=0x7f070026;
         public static final int expanded_menu=0x7f07002c;
         public static final int groupCantonese=0x7f070047;
@@ -975,7 +988,6 @@ containing a value of this type.
         public static final int imageArrow=0x7f07004f;
         public static final int listImage=0x7f07004a;
         public static final int listMode=0x7f070001;
-        public static final int listView=0x7f07003d;
         public static final int list_item=0x7f070029;
         public static final int middle=0x7f07000b;
         public static final int never=0x7f07000d;

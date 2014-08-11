@@ -11,7 +11,9 @@ import java.net.MalformedURLException;
 import java.net.ProtocolException;
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.LinkedHashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
@@ -24,15 +26,13 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import sg.dhs.pic_che.adapters.PhraseAdapter;
+import sg.dhs.pic_che.adapters.PicCHEAdapter;
 import sg.dhs.pic_che.db.PhraseDataSource;
 import sg.dhs.pic_che.model.Category;
 import sg.dhs.pic_che.model.Phrase;
 
 import android.content.Context;
 import android.content.Intent;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.net.ConnectivityManager;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -45,11 +45,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
-import android.widget.ImageView;
-import android.widget.ListView;
-import android.widget.TextView;
+import android.widget.ExpandableListView;
 import android.widget.Toast;
 
 public class MainActivity extends ActionBarActivity {
@@ -373,8 +369,9 @@ public class MainActivity extends ActionBarActivity {
 							phrase.setCantonese(json_data.getString("CAN"));
 							phrase.setChinese(json_data.getString("CHI"));
 							phrase.setEnglish(json_data.getString("ENG"));
+                            phrase.setCatId(Integer.parseInt(json_data.getString("CAT_ID")));
 							datasource.createPhrase(phrase);
-							Log.d(LOGTAG,"Inserted phrase into DB");
+							Log.i(LOGTAG,"Inserted phrase into DB");
 						}
 						
 					} catch (JSONException e) {
@@ -490,52 +487,58 @@ public class MainActivity extends ActionBarActivity {
 		}
 
 		private void readDB(View v) {
+            String LOGTAG = "ReadDB";
 
 			List<Phrase> phrases = datasource.findAllPhrases();
-			int localDBCount = datasource.getPhraseCount();
+            List<Phrase> tempPhrases;
+            final List<Category> categories = datasource.findAllCategories();
+            final Map<Category, List<Phrase>> picches;
 
-			for(int i=0; i<localDBCount; i++) {
-				P_ID.add(Long.toString(phrases.get(i).getId()));
-				HOK.add(phrases.get(i).getHokkien());
-				CAN.add(phrases.get(i).getCantonese());
-				CHI.add(phrases.get(i).getChinese());
-				ENG.add(phrases.get(i).getEnglish());
-			}
+            picches = new LinkedHashMap<>();
 
-			//make arrays of phrases
-			String[] hokkien = new String[localDBCount];
-			HOK.toArray(hokkien);
-			String[] cantonese = new String[localDBCount];
-			CAN.toArray(cantonese);
-			String[] chinese = new String[localDBCount];
-			CHI.toArray(chinese);
-			String[] english = new String[localDBCount];
-			ENG.toArray(english);
+            for(Category category : categories){
+                tempPhrases = new ArrayList<>();
+                for(Phrase phrase : phrases) {
+                    //If category of phrase matches current category, add phrase to temporary
+                    if (category.getId() == phrase.getCatId()) {
+                        tempPhrases.add(phrase);
+                    }
+                }
+                picches.put(category, tempPhrases);
+            }
 
-			PhraseAdapter adapter = new PhraseAdapter(getActivity(), hokkien, cantonese, chinese, english);
+            PicCHEAdapter adapter = new PicCHEAdapter(getActivity(), categories, picches);
 
-			ListView listView = (ListView) v.findViewById(R.id.listView);
-			listView.setAdapter(adapter);
+            ExpandableListView expListView = (ExpandableListView) v.findViewById(R.id.expListView);
+            expListView.setAdapter(adapter);
 
-			//Define what happens when an item is clicked
-			listView.setOnItemClickListener(new AdapterView.OnItemClickListener(){
+            //Set what happens when an item is clicked
+            expListView.setOnChildClickListener(new ExpandableListView.OnChildClickListener() {
 
-				@Override
-				public void onItemClick(AdapterView<?> parent, View view, int position, long id){
+                @Override
+                public boolean onChildClick(ExpandableListView expandableListView, View view, int groupPosition, int childPosition, long id) {
 
-					Intent intent = new Intent(getActivity(), PhraseActivity.class);
-					intent.putExtra(EXTRA_HOKKIEN, HOK.get(position));
-					intent.putExtra(EXTRA_CANTONESE, CAN.get(position));
-					intent.putExtra(EXTRA_CHINESE, CHI.get(position));
-					intent.putExtra(EXTRA_ENGLISH, ENG.get(position));
-					intent.putExtra(EXTRA_ID, P_ID.get(position));
-					getActivity().startActivity(intent);
-				}
-			});
+                    Intent intent = new Intent(getActivity(), PhraseActivity.class);
+                    Phrase phrase;
+                    phrase = picches.get(categories.get(groupPosition)).get(childPosition);
+                    intent.putExtra(EXTRA_HOKKIEN, phrase.getHokkien());
+                    intent.putExtra(EXTRA_CANTONESE, phrase.getCantonese());
+                    intent.putExtra(EXTRA_CHINESE, phrase.getChinese());
+                    intent.putExtra(EXTRA_ENGLISH, phrase.getEnglish());
+                    intent.putExtra(EXTRA_ID, Long.toString(phrase.getId()));
+
+                    getActivity().startActivity(intent);
+
+                    return true;
+
+                }
+
+            });
 		}
 
-		private boolean isNetworkConnected() { //Checks if device is connected to the internet
-			ConnectivityManager cm = (ConnectivityManager) getActivity().getSystemService(Context.CONNECTIVITY_SERVICE);
+        //Checks if device is connected to the internet
+        private boolean isNetworkConnected() {
+            ConnectivityManager cm = (ConnectivityManager) getActivity().getSystemService(Context.CONNECTIVITY_SERVICE);
 			return (cm.getNetworkInfo(ConnectivityManager.TYPE_WIFI).isConnected());
 		}
 
