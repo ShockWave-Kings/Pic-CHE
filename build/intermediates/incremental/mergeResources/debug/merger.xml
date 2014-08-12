@@ -4764,16 +4764,16 @@ useLogo|showHome|showTitle
                     msgid="2031811694353399454" >"Επιλέξτε κάποια εφαρμογή"
                 </string>
                 <string
-                    name="abc_searchview_description_voice"
-                    msgid="893419373245838918" >"Φωνητική αναζήτηση"
-                </string>
-                <string
                     name="abc_action_menu_overflow_description"
                     msgid="3588849162933574182" >"Περισσότερες επιλογές"
                 </string>
                 <string
                     name="abc_searchview_description_clear"
                     msgid="3691816814315814921" >"Διαγραφή ερωτήματος"
+                </string>
+                <string
+                    name="abc_searchview_description_voice"
+                    msgid="893419373245838918" >"Φωνητική αναζήτηση"
                 </string>
             </file>
             <file
@@ -6095,16 +6095,16 @@ false
                     msgid="4076576682505996667" >"Atlikta"
                 </string>
                 <string
-                    name="abc_searchview_description_search"
-                    msgid="8264924765203268293" >"Paieška"
-                </string>
-                <string
                     name="abc_shareactionprovider_share_with_application"
                     msgid="7165123711973476752" >"Bendrinti naudojant „%s“"
                 </string>
                 <string
                     name="abc_action_bar_home_description"
                     msgid="4600421777120114993" >"Eiti į pagrindinį puslapį"
+                </string>
+                <string
+                    name="abc_searchview_description_search"
+                    msgid="8264924765203268293" >"Paieška"
                 </string>
             </file>
             <file
@@ -6739,16 +6739,16 @@ false
                     msgid="3588849162933574182" >"Več možnosti"
                 </string>
                 <string
-                    name="abc_shareactionprovider_share_with"
-                    msgid="3421042268587513524" >"Deljenje z"
+                    name="abc_action_mode_done"
+                    msgid="4076576682505996667" >"Končano"
                 </string>
                 <string
                     name="abc_activity_chooser_view_see_all"
                     msgid="7468859129482906941" >"Pokaži vse"
                 </string>
                 <string
-                    name="abc_action_mode_done"
-                    msgid="4076576682505996667" >"Končano"
+                    name="abc_shareactionprovider_share_with"
+                    msgid="3421042268587513524" >"Deljenje z"
                 </string>
                 <string
                     name="abc_action_bar_home_description"
@@ -6767,12 +6767,12 @@ false
                     msgid="8264924765203268293" >"Iskanje"
                 </string>
                 <string
-                    name="abc_searchview_description_submit"
-                    msgid="8928215447528550784" >"Pošiljanje poizvedbe"
-                </string>
-                <string
                     name="abc_searchview_description_query"
                     msgid="2550479030709304392" >"Iskalna poizvedba"
+                </string>
+                <string
+                    name="abc_searchview_description_submit"
+                    msgid="8928215447528550784" >"Pošiljanje poizvedbe"
                 </string>
                 <string
                     name="abc_searchview_description_voice"
@@ -8259,6 +8259,11 @@ false
     <dataSet config="main" >
         <source path="C:\Users\jeromeleow\workspace\PIC-CHE\res" >
             <file
+                name="add_photo"
+                path="C:\Users\jeromeleow\workspace\PIC-CHE\res\drawable-hdpi\add_photo.png"
+                qualifiers="hdpi-v4"
+                type="drawable" />
+            <file
                 name="ic_action_next_item"
                 path="C:\Users\jeromeleow\workspace\PIC-CHE\res\drawable-hdpi\ic_action_next_item.png"
                 qualifiers="hdpi-v4"
@@ -8267,6 +8272,11 @@ false
                 name="ic_launcher"
                 path="C:\Users\jeromeleow\workspace\PIC-CHE\res\drawable-hdpi\ic_launcher.png"
                 qualifiers="hdpi-v4"
+                type="drawable" />
+            <file
+                name="add_photo"
+                path="C:\Users\jeromeleow\workspace\PIC-CHE\res\drawable-mdpi\add_photo.png"
+                qualifiers="mdpi-v4"
                 type="drawable" />
             <file
                 name="ic_action_next_item"
@@ -8279,6 +8289,11 @@ false
                 qualifiers="mdpi-v4"
                 type="drawable" />
             <file
+                name="add_photo"
+                path="C:\Users\jeromeleow\workspace\PIC-CHE\res\drawable-xhdpi\add_photo.png"
+                qualifiers="xhdpi-v4"
+                type="drawable" />
+            <file
                 name="ic_action_next_item"
                 path="C:\Users\jeromeleow\workspace\PIC-CHE\res\drawable-xhdpi\ic_action_next_item.png"
                 qualifiers="xhdpi-v4"
@@ -8287,6 +8302,11 @@ false
                 name="ic_launcher"
                 path="C:\Users\jeromeleow\workspace\PIC-CHE\res\drawable-xhdpi\ic_launcher.png"
                 qualifiers="xhdpi-v4"
+                type="drawable" />
+            <file
+                name="add_photo"
+                path="C:\Users\jeromeleow\workspace\PIC-CHE\res\drawable-xxhdpi\add_photo.png"
+                qualifiers="xxhdpi-v4"
                 type="drawable" />
             <file
                 name="ic_action_next_item"
@@ -8299,8 +8319,23 @@ false
                 qualifiers="xxhdpi-v4"
                 type="drawable" />
             <file
+                name="add_photo"
+                path="C:\Users\jeromeleow\workspace\PIC-CHE\res\drawable-xxxhdpi\add_photo.png"
+                qualifiers="xxxhdpi-v4"
+                type="drawable" />
+            <file
+                name="ic_launcher"
+                path="C:\Users\jeromeleow\workspace\PIC-CHE\res\drawable-xxxhdpi\ic_launcher.png"
+                qualifiers="xxxhdpi-v4"
+                type="drawable" />
+            <file
                 name="activity_main"
                 path="C:\Users\jeromeleow\workspace\PIC-CHE\res\layout\activity_main.xml"
+                qualifiers=""
+                type="layout" />
+            <file
+                name="activity_new_phrase"
+                path="C:\Users\jeromeleow\workspace\PIC-CHE\res\layout\activity_new_phrase.xml"
                 qualifiers=""
                 type="layout" />
             <file
@@ -8311,6 +8346,11 @@ false
             <file
                 name="fragment_main"
                 path="C:\Users\jeromeleow\workspace\PIC-CHE\res\layout\fragment_main.xml"
+                qualifiers=""
+                type="layout" />
+            <file
+                name="fragment_new_phrase"
+                path="C:\Users\jeromeleow\workspace\PIC-CHE\res\layout\fragment_new_phrase.xml"
                 qualifiers=""
                 type="layout" />
             <file
@@ -8334,6 +8374,11 @@ false
                 qualifiers=""
                 type="menu" />
             <file
+                name="new_phrase"
+                path="C:\Users\jeromeleow\workspace\PIC-CHE\res\menu\new_phrase.xml"
+                qualifiers=""
+                type="menu" />
+            <file
                 name="phrase"
                 path="C:\Users\jeromeleow\workspace\PIC-CHE\res\menu\phrase.xml"
                 qualifiers=""
@@ -8345,14 +8390,20 @@ false
                 </dimen>
                 <dimen name="activity_vertical_margin" >16dp
                 </dimen>
+                <dimen name="list_height" >130dp
+                </dimen>
                 <dimen name="list_margin_top" >10dp
                 </dimen>
-                <dimen name="list_height" >130dp
+                <dimen name="group_roman_text_size" >16sp
+                </dimen>
+                <dimen name="header_text_size" >45sp
                 </dimen>
             </file>
             <file
                 path="C:\Users\jeromeleow\workspace\PIC-CHE\res\values\strings.xml"
                 qualifiers="" >
+                <string name="self_phrase_title" >New Phrase
+                </string>
                 <string name="action_settings" >Settings
                 </string>
 
@@ -8367,17 +8418,19 @@ false
                 </string>
                 <string name="play_all" >Play All
                 </string>
+                <string name="self_add_phrase" >Add new Phrase
+                </string>
 
                 <color name="P700" >#f57c00
                 </color>
 
-                <string name="hokkien" >Hokkien
+                <string name="hokkien" >Hokkien: 
                 </string>
 
                 <color name="P200" >#ffcc80
                 </color>
 
-                <string name="chinese" >中文
+                <string name="chinese" >中文: 
                 </string>
                 <string name="pic_desc" >Picture of the phrase
                 </string>
@@ -8393,7 +8446,7 @@ false
                 <color name="black" >#000000
                 </color>
 
-                <string name="english" >English
+                <string name="english" >English: 
                 </string>
 
                 <color name="P400" >#ffa726
@@ -8401,11 +8454,13 @@ false
 
                 <string name="app_name" >PIC-CHE
                 </string>
+                <string name="title_activity_new_phrase" >New Phrase
+                </string>
 
                 <color name="P600" >#fb8c00
                 </color>
 
-                <string name="cantonese" >Cantonese
+                <string name="cantonese" >Cantonese: 
                 </string>
                 <string name="hello_world" >Hello world!
                 </string>

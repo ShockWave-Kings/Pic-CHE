@@ -7,12 +7,14 @@
     <string name="action_refresh">Check for new phrases</string>
     <string name="pic_desc">Picture of the phrase</string>
     <string name="arrow_desc">Navigation arrow</string>
-    <string name="hokkien">Hokkien</string>
-    <string name="cantonese">Cantonese</string>
-    <string name="chinese">中文</string>
-    <string name="english">English</string>
+    <string name="hokkien">Hokkien: </string>
+    <string name="cantonese">Cantonese: </string>
+    <string name="chinese">中文: </string>
+    <string name="english">English: </string>
     <string name="play_all">Play All</string>
     <string name="title_activity_phrase">Phrase</string>
+    <string name="self_phrase_title">New Phrase</string>
+    <string name="self_add_phrase">Add new Phrase</string>
 
     <color name="P50">#fff3e0</color>
     <color name="P100">#ffe0b2</color>
@@ -23,8 +25,9 @@
     <color name="P600">#fb8c00</color>
     <color name="P700">#f57c00</color>
     <color name="P800">#ef6c00</color>
-
     <color name="white">#FFFFFF</color>
     <color name="black">#000000</color>
+
+    <string name="title_activity_new_phrase">New Phrase</string>
 
 </resources>

@@ -87,6 +87,10 @@ public class MainActivity extends ActionBarActivity {
 		if (id == R.id.action_refresh) {
 			
 		}
+        if(id == R.id.action_add_phrase) {
+            Intent intent = new Intent(getApplicationContext(), NewPhraseActivity.class);
+            startActivity(intent);
+        }
 		return super.onOptionsItemSelected(item);
 	}
 

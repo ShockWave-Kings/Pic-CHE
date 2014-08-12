@@ -23,7 +23,7 @@
         android:layout_toLeftOf="@id/groupImage"
         android:text="@string/hokkien"
         android:textColor="@color/white"
-        android:textAppearance="?android:attr/textAppearanceMedium" />
+        android:textSize="@dimen/group_roman_text_size" />
 
     <TextView
         android:id="@+id/groupCantonese"
@@ -33,7 +33,7 @@
         android:layout_below="@id/groupHokkien"
         android:text="@string/cantonese"
         android:textColor="@color/white"
-        android:textAppearance="?android:attr/textAppearanceMedium" />
+        android:textSize="@dimen/group_roman_text_size" />
 
     <TextView
         android:id="@+id/groupChinese"
@@ -53,7 +53,7 @@
         android:layout_below="@id/groupChinese"
         android:text="@string/english"
         android:textColor="@color/white"
-        android:textAppearance="?android:attr/textAppearanceMedium" />
+        android:textSize="@dimen/group_roman_text_size" />
     
 
 </RelativeLayout>

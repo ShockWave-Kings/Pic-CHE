@@ -32,6 +32,10 @@
             android:name="sg.dhs.pic_che.PhraseActivity"
             android:label="@string/title_activity_phrase" >
         </activity>
+        <activity
+            android:name="sg.dhs.pic_che.NewPhraseActivity"
+            android:label="@string/title_activity_new_phrase" >
+        </activity>
     </application>
 
 </manifest>
