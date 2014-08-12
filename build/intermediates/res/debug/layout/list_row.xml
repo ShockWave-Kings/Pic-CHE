@@ -21,7 +21,7 @@
         android:layout_alignTop="@id/listImage"
         android:layout_toRightOf="@id/listImage"
         android:text="@string/hokkien"
-        android:textAppearance="?android:attr/textAppearanceLarge" />
+        android:textAppearance="?android:attr/textAppearanceMedium" />
 
     <TextView
         android:id="@+id/cantonese"
@@ -30,7 +30,7 @@
         android:layout_alignLeft="@id/hokkien"
         android:layout_below="@id/hokkien"
         android:text="@string/cantonese"
-        android:textAppearance="?android:attr/textAppearanceLarge" />
+        android:textAppearance="?android:attr/textAppearanceMedium" />
 
     <TextView
         android:id="@+id/chinese"
@@ -48,7 +48,7 @@
         android:layout_alignLeft="@id/chinese"
         android:layout_below="@id/chinese"
         android:text="@string/english"
-        android:textAppearance="?android:attr/textAppearanceLarge" />
+        android:textAppearance="?android:attr/textAppearanceMedium" />
 
     <ImageView
         android:id="@+id/imageArrow"

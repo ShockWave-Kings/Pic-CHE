@@ -11,10 +11,11 @@ public class PhraseOpenHelper extends SQLiteOpenHelper {
 	private static final String LOGTAG = "PHRASEHELPER";
 	
 	private static final String DATABASE_NAME = "picchedatabase.db";
-	private static final int DATABASE_VERSION = 12;
+	private static final int DATABASE_VERSION = 13;
 	
 	public static final String TABLE_PHRASE = "PICCHEPHRASES";
 	public static final String TABLE_CATEGORY = "PICCHECATEGORIES";
+    public static final String TABLE_SELF = "PICCHESELF";
 	public static final String catID = "CAT_ID";
 	public static final String catHokkien = "HOK";
 	public static final String catCantonese = "CAN";
@@ -26,7 +27,12 @@ public class PhraseOpenHelper extends SQLiteOpenHelper {
 	public static final String cantonese = "CAN";
 	public static final String chinese = "CHI";
 	public static final String english = "ENG";
-	
+    public static final String selfID = "_ID";
+    public static final String selfHokkien = "HOK";
+    public static final String selfCantonese = "CAN";
+    public static final String selfChinese = "CHI";
+    public static final String selfEnglish = "ENG";
+
 	private static final String CREATE_TABLE = "CREATE TABLE "+
 												TABLE_PHRASE+" ("+
 												id+" INTEGER PRIMARY KEY AUTOINCREMENT, "+
@@ -35,6 +41,7 @@ public class PhraseOpenHelper extends SQLiteOpenHelper {
 												cantonese+" TEXT, "+
 												chinese+" TEXT, "+
 												english+" TEXT )";
+
 	private static final String CREATE_TABLE2 = "CREATE TABLE "+
 												TABLE_CATEGORY+" ("+
 												catID+" INTEGER PRIMARY KEY AUTOINCREMENT, "+
@@ -42,10 +49,19 @@ public class PhraseOpenHelper extends SQLiteOpenHelper {
 												catCantonese+" TEXT, "+
 												catChinese+" TEXT, "+
 												catEnglish+" TEXT)";
-	
+
+    private static final String CREATE_TABLE_SELF = "CREATE TABLE "+
+                                                    TABLE_SELF+" ("+
+                                                    selfID+" INTEGER PRIMARY KEY AUTOINCREMENT, "+
+                                                    selfHokkien+" TEXT, "+
+                                                    selfCantonese+" TEXT, "+
+                                                    selfChinese+" TEXT, "+
+                                                    selfEnglish+" TEXT)";
+
 	private static final String DROP_TABLE = "DROP TABLE IF EXISTS "+TABLE_PHRASE;
-	private static final String DROP_TABLE2 = "DROP TABLE IF EXISTS "+TABLE_CATEGORY;
-	
+    private static final String DROP_TABLE2 = "DROP TABLE IF EXISTS "+TABLE_CATEGORY;
+    private static final String DROP_TABLE_SELF = "DROP TABLE IF EXISTS "+TABLE_SELF;
+
 	public PhraseOpenHelper(Context c) {
 		super(c, DATABASE_NAME, null, DATABASE_VERSION);
 	}
@@ -56,6 +72,7 @@ public class PhraseOpenHelper extends SQLiteOpenHelper {
 		try {
 			db.execSQL(CREATE_TABLE2);
 			db.execSQL(CREATE_TABLE);
+            db.execSQL(CREATE_TABLE_SELF);
 		} catch (SQLException e) {
 			Log.d(LOGTAG, "SQLException OnCreate: "+e);
 		}
@@ -68,6 +85,7 @@ public class PhraseOpenHelper extends SQLiteOpenHelper {
 		try {
 			db.execSQL(DROP_TABLE);
 			db.execSQL(DROP_TABLE2);
+            db.execSQL(DROP_TABLE_SELF);
 			onCreate(db);
 		} catch (SQLException e) {
 			Log.d(LOGTAG, "SQLException OnDrop: "+e);

@@ -545,6 +545,7 @@
     <eat-comment />
 
     <dimen name="list_height">130dp</dimen>
+    <dimen name="list_margin_top">10dp</dimen>
     <!-- From: file:/C:/Users/jeromeleow/workspace/PIC-CHE/build/intermediates/exploded-aar/workspace/appcompat_v7_2/unspecified/res/values/values.xml -->
     <eat-comment />
 

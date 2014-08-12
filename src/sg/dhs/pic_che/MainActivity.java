@@ -95,13 +95,6 @@ public class MainActivity extends ActionBarActivity {
 	 */
 	public static class PlaceholderFragment extends Fragment {
 
-		List<String> P_ID = new ArrayList<>();
-		List<String> HOK = new ArrayList<>();
-		List<String> CAN = new ArrayList<>();
-		List<String> CHI = new ArrayList<>();
-		List<String> ENG = new ArrayList<>();
-		List<Phrase> PHRASES = new ArrayList<>();
-
 		PhraseDataSource datasource;
 
 		public PlaceholderFragment() {
@@ -444,6 +437,8 @@ public class MainActivity extends ActionBarActivity {
 
 			@Override
 			protected void onPostExecute(String result) {
+
+                Log.i(LOGTAG,"Downloaded JSON!");
 				
 				//Declaring JSON Array and name string and linear layout to add into activity
 				JSONArray jArray;
@@ -458,8 +453,6 @@ public class MainActivity extends ActionBarActivity {
 					int jArrayLength = jArray.length();
 					
 					int DBCount = datasource.getServerCount();
-
-					Log.d(LOGTAG,"Downloaded JSON!");
 					
 					if(DBCount>0)
 						datasource.deleteCategories();
@@ -479,8 +472,6 @@ public class MainActivity extends ActionBarActivity {
 				} catch (JSONException e) {
 					Log.e(LOGTAG, "JSONException: "+e);
 				}
-				
-				Log.d(LOGTAG, result);
 
 			}
 

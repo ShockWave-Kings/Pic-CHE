@@ -850,6 +850,7 @@ containing a value of this type.
         public static final int dialog_fixed_width_major=0x7f080015;
         public static final int dialog_fixed_width_minor=0x7f080016;
         public static final int list_height=0x7f080017;
+        public static final int list_margin_top=0x7f080018;
     }
     public static final class drawable {
         public static final int abc_ab_bottom_solid_dark_holo=0x7f020000;
