@@ -5,7 +5,9 @@
     <eat-comment />
 
     <style name="AppBaseTheme" parent="Theme.AppCompat.Light">
+
         <!-- API 11 theme customizations can go here. -->
+        <item name="android:actionBarStyle">@style/MyActionBarTheme</item>
     </style>
     <!-- From: file:/C:/Users/jeromeleow/workspace/PIC-CHE/build/intermediates/exploded-aar/workspace/appcompat_v7_2/unspecified/res/values-v11/values.xml -->
     <eat-comment />

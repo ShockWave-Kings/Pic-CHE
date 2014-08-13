@@ -3,7 +3,7 @@
     android:layout_width="fill_parent"
     android:layout_height="@dimen/list_height"
     android:padding="10dip"
-    android:background="@color/P500">
+    android:background="@drawable/custom_group">
     
     <ImageView
         android:id="@+id/groupImage"

@@ -595,15 +595,22 @@
     <eat-comment />
 
     <style name="AppBaseTheme" parent="Theme.AppCompat.Light">
+
         <!--
             Theme customizations available in newer API levels can go in
             res/values-vXX/styles.xml, while customizations related to
             backward-compatibility can go here.
         -->
+        <item name="android:actionBarStyle">@style/MyActionBarTheme</item>
+        <item name="android:popupMenuStyle">@style/MyActionBarTheme</item>
     </style>
 
     <style name="AppTheme" parent="AppBaseTheme">
         <!-- All customizations that are NOT specific to a particular API-level can go here. -->
+    </style>
+
+    <style name="MyActionBarTheme" parent="@android:style/Widget.Holo.Light.ActionBar.Solid.Inverse">
+        <item name="android:background">@color/P700</item>
     </style>
     <!-- From: file:/C:/Users/jeromeleow/workspace/PIC-CHE/build/intermediates/exploded-aar/workspace/appcompat_v7_2/unspecified/res/values/values.xml -->
     <eat-comment />

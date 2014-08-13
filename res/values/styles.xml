@@ -10,11 +10,17 @@
             res/values-vXX/styles.xml, while customizations related to
             backward-compatibility can go here.
         -->
+        <item name="android:actionBarStyle">@style/MyActionBarTheme</item>
+        <item name="android:popupMenuStyle">@style/MyActionBarTheme</item>
     </style>
 
     <!-- Application theme. -->
     <style name="AppTheme" parent="AppBaseTheme">
         <!-- All customizations that are NOT specific to a particular API-level can go here. -->
+    </style>
+
+    <style name="MyActionBarTheme" parent="@android:style/Widget.Holo.Light.ActionBar.Solid.Inverse">
+        <item name="android:background">@color/P700</item>
     </style>
 
 </resources>

@@ -8483,6 +8483,20 @@ false
             res/values-vXX/styles.xml, while customizations related to
             backward-compatibility can go here.
                     -->
+                    <item name="android:actionBarStyle">
+@style/MyActionBarTheme
+                    </item>
+                    <item name="android:popupMenuStyle">
+@style/MyActionBarTheme
+                    </item>
+                </style>
+
+                <style
+                    name="MyActionBarTheme"
+                    parent="@android:style/Widget.Holo.Light.ActionBar.Solid.Inverse" >
+                    <item name="android:background">
+@color/P700
+                    </item>
                 </style>
 
                 <style
@@ -8501,6 +8515,9 @@ false
                     parent="Theme.AppCompat.Light" >
 
                     <!-- API 11 theme customizations can go here. -->
+                    <item name="android:actionBarStyle">
+@style/MyActionBarTheme
+                    </item>
                 </style>
             </file>
             <file
@@ -8512,6 +8529,9 @@ false
                     parent="Theme.AppCompat.Light.DarkActionBar" >
 
                     <!-- API 14 theme customizations can go here. -->
+                    <item name="android:actionBarStyle">
+@style/MyActionBarTheme
+                    </item>
                 </style>
             </file>
             <file
@@ -8520,6 +8540,26 @@ false
                 <dimen name="activity_horizontal_margin" >64dp
                 </dimen>
             </file>
+            <file
+                name="custom_button"
+                path="C:\Users\jeromeleow\workspace\PIC-CHE\res\drawable\custom_button.xml"
+                qualifiers=""
+                type="drawable" />
+            <file
+                name="ic_launcher"
+                path="C:\Users\jeromeleow\workspace\PIC-CHE\res\drawable\ic_launcher.png"
+                qualifiers=""
+                type="drawable" />
+            <file
+                name="add_photo"
+                path="C:\Users\jeromeleow\workspace\PIC-CHE\res\drawable\add_photo.png"
+                qualifiers=""
+                type="drawable" />
+            <file
+                name="custom_group"
+                path="C:\Users\jeromeleow\workspace\PIC-CHE\res\drawable\custom_group.xml"
+                qualifiers=""
+                type="drawable" />
         </source>
         <source path="C:\Users\jeromeleow\workspace\PIC-CHE\build\generated\res\rs\debug" />
         <source path="C:\Users\jeromeleow\workspace\PIC-CHE\build\generated\res\generated\debug" />

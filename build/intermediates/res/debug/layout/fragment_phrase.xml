@@ -1,7 +1,8 @@
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/scrollView1"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content" >
+    android:layout_height="wrap_content"
+    android:background="@color/P50">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -15,37 +16,43 @@
             android:layout_height="wrap_content"
             android:adjustViewBounds="true"
             android:scaleType="fitCenter"
-            android:src="@drawable/ic_launcher" 
+            android:src="@drawable/ic_launcher"
             android:contentDescription="@string/pic_desc"/>
 
         <Button
             android:id="@+id/phraseHokButton"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
+            android:textColorHighlight="@color/P500"
+            android:background="@drawable/custom_button"
             android:text="@string/hokkien" />
 
         <Button
             android:id="@+id/phraseCanButton"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
+            android:background="@drawable/custom_button"
             android:text="@string/cantonese" />
 
         <Button
             android:id="@+id/phraseChiButton"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
+            android:background="@drawable/custom_button"
             android:text="@string/chinese" />
 
         <Button
             android:id="@+id/phraseEngButton"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
+            android:background="@drawable/custom_button"
             android:text="@string/english" />
 
         <Button
             android:id="@+id/phrasePlayAllButton"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
+            android:background="@drawable/custom_button"
             android:text="@string/play_all" />
         
     </LinearLayout>
