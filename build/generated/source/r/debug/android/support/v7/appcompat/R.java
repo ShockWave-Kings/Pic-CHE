@@ -159,10 +159,10 @@ public final class R {
 		public static final int abc_panel_menu_list_width = 0x7f08000e;
 		public static final int abc_search_view_preferred_width = 0x7f08000f;
 		public static final int abc_search_view_text_min_width = 0x7f080010;
-		public static final int dialog_fixed_height_major = 0x7f080013;
-		public static final int dialog_fixed_height_minor = 0x7f080014;
-		public static final int dialog_fixed_width_major = 0x7f080015;
-		public static final int dialog_fixed_width_minor = 0x7f080016;
+		public static final int dialog_fixed_height_major = 0x7f080014;
+		public static final int dialog_fixed_height_minor = 0x7f080015;
+		public static final int dialog_fixed_width_major = 0x7f080016;
+		public static final int dialog_fixed_width_minor = 0x7f080017;
 	}
 	public static final class drawable {
 		public static final int abc_ab_bottom_solid_dark_holo = 0x7f020000;

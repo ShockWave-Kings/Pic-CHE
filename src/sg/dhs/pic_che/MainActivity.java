@@ -131,7 +131,7 @@ public class MainActivity extends ActionBarActivity {
         }
 
         private void readDB(View v) {
-            String LOGTAG = "ReadDB";
+            final String LOGTAG = "ReadDB";
 
             List<Phrase> phrases = datasource.findAllPhrases();
             List<Phrase> tempPhrases;
@@ -162,6 +162,8 @@ public class MainActivity extends ActionBarActivity {
                 @Override
                 public boolean onChildClick(ExpandableListView expandableListView, View view, int groupPosition, int childPosition, long id) {
 
+                    Log.i(LOGTAG, "Child Clicked");
+
                     Intent intent = new Intent(getActivity(), PhraseActivity.class);
                     Phrase phrase;
                     phrase = picches.get(categories.get(groupPosition)).get(childPosition);
@@ -179,12 +181,6 @@ public class MainActivity extends ActionBarActivity {
 
             });
         }
-
-        /*//Checks if device is connected to the internet
-        private boolean isNetworkConnected() {
-            ConnectivityManager cm = (ConnectivityManager) getActivity().getSystemService(Context.CONNECTIVITY_SERVICE);
-			return (cm.getNetworkInfo(ConnectivityManager.TYPE_WIFI).isConnected());
-		}*/
 
         @Override
         public void onPause() {

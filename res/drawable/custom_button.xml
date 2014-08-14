@@ -8,9 +8,6 @@
                 android:startColor="@color/P400"
                 android:endColor="@color/P600"
                 android:angle="270" />
-            <stroke
-                android:width="3dp"
-                android:color="@color/P50" />
             <corners
                 android:radius="5dp" />
             <padding
@@ -27,9 +24,6 @@
                 android:endColor="@color/P300"
                 android:startColor="@color/P400"
                 android:angle="270" />
-            <stroke
-                android:width="30dp"
-                android:color="@color/P50" />
             <corners
                 android:radius="5dp" />
             <padding
@@ -46,9 +40,6 @@
                 android:startColor="@color/P400"
                 android:endColor="@color/P500"
                 android:angle="270" />
-            <stroke
-                android:width="3dp"
-                android:color="@color/P50" />
             <corners
                 android:radius="5dp" />
             <padding

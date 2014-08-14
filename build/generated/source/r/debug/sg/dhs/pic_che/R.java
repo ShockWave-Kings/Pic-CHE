@@ -846,14 +846,15 @@ containing a value of this type.
         public static final int abc_search_view_text_min_width=0x7f080010;
         public static final int activity_horizontal_margin=0x7f080011;
         public static final int activity_vertical_margin=0x7f080012;
-        public static final int dialog_fixed_height_major=0x7f080013;
-        public static final int dialog_fixed_height_minor=0x7f080014;
-        public static final int dialog_fixed_width_major=0x7f080015;
-        public static final int dialog_fixed_width_minor=0x7f080016;
-        public static final int group_roman_text_size=0x7f080017;
-        public static final int header_text_size=0x7f080018;
-        public static final int list_height=0x7f080019;
-        public static final int list_padding=0x7f08001a;
+        public static final int button_padding=0x7f080013;
+        public static final int dialog_fixed_height_major=0x7f080014;
+        public static final int dialog_fixed_height_minor=0x7f080015;
+        public static final int dialog_fixed_width_major=0x7f080016;
+        public static final int dialog_fixed_width_minor=0x7f080017;
+        public static final int group_roman_text_size=0x7f080018;
+        public static final int header_text_size=0x7f080019;
+        public static final int list_height=0x7f08001a;
+        public static final int list_padding=0x7f08001b;
     }
     public static final class drawable {
         public static final int abc_ab_bottom_solid_dark_holo=0x7f020000;

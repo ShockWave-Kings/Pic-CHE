@@ -81,7 +81,7 @@
     <color name="P200">#f69988</color>
     <color name="P300">#f36c60</color>
     <color name="P400">#e84e40</color>
-    <color name="P50">#fde0dc</color>
+    <color name="P50">#e5fde0dc</color>
     <color name="P500">#e51c23</color>
     <color name="P600">#dd191d</color>
     <color name="P700">#d01716</color>
@@ -535,6 +535,7 @@
 
     <dimen name="activity_horizontal_margin">16dp</dimen>
     <dimen name="activity_vertical_margin">16dp</dimen>
+    <dimen name="button_padding">3dp</dimen>
     <!-- From: file:/C:/Users/jeromeleow/workspace/PIC-CHE/build/intermediates/exploded-aar/workspace/appcompat_v7_2/unspecified/res/values/values.xml -->
     <eat-comment />
 

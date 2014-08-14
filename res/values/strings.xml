@@ -16,7 +16,7 @@
     <string name="self_phrase_title">New Phrase</string>
     <string name="self_add_phrase">Add new Phrase</string>
 
-    <color name="P50">#fde0dc</color>
+    <color name="P50">#e5fde0dc</color>
     <color name="P100">#f9bdbb</color>
     <color name="P200">#f69988</color>
     <color name="P300">#f36c60</color>
