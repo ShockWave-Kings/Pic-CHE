@@ -818,12 +818,13 @@ containing a value of this type.
         public static final int P600=0x7f060006;
         public static final int P700=0x7f060007;
         public static final int P800=0x7f060008;
-        public static final int abc_search_url_text_holo=0x7f06000e;
-        public static final int abc_search_url_text_normal=0x7f060009;
-        public static final int abc_search_url_text_pressed=0x7f06000a;
-        public static final int abc_search_url_text_selected=0x7f06000b;
-        public static final int black=0x7f06000c;
-        public static final int white=0x7f06000d;
+        public static final int P900=0x7f060009;
+        public static final int abc_search_url_text_holo=0x7f06000f;
+        public static final int abc_search_url_text_normal=0x7f06000a;
+        public static final int abc_search_url_text_pressed=0x7f06000b;
+        public static final int abc_search_url_text_selected=0x7f06000c;
+        public static final int black=0x7f06000d;
+        public static final int white=0x7f06000e;
     }
     public static final class dimen {
         public static final int abc_action_bar_default_height=0x7f080000;
@@ -852,7 +853,7 @@ containing a value of this type.
         public static final int group_roman_text_size=0x7f080017;
         public static final int header_text_size=0x7f080018;
         public static final int list_height=0x7f080019;
-        public static final int list_margin_top=0x7f08001a;
+        public static final int list_padding=0x7f08001a;
     }
     public static final class drawable {
         public static final int abc_ab_bottom_solid_dark_holo=0x7f020000;

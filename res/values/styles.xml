@@ -20,7 +20,7 @@
     </style>
 
     <style name="MyActionBarTheme" parent="@android:style/Widget.Holo.Light.ActionBar.Solid.Inverse">
-        <item name="android:background">@color/P700</item>
+        <item name="android:background">@color/P800</item>
     </style>
 
 </resources>

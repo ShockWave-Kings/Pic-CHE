@@ -77,15 +77,16 @@
     <!-- From: file:/C:/Users/jeromeleow/workspace/PIC-CHE/res/values/strings.xml -->
     <eat-comment />
 
-    <color name="P100">#ffe0b2</color>
-    <color name="P200">#ffcc80</color>
-    <color name="P300">#ffb74d</color>
-    <color name="P400">#ffa726</color>
-    <color name="P50">#fff3e0</color>
-    <color name="P500">#ff9800</color>
-    <color name="P600">#fb8c00</color>
-    <color name="P700">#f57c00</color>
-    <color name="P800">#ef6c00</color>
+    <color name="P100">#f9bdbb</color>
+    <color name="P200">#f69988</color>
+    <color name="P300">#f36c60</color>
+    <color name="P400">#e84e40</color>
+    <color name="P50">#fde0dc</color>
+    <color name="P500">#e51c23</color>
+    <color name="P600">#dd191d</color>
+    <color name="P700">#d01716</color>
+    <color name="P800">#c41411</color>
+    <color name="P900">#b0120a</color>
     <!-- From: file:/C:/Users/jeromeleow/workspace/PIC-CHE/build/intermediates/exploded-aar/workspace/appcompat_v7_2/unspecified/res/values/values.xml -->
     <eat-comment />
 
@@ -547,7 +548,7 @@
     <dimen name="group_roman_text_size">16sp</dimen>
     <dimen name="header_text_size">45sp</dimen>
     <dimen name="list_height">130dp</dimen>
-    <dimen name="list_margin_top">10dp</dimen>
+    <dimen name="list_padding">5dp</dimen>
     <!-- From: file:/C:/Users/jeromeleow/workspace/PIC-CHE/build/intermediates/exploded-aar/workspace/appcompat_v7_2/unspecified/res/values/values.xml -->
     <eat-comment />
 
@@ -610,7 +611,7 @@
     </style>
 
     <style name="MyActionBarTheme" parent="@android:style/Widget.Holo.Light.ActionBar.Solid.Inverse">
-        <item name="android:background">@color/P700</item>
+        <item name="android:background">@color/P800</item>
     </style>
     <!-- From: file:/C:/Users/jeromeleow/workspace/PIC-CHE/build/intermediates/exploded-aar/workspace/appcompat_v7_2/unspecified/res/values/values.xml -->
     <eat-comment />

@@ -16,15 +16,17 @@
     <string name="self_phrase_title">New Phrase</string>
     <string name="self_add_phrase">Add new Phrase</string>
 
-    <color name="P50">#fff3e0</color>
-    <color name="P100">#ffe0b2</color>
-    <color name="P200">#ffcc80</color>
-    <color name="P300">#ffb74d</color>
-    <color name="P400">#ffa726</color>
-    <color name="P500">#ff9800</color>
-    <color name="P600">#fb8c00</color>
-    <color name="P700">#f57c00</color>
-    <color name="P800">#ef6c00</color>
+    <color name="P50">#fde0dc</color>
+    <color name="P100">#f9bdbb</color>
+    <color name="P200">#f69988</color>
+    <color name="P300">#f36c60</color>
+    <color name="P400">#e84e40</color>
+    <color name="P500">#e51c23</color>
+    <color name="P600">#dd191d</color>
+    <color name="P700">#d01716</color>
+    <color name="P800">#c41411</color>
+    <color name="P900">#b0120a</color>
+
     <color name="white">#FFFFFF</color>
     <color name="black">#000000</color>
 
