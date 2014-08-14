@@ -17,18 +17,25 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.os.Build;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
 
 import java.io.File;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.net.URI;
 
 import sg.dhs.pic_che.R;
+import sg.dhs.pic_che.db.PhraseDataSource;
+import sg.dhs.pic_che.model.Phrase;
+import sg.dhs.pic_che.technology.ImageLoader;
 
 public class NewPhraseActivity extends Activity {
 
     private String LOGTAG = "NewPhraseActivity";
+
+    PhraseDataSource datasource;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -152,6 +159,67 @@ public class NewPhraseActivity extends Activity {
                     Toast.makeText(this, "Error", Toast.LENGTH_LONG).show();
                     break;
             }
+        }
+    }
+
+    public void selfAdd(View v){
+
+        Log.i(LOGTAG, "Add Phrase clicked!");
+
+        File ImageDirectory = new File(Environment.getExternalStorageDirectory().getAbsolutePath()+"/PICCHE/PIC-CHE_Images");
+        if(!ImageDirectory.exists()){
+            ImageDirectory.mkdirs();
+        }
+
+        File selfTemp = new File(ImageDirectory, "tempSelf.png");
+
+        if(selfTemp.exists()){
+
+            datasource = new PhraseDataSource(getBaseContext());
+            datasource.open();
+
+            EditText hokkienText = (EditText) findViewById(R.id.selfHokkien);
+            String hokkien = hokkienText.getText().toString();
+
+            EditText cantoneseText = (EditText) findViewById(R.id.selfCantonese);
+            String cantonese = cantoneseText.getText().toString();
+
+            EditText chineseText = (EditText) findViewById(R.id.selfChinese);
+            String chinese = chineseText.getText().toString();
+
+            EditText englishText = (EditText) findViewById(R.id.selfEnglish);
+            String english = englishText.getText().toString();
+
+            Phrase phrase = new Phrase();
+            phrase.setCatId(256);
+            phrase.setHokkien(hokkien);
+            phrase.setCantonese(cantonese);
+            phrase.setChinese(chinese);
+            phrase.setEnglish(english);
+
+            phrase = datasource.createSelfPhrase(phrase);
+
+            String id = Long.toString(phrase.getId());
+
+            Bitmap decoded = ImageLoader.decodeFile(selfTemp);
+            FileOutputStream outputStream = null;
+
+            File selfImg = new File(ImageDirectory, "self_"+id+".png");
+
+            try{
+                outputStream = new FileOutputStream(selfImg);
+                decoded.compress(Bitmap.CompressFormat.PNG, 8, outputStream);
+                outputStream.flush();
+                outputStream.close();
+            } catch (Exception e){
+                Log.e(LOGTAG, "Compression Error: "+e.toString());
+            }
+
+            selfTemp.delete();
+            finish();
+        }
+        else{
+            Toast.makeText(getBaseContext(), "No Image Taken!", Toast.LENGTH_SHORT).show();
         }
     }
 }

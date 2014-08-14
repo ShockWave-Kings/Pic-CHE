@@ -11,7 +11,7 @@ public class PhraseOpenHelper extends SQLiteOpenHelper {
 	private static final String LOGTAG = "PHRASEHELPER";
 	
 	private static final String DATABASE_NAME = "picchedatabase.db";
-	private static final int DATABASE_VERSION = 13;
+	private static final int DATABASE_VERSION = 15;
 	
 	public static final String TABLE_PHRASE = "PICCHEPHRASES";
 	public static final String TABLE_CATEGORY = "PICCHECATEGORIES";
@@ -28,6 +28,7 @@ public class PhraseOpenHelper extends SQLiteOpenHelper {
 	public static final String chinese = "CHI";
 	public static final String english = "ENG";
     public static final String selfID = "_ID";
+    public static final String selfCatID = "CAT_ID";
     public static final String selfHokkien = "HOK";
     public static final String selfCantonese = "CAN";
     public static final String selfChinese = "CHI";
@@ -35,7 +36,7 @@ public class PhraseOpenHelper extends SQLiteOpenHelper {
 
 	private static final String CREATE_TABLE = "CREATE TABLE "+
 												TABLE_PHRASE+" ("+
-												id+" INTEGER PRIMARY KEY AUTOINCREMENT, "+
+												id+" INTEGER, "+
 												category+" INTEGER, "+
 												hokkien+" TEXT, "+
 												cantonese+" TEXT, "+
@@ -44,7 +45,7 @@ public class PhraseOpenHelper extends SQLiteOpenHelper {
 
 	private static final String CREATE_TABLE2 = "CREATE TABLE "+
 												TABLE_CATEGORY+" ("+
-												catID+" INTEGER PRIMARY KEY AUTOINCREMENT, "+
+												catID+" INTEGER, "+
 												catHokkien+" TEXT, "+
 												catCantonese+" TEXT, "+
 												catChinese+" TEXT, "+
@@ -53,6 +54,7 @@ public class PhraseOpenHelper extends SQLiteOpenHelper {
     private static final String CREATE_TABLE_SELF = "CREATE TABLE "+
                                                     TABLE_SELF+" ("+
                                                     selfID+" INTEGER PRIMARY KEY AUTOINCREMENT, "+
+                                                    selfCatID+" INTEGER, "+
                                                     selfHokkien+" TEXT, "+
                                                     selfCantonese+" TEXT, "+
                                                     selfChinese+" TEXT, "+

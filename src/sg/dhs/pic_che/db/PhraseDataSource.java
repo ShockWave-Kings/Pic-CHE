@@ -56,6 +56,7 @@ public class PhraseDataSource {
 	
 	public Phrase createPhrase(Phrase phrase){
 		ContentValues values = new ContentValues();
+        values.put(PhraseOpenHelper.id, phrase.getId());
         values.put(PhraseOpenHelper.catID, phrase.getCatId());
 		values.put(PhraseOpenHelper.hokkien, phrase.getHokkien());
 		values.put(PhraseOpenHelper.cantonese, phrase.getCantonese());
@@ -116,6 +117,7 @@ public class PhraseDataSource {
 	
 	public Category createCategory(Category category) {
 		ContentValues values = new ContentValues();
+        values.put(PhraseOpenHelper.catID, category.getId());
 		values.put(PhraseOpenHelper.catHokkien, category.getHokkien());
 		values.put(PhraseOpenHelper.catCantonese, category.getCantonese());
 		values.put(PhraseOpenHelper.catChinese, category.getChinese());
@@ -158,5 +160,53 @@ public class PhraseDataSource {
 		database.execSQL(delete);
 		database.delete(PhraseOpenHelper.TABLE_CATEGORY, null, null);
 	}
+
+    /**
+     * Self Created Phrases
+     */
+    public static final String[] allColumnsSelf = {
+            PhraseOpenHelper.selfID,
+            PhraseOpenHelper.selfCatID,
+            PhraseOpenHelper.selfHokkien,
+            PhraseOpenHelper.selfCantonese,
+            PhraseOpenHelper.selfChinese,
+            PhraseOpenHelper.selfEnglish
+    };
+
+    public Phrase createSelfPhrase(Phrase phrase){
+        ContentValues values = new ContentValues();
+        values.put(PhraseOpenHelper.selfCatID, phrase.getCatId());
+        values.put(PhraseOpenHelper.selfHokkien, phrase.getHokkien());
+        values.put(PhraseOpenHelper.selfCantonese, phrase.getCantonese());
+        values.put(PhraseOpenHelper.selfChinese, phrase.getChinese());
+        values.put(PhraseOpenHelper.selfEnglish, phrase.getEnglish());
+        long insertid = database.insert(PhraseOpenHelper.TABLE_SELF, null, values);
+        phrase.setId(insertid);
+        Log.i(LOGTAG, "Phrase inserted into DB with ID: "+insertid);
+
+        return phrase;
+    }
+
+    public List<Phrase> findAllSelfPhrases() {
+        List<Phrase> phrases = new ArrayList<>();
+        Cursor cursor = database.query(PhraseOpenHelper.TABLE_SELF, allColumnsSelf,
+                null, null, null, null, null);
+        Log.i(LOGTAG, "Returned "+cursor.getCount()+" rows");
+
+        if(cursor.getCount()>0){
+            while(cursor.moveToNext()){
+                Phrase phrase = new Phrase();
+                phrase.setId(cursor.getLong(cursor.getColumnIndex(PhraseOpenHelper.selfID)));
+                phrase.setCatId(cursor.getInt(cursor.getColumnIndex(PhraseOpenHelper.selfCatID)));
+                phrase.setHokkien(cursor.getString(cursor.getColumnIndex(PhraseOpenHelper.selfHokkien)));
+                phrase.setCantonese(cursor.getString(cursor.getColumnIndex(PhraseOpenHelper.selfCantonese)));
+                phrase.setChinese(cursor.getString(cursor.getColumnIndex(PhraseOpenHelper.selfChinese)));
+                phrase.setEnglish(cursor.getString(cursor.getColumnIndex(PhraseOpenHelper.selfEnglish)));
+                phrases.add(phrase);
+            }
+        }
+
+        return phrases;
+    }
 	
 }

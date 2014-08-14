@@ -123,7 +123,8 @@
             android:id="@+id/button"
             android:textColor="@color/white"
             android:background="@drawable/custom_button"
-            android:layout_gravity="center_horizontal" />
+            android:layout_gravity="center_horizontal"
+            android:onClick="selfAdd"/>
 
     </LinearLayout>
 </ScrollView>

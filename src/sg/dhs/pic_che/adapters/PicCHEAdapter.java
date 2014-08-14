@@ -95,7 +95,14 @@ public class PicCHEAdapter extends BaseExpandableListAdapter{
         }
         ImageView imgView = (ImageView) convertView.findViewById(R.id.listImage);
 
-        String fileName = picche.getId()+".png";
+        String fileName;
+
+        if(picche.getCatId()==256) {
+            fileName = "self_" + picche.getId() + ".png";
+        }
+        else {
+            fileName = picche.getId() + ".png";
+        }
         File file = new File(Environment.getExternalStorageDirectory().getAbsolutePath()+"/PICCHE/PIC-CHE_Images/"+fileName);
         Bitmap bm = BitmapFactory.decodeFile(file.getAbsolutePath());
 

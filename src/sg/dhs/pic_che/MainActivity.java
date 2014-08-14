@@ -63,6 +63,10 @@ public class MainActivity extends ActionBarActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        datasource = new PhraseDataSource(getBaseContext());
+
+        datasource.open();
+
         if (savedInstanceState == null)
         {
             getSupportFragmentManager().beginTransaction().add (R.id.container,new PlaceholderFragment()).commit();
@@ -134,6 +138,7 @@ public class MainActivity extends ActionBarActivity {
             final String LOGTAG = "ReadDB";
 
             List<Phrase> phrases = datasource.findAllPhrases();
+            List<Phrase> selfPhrases = datasource.findAllSelfPhrases();
             List<Phrase> tempPhrases;
             final List<Category> categories = datasource.findAllCategories();
             final Map<Category, List<Phrase>> picches;
@@ -146,6 +151,11 @@ public class MainActivity extends ActionBarActivity {
                     //If category of phrase matches current category, add phrase to temporary
                     if (category.getId() == phrase.getCatId()) {
                         tempPhrases.add(phrase);
+                    }
+                }
+                if(category.getId() == 256){
+                    for(Phrase selfPhrase : selfPhrases){
+                        tempPhrases.add(selfPhrase);
                     }
                 }
                 picches.put(category, tempPhrases);
@@ -171,7 +181,12 @@ public class MainActivity extends ActionBarActivity {
                     intent.putExtra(EXTRA_CANTONESE, phrase.getCantonese());
                     intent.putExtra(EXTRA_CHINESE, phrase.getChinese());
                     intent.putExtra(EXTRA_ENGLISH, phrase.getEnglish());
-                    intent.putExtra(EXTRA_ID, Long.toString(phrase.getId()));
+                    Category category;
+                    category = categories.get(groupPosition);
+                    if(category.getId() == 256)
+                        intent.putExtra(EXTRA_ID, "self_" + Long.toString(phrase.getId()));
+                    else
+                        intent.putExtra(EXTRA_ID, Long.toString(phrase.getId()));
 
                     getActivity().startActivity(intent);
 
@@ -437,6 +452,7 @@ public class MainActivity extends ActionBarActivity {
                 for(int i=0;i<jArrayLength;i++){
                     json_data = jArray.getJSONObject(i);
                     Phrase phrase = new Phrase();
+                    phrase.setId(Long.parseLong(json_data.getString("_ID")));
                     phrase.setHokkien(json_data.getString("HOK"));
                     phrase.setCantonese(json_data.getString("CAN"));
                     phrase.setChinese(json_data.getString("CHI"));
@@ -536,6 +552,7 @@ public class MainActivity extends ActionBarActivity {
                 for(int i=0;i<jArrayLength;i++){
                     json_data = jArray.getJSONObject(i);
                     Category category = new Category();
+                    category.setId(Long.parseLong(json_data.getString("CAT_ID")));
                     category.setHokkien(json_data.getString("HOK"));
                     category.setCantonese(json_data.getString("CAN"));
                     category.setChinese(json_data.getString("CHI"));
@@ -554,4 +571,9 @@ public class MainActivity extends ActionBarActivity {
 
     }
 
+    @Override
+    public void onPause() {
+        super.onPause();
+        datasource.close();
+    }
 }
