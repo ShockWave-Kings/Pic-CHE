@@ -366,6 +366,29 @@ public class MainActivity extends ActionBarActivity {
                         fileOutput.close();
                     }
 
+                    File canAudio = new File(AudioDirectory, i+"_can.mp3");
+                    if(!canAudio.exists()){//audio file doesn't exist and must be downloaded
+                        canAudio.createNewFile();
+                        URL url = new URL(urls[0]+"audio/"+i+"_can.mp3");
+                        HttpURLConnection urlConnection = (HttpURLConnection) url.openConnection();
+                        urlConnection.setRequestMethod("GET");
+                        urlConnection.setDoOutput(true);
+                        urlConnection.connect();
+                        FileOutputStream fileOutput = new FileOutputStream(canAudio);
+                        InputStream inputStream = urlConnection.getInputStream();
+                        int totalSize = urlConnection.getContentLength();
+                        int downloadedSize = 0;
+                        byte[] buffer = new byte[1024];
+                        int bufferLength;
+                        while ( (bufferLength = inputStream.read(buffer)) > 0 )
+                        {
+                            fileOutput.write(buffer, 0, bufferLength);
+                            downloadedSize += bufferLength;
+                            Log.i("Progress:","downloadedSize:"+downloadedSize+"totalSize:"+ totalSize) ;
+                        }
+                        fileOutput.close();
+                    }
+
                     File chiAudio = new File(AudioDirectory, i+"_chi.mp3");
                     if(!chiAudio.exists()){//image file doesn't exist and must be downloaded
                         chiAudio.createNewFile();

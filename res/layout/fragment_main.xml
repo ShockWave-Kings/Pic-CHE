@@ -8,8 +8,7 @@
         android:id="@+id/expListView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="@dimen/list_padding"
-        android:animateLayoutChanges="true">
+        android:layout_margin="@dimen/list_padding">
     </ExpandableListView>
 
 </LinearLayout>

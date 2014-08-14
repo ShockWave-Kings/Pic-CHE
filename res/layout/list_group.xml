@@ -19,31 +19,34 @@
         android:id="@+id/groupHokkien"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignTop="@id/groupImage"
-        android:layout_toLeftOf="@id/groupImage"
         android:text="@string/hokkien"
         android:textColor="@color/white"
-        android:textSize="@dimen/group_roman_text_size" />
+        android:textSize="@dimen/group_roman_text_size"
+        android:layout_above="@+id/groupCantonese"
+        android:layout_toLeftOf="@+id/groupImage"
+        android:layout_toStartOf="@+id/groupImage" />
 
     <TextView
         android:id="@+id/groupCantonese"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignRight="@id/groupHokkien"
-        android:layout_below="@id/groupHokkien"
         android:text="@string/cantonese"
         android:textColor="@color/white"
-        android:textSize="@dimen/group_roman_text_size" />
+        android:textSize="@dimen/group_roman_text_size"
+        android:layout_above="@+id/groupChinese"
+        android:layout_toLeftOf="@+id/groupImage"
+        android:layout_toStartOf="@+id/groupImage" />
 
     <TextView
         android:id="@+id/groupChinese"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignRight="@id/groupCantonese"
-        android:layout_below="@id/groupCantonese"
         android:text="@string/chinese"
         android:textColor="@color/white"
-        android:textAppearance="?android:attr/textAppearanceLarge" />
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:layout_centerVertical="true"
+        android:layout_toLeftOf="@+id/groupImage"
+        android:layout_toStartOf="@+id/groupImage" />
 
     <TextView
         android:id="@+id/groupEnglish"
