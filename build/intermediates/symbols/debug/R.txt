@@ -255,8 +255,10 @@ int drawable add_photo 0x7f020057
 int drawable background 0x7f020058
 int drawable custom_button 0x7f020059
 int drawable custom_group 0x7f02005a
-int drawable ic_action_next_item 0x7f02005b
-int drawable ic_launcher 0x7f02005c
+int drawable ic_action_collapse 0x7f02005b
+int drawable ic_action_expand 0x7f02005c
+int drawable ic_action_next_item 0x7f02005d
+int drawable ic_launcher 0x7f02005e
 int id action_add_phrase 0x7f07005d
 int id action_bar 0x7f07001c
 int id action_bar_activity_content 0x7f070014

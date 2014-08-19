@@ -298,160 +298,7 @@ public class MainActivity extends ActionBarActivity {
 
             int phraseNum = 0;
 
-            try {
-                JSONArray jArr = new JSONArray(result);
-                phraseNum = jArr.length(); //No. of phrases
 
-            } catch (JSONException e) {
-                Log.e(LOGTAG, "JSONException in Background Thread:"+e);
-            }
-
-            try {
-                //Making directories to store audio and images
-                File ImageDirectory = new File(Environment.getExternalStorageDirectory().getAbsolutePath()+"/PICCHE/PIC-CHE_Images");
-                if(!ImageDirectory.exists()){
-                    ImageDirectory.mkdirs();
-                }
-
-                File AudioDirectory = new File(Environment.getExternalStorageDirectory().getAbsolutePath()+"/PICCHE/PIC-CHE_Audio");
-                if(!AudioDirectory.exists()){
-                    AudioDirectory.mkdirs();
-                }
-
-                for(int i=1; i<=phraseNum; i++){
-                    File img = new File(ImageDirectory, i+".png");
-                    if(!img.exists()){//image file doesn't exist and must be downloaded
-
-                        img.createNewFile();
-                        URL url = new URL(urls[0]+"img/"+i+".png");
-                        HttpURLConnection urlConnection = (HttpURLConnection) url.openConnection();
-                        urlConnection.setRequestMethod("GET");
-                        urlConnection.setDoOutput(true);
-                        urlConnection.connect();
-                        FileOutputStream fileOutput = new FileOutputStream(img);
-                        InputStream inputStream = urlConnection.getInputStream();
-                        int totalSize = urlConnection.getContentLength();
-                        int downloadedSize = 0;
-                        byte[] buffer = new byte[1024];
-                        int bufferLength;
-                        while ( (bufferLength = inputStream.read(buffer)) > 0 )
-                        {
-                            fileOutput.write(buffer, 0, bufferLength);
-                            downloadedSize += bufferLength;
-                            Log.i("Progress:","downloadedSize:"+downloadedSize+"totalSize:"+ totalSize) ;
-                        }
-                        fileOutput.close();
-                    }
-
-                    File hokAudio = new File(AudioDirectory, i+"_hok.mp3");
-                    if(!hokAudio.exists()){//image file doesn't exist and must be downloaded
-                        hokAudio.createNewFile();
-                        URL url = new URL(urls[0]+"audio/"+i+"_hok.mp3");
-                        HttpURLConnection urlConnection = (HttpURLConnection) url.openConnection();
-                        urlConnection.setRequestMethod("GET");
-                        urlConnection.setDoOutput(true);
-                        urlConnection.connect();
-                        FileOutputStream fileOutput = new FileOutputStream(hokAudio);
-                        InputStream inputStream = urlConnection.getInputStream();
-                        int totalSize = urlConnection.getContentLength();
-                        int downloadedSize = 0;
-                        byte[] buffer = new byte[1024];
-                        int bufferLength;
-                        while ( (bufferLength = inputStream.read(buffer)) > 0 )
-                        {
-                            fileOutput.write(buffer, 0, bufferLength);
-                            downloadedSize += bufferLength;
-                            Log.i("Progress:","downloadedSize:"+downloadedSize+"totalSize:"+ totalSize) ;
-                        }
-                        fileOutput.close();
-                    }
-
-                    File canAudio = new File(AudioDirectory, i+"_can.mp3");
-                    if(!canAudio.exists()){//audio file doesn't exist and must be downloaded
-                        canAudio.createNewFile();
-                        URL url = new URL(urls[0]+"audio/"+i+"_can.mp3");
-                        HttpURLConnection urlConnection = (HttpURLConnection) url.openConnection();
-                        urlConnection.setRequestMethod("GET");
-                        urlConnection.setDoOutput(true);
-                        urlConnection.connect();
-                        FileOutputStream fileOutput = new FileOutputStream(canAudio);
-                        InputStream inputStream = urlConnection.getInputStream();
-                        int totalSize = urlConnection.getContentLength();
-                        int downloadedSize = 0;
-                        byte[] buffer = new byte[1024];
-                        int bufferLength;
-                        while ( (bufferLength = inputStream.read(buffer)) > 0 )
-                        {
-                            fileOutput.write(buffer, 0, bufferLength);
-                            downloadedSize += bufferLength;
-                            Log.i("Progress:","downloadedSize:"+downloadedSize+"totalSize:"+ totalSize) ;
-                        }
-                        fileOutput.close();
-                    }
-
-                    File chiAudio = new File(AudioDirectory, i+"_chi.mp3");
-                    if(!chiAudio.exists()){//image file doesn't exist and must be downloaded
-                        chiAudio.createNewFile();
-                        URL url = new URL(urls[0]+"audio/"+i+"_chi.mp3");
-                        HttpURLConnection urlConnection = (HttpURLConnection) url.openConnection();
-                        urlConnection.setRequestMethod("GET");
-                        urlConnection.setDoOutput(true);
-                        urlConnection.connect();
-                        FileOutputStream fileOutput = new FileOutputStream(chiAudio);
-                        InputStream inputStream = urlConnection.getInputStream();
-                        int totalSize = urlConnection.getContentLength();
-                        int downloadedSize = 0;
-                        byte[] buffer = new byte[1024];
-                        int bufferLength;
-                        while ( (bufferLength = inputStream.read(buffer)) > 0 )
-                        {
-                            fileOutput.write(buffer, 0, bufferLength);
-                            downloadedSize += bufferLength;
-                            Log.i("Progress:","downloadedSize:"+downloadedSize+"totalSize:"+ totalSize) ;
-                        }
-                        fileOutput.close();
-                    }
-
-                    File engAudio = new File(AudioDirectory, i+"_eng.mp3");
-                    if(!engAudio.exists()){//image file doesn't exist and must be downloaded
-                        engAudio.createNewFile();
-                        URL url = new URL(urls[0]+"audio/"+i+"_eng.mp3");
-                        HttpURLConnection urlConnection = (HttpURLConnection) url.openConnection();
-                        urlConnection.setRequestMethod("GET");
-                        urlConnection.setDoOutput(true);
-                        urlConnection.connect();
-                        FileOutputStream fileOutput = new FileOutputStream(engAudio);
-                        InputStream inputStream = urlConnection.getInputStream();
-                        int totalSize = urlConnection.getContentLength();
-                        int downloadedSize = 0;
-                        byte[] buffer = new byte[1024];
-                        int bufferLength;
-                        while ( (bufferLength = inputStream.read(buffer)) > 0 )
-                        {
-                            fileOutput.write(buffer, 0, bufferLength);
-                            downloadedSize += bufferLength;
-                            Log.i("Progress:","downloadedSize:"+downloadedSize+"totalSize:"+ totalSize) ;
-                        }
-                        fileOutput.close();
-                    }
-
-
-
-                }
-
-            } catch (MalformedURLException e) {
-                Log.e(LOGTAG, "MalformedURLException: "+e);
-            } catch (ProtocolException e) {
-                Log.e(LOGTAG, "ProtocolException: "+e);
-            } catch (IOException e) {
-                Log.e(LOGTAG, "IOException: "+e);
-            }
-
-            return result;
-        }
-
-        @Override
-        protected void onPostExecute(String result) {
             /**
              * If there is something
              * 	Replace Table Data w/ new data
@@ -467,6 +314,7 @@ public class MainActivity extends ActionBarActivity {
                 JSONObject json_data;
 
                 int jArrayLength = jArray.length();
+                phraseNum = jArrayLength;
 
                 Log.d(LOGTAG,"Downloaded JSON!");
                 datasource.deletePhrases();
@@ -490,6 +338,162 @@ public class MainActivity extends ActionBarActivity {
             }
 
 
+            //Making directories to store audio and images
+            File ImageDirectory = new File(Environment.getExternalStorageDirectory().getAbsolutePath()+"/PICCHE/PIC-CHE_Images");
+            if(!ImageDirectory.exists()){
+                ImageDirectory.mkdirs();
+            }
+
+            File AudioDirectory = new File(Environment.getExternalStorageDirectory().getAbsolutePath()+"/PICCHE/PIC-CHE_Audio");
+            if(!AudioDirectory.exists()){
+                AudioDirectory.mkdirs();
+            }
+
+            for(int i=1; i<=phraseNum; i++){
+                try {
+                    File img = new File(ImageDirectory, i + ".png");
+                    if (!img.exists()) {//image file doesn't exist and must be downloaded
+
+                        img.createNewFile();
+                        URL url = new URL(urls[0] + "img/" + i + ".png");
+                        HttpURLConnection urlConnection = (HttpURLConnection) url.openConnection();
+                        urlConnection.setRequestMethod("GET");
+                        urlConnection.setDoOutput(true);
+                        urlConnection.connect();
+                        FileOutputStream fileOutput = new FileOutputStream(img);
+                        InputStream inputStream = urlConnection.getInputStream();
+                        int totalSize = urlConnection.getContentLength();
+                        int downloadedSize = 0;
+                        byte[] buffer = new byte[1024];
+                        int bufferLength;
+                        while ((bufferLength = inputStream.read(buffer)) > 0) {
+                            fileOutput.write(buffer, 0, bufferLength);
+                            downloadedSize += bufferLength;
+                            Log.i("Progress:", "downloadedSize:" + downloadedSize + "totalSize:" + totalSize);
+                        }
+                        fileOutput.close();
+                    }
+                } catch (IOException e) {
+                    Log.e(LOGTAG, "IOException: "+e);
+                }
+
+                try {
+                    File hokAudio = new File(AudioDirectory, i + "_hok.mp3");
+                    if (!hokAudio.exists()) {//hokkien audio file doesn't exist and must be downloaded
+                        hokAudio.createNewFile();
+                        URL url = new URL(urls[0] + "audio/" + i + "_hok.mp3");
+                        HttpURLConnection urlConnection = (HttpURLConnection) url.openConnection();
+                        urlConnection.setRequestMethod("GET");
+                        urlConnection.setDoOutput(true);
+                        urlConnection.connect();
+                        FileOutputStream fileOutput = new FileOutputStream(hokAudio);
+                        InputStream inputStream = urlConnection.getInputStream();
+                        int totalSize = urlConnection.getContentLength();
+                        int downloadedSize = 0;
+                        byte[] buffer = new byte[1024];
+                        int bufferLength;
+                        while ((bufferLength = inputStream.read(buffer)) > 0) {
+                            fileOutput.write(buffer, 0, bufferLength);
+                            downloadedSize += bufferLength;
+                            Log.i("Progress:", "downloadedSize:" + downloadedSize + "totalSize:" + totalSize);
+                        }
+                        fileOutput.close();
+                        Log.i(LOGTAG, "Downloaded Hokkien: " + i);
+                    }
+                } catch (IOException e) {
+                    Log.e(LOGTAG, "IOException: "+e);
+                }
+
+                try {
+                    File canAudio = new File(AudioDirectory, i + "_can.mp3");
+                    if (!canAudio.exists()) {//cantonese audio file doesn't exist and must be downloaded
+                        canAudio.createNewFile();
+                        URL url = new URL(urls[0] + "audio/" + i + "_can.mp3");
+                        HttpURLConnection urlConnection = (HttpURLConnection) url.openConnection();
+                        urlConnection.setRequestMethod("GET");
+                        urlConnection.setDoOutput(true);
+                        urlConnection.connect();
+                        FileOutputStream fileOutput = new FileOutputStream(canAudio);
+                        InputStream inputStream = urlConnection.getInputStream();
+                        int totalSize = urlConnection.getContentLength();
+                        int downloadedSize = 0;
+                        byte[] buffer = new byte[1024];
+                        int bufferLength;
+                        while ((bufferLength = inputStream.read(buffer)) > 0) {
+                            fileOutput.write(buffer, 0, bufferLength);
+                            downloadedSize += bufferLength;
+                            Log.i("Progress:", "downloadedSize:" + downloadedSize + "totalSize:" + totalSize);
+                        }
+                        fileOutput.close();
+                        Log.i(LOGTAG, "Downloaded Cantonese: " + i);
+                    }
+                } catch (IOException e) {
+                    Log.e(LOGTAG, "IOException: "+e);
+                }
+
+                try {
+                    File chiAudio = new File(AudioDirectory, i + "_chi.mp3");
+                    if (!chiAudio.exists()) {//chinese audio file doesn't exist and must be downloaded
+                        chiAudio.createNewFile();
+                        URL url = new URL(urls[0] + "audio/" + i + "_chi.mp3");
+                        HttpURLConnection urlConnection = (HttpURLConnection) url.openConnection();
+                        urlConnection.setRequestMethod("GET");
+                        urlConnection.setDoOutput(true);
+                        urlConnection.connect();
+                        FileOutputStream fileOutput = new FileOutputStream(chiAudio);
+                        InputStream inputStream = urlConnection.getInputStream();
+                        int totalSize = urlConnection.getContentLength();
+                        int downloadedSize = 0;
+                        byte[] buffer = new byte[1024];
+                        int bufferLength;
+                        while ((bufferLength = inputStream.read(buffer)) > 0) {
+                            fileOutput.write(buffer, 0, bufferLength);
+                            downloadedSize += bufferLength;
+                            Log.i("Progress:", "downloadedSize:" + downloadedSize + "totalSize:" + totalSize);
+                        }
+                        fileOutput.close();
+                        Log.i(LOGTAG, "Downloaded Chinese: " + i);
+                    }
+                } catch (IOException e) {
+                    Log.e(LOGTAG, "IOException: "+e);
+                }
+
+                try {
+                    File engAudio = new File(AudioDirectory, i + "_eng.mp3");
+                    if (!engAudio.exists()) {//English audio file doesn't exist and must be downloaded
+                        engAudio.createNewFile();
+                        URL url = new URL(urls[0] + "audio/" + i + "_eng.mp3");
+                        HttpURLConnection urlConnection = (HttpURLConnection) url.openConnection();
+                        urlConnection.setRequestMethod("GET");
+                        urlConnection.setDoOutput(true);
+                        urlConnection.connect();
+                        FileOutputStream fileOutput = new FileOutputStream(engAudio);
+                        InputStream inputStream = urlConnection.getInputStream();
+                        int totalSize = urlConnection.getContentLength();
+                        int downloadedSize = 0;
+                        byte[] buffer = new byte[1024];
+                        int bufferLength;
+                        while ((bufferLength = inputStream.read(buffer)) > 0) {
+                            fileOutput.write(buffer, 0, bufferLength);
+                            downloadedSize += bufferLength;
+                            Log.i("Progress:", "downloadedSize:" + downloadedSize + "totalSize:" + totalSize);
+                        }
+                        fileOutput.close();
+                        Log.i(LOGTAG, "Downloaded English: " + i);
+                    }
+                } catch (IOException e) {
+                    Log.e(LOGTAG, "IOException: "+e);
+                }
+
+
+
+            }
+
+            return result;
+        }
+
+        @Override
+        protected void onPostExecute(String result) {
 
         }
 
@@ -546,12 +550,6 @@ public class MainActivity extends ActionBarActivity {
                 Log.e("log_tag", "Error converting result: "+e.toString());
             }
 
-            return result;
-        }
-
-        @Override
-        protected void onPostExecute(String result) {
-
             Log.i(LOGTAG,"Downloaded JSON!");
 
             //Declaring JSON Array and name string and linear layout to add into activity
@@ -559,6 +557,14 @@ public class MainActivity extends ActionBarActivity {
 
             datasource = new PhraseDataSource(getBaseContext());
             datasource.open();
+
+            List<Category> categories = new ArrayList<>();
+
+            //Making directories to store audio and images
+            File ImageDirectory = new File(Environment.getExternalStorageDirectory().getAbsolutePath()+"/PICCHE/PIC-CHE_Images");
+            if(!ImageDirectory.exists()){
+                ImageDirectory.mkdirs();
+            }
 
             try {
                 jArray = new JSONArray(result);
@@ -580,6 +586,7 @@ public class MainActivity extends ActionBarActivity {
                     category.setCantonese(json_data.getString("CAN"));
                     category.setChinese(json_data.getString("CHI"));
                     category.setEnglish(json_data.getString("ENG"));
+                    categories.add(category);
                     datasource.createCategory(category);
                     Log.d(LOGTAG,"Inserted category into DB");
                 }
@@ -587,6 +594,41 @@ public class MainActivity extends ActionBarActivity {
             } catch (JSONException e) {
                 Log.e(LOGTAG, "JSONException: "+e);
             }
+
+            for(Category category : categories){
+                try {
+                    File img = new File(ImageDirectory, "cat_" + category.getId() + ".png");
+                    if (!img.exists()) {//image file doesn't exist and must be downloaded
+
+                        img.createNewFile();
+                        URL url = new URL(urls[0] + "img/" + "cat_" + category.getId() + ".png");
+                        HttpURLConnection urlConnection = (HttpURLConnection) url.openConnection();
+                        urlConnection.setRequestMethod("GET");
+                        urlConnection.setDoOutput(true);
+                        urlConnection.connect();
+                        FileOutputStream fileOutput = new FileOutputStream(img);
+                        InputStream inputStream = urlConnection.getInputStream();
+                        int totalSize = urlConnection.getContentLength();
+                        int downloadedSize = 0;
+                        byte[] buffer = new byte[1024];
+                        int bufferLength;
+                        while ((bufferLength = inputStream.read(buffer)) > 0) {
+                            fileOutput.write(buffer, 0, bufferLength);
+                            downloadedSize += bufferLength;
+                            Log.i("Progress:", "downloadedSize:" + downloadedSize + "totalSize:" + totalSize);
+                        }
+                        fileOutput.close();
+                    }
+                } catch (IOException e) {
+                    Log.e(LOGTAG, "IOException: "+e);
+                }
+            }
+
+            return result;
+        }
+
+        @Override
+        protected void onPostExecute(String result) {
 
             Toast.makeText(getBaseContext(), "Downloaded!", Toast.LENGTH_SHORT).show();
 

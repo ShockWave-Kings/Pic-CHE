@@ -948,8 +948,10 @@ containing a value of this type.
         public static final int background=0x7f020058;
         public static final int custom_button=0x7f020059;
         public static final int custom_group=0x7f02005a;
-        public static final int ic_action_next_item=0x7f02005b;
-        public static final int ic_launcher=0x7f02005c;
+        public static final int ic_action_collapse=0x7f02005b;
+        public static final int ic_action_expand=0x7f02005c;
+        public static final int ic_action_next_item=0x7f02005d;
+        public static final int ic_launcher=0x7f02005e;
     }
     public static final class id {
         public static final int action_add_phrase=0x7f07005d;

@@ -548,7 +548,7 @@
 
     <dimen name="group_roman_text_size">16sp</dimen>
     <dimen name="header_text_size">45sp</dimen>
-    <dimen name="list_height">130dp</dimen>
+    <dimen name="list_height">140dp</dimen>
     <dimen name="list_padding">10dp</dimen>
     <!-- From: file:/C:/Users/jeromeleow/workspace/PIC-CHE/build/intermediates/exploded-aar/workspace/appcompat_v7_2/unspecified/res/values/values.xml -->
     <eat-comment />

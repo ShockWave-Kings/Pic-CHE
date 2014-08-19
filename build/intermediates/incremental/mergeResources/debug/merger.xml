@@ -4764,16 +4764,16 @@ useLogo|showHome|showTitle
                     msgid="2031811694353399454" >"Επιλέξτε κάποια εφαρμογή"
                 </string>
                 <string
-                    name="abc_action_menu_overflow_description"
-                    msgid="3588849162933574182" >"Περισσότερες επιλογές"
-                </string>
-                <string
                     name="abc_searchview_description_clear"
                     msgid="3691816814315814921" >"Διαγραφή ερωτήματος"
                 </string>
                 <string
                     name="abc_searchview_description_voice"
                     msgid="893419373245838918" >"Φωνητική αναζήτηση"
+                </string>
+                <string
+                    name="abc_action_menu_overflow_description"
+                    msgid="3588849162933574182" >"Περισσότερες επιλογές"
                 </string>
             </file>
             <file
@@ -6095,16 +6095,16 @@ false
                     msgid="4076576682505996667" >"Atlikta"
                 </string>
                 <string
-                    name="abc_shareactionprovider_share_with_application"
-                    msgid="7165123711973476752" >"Bendrinti naudojant „%s“"
-                </string>
-                <string
                     name="abc_action_bar_home_description"
                     msgid="4600421777120114993" >"Eiti į pagrindinį puslapį"
                 </string>
                 <string
                     name="abc_searchview_description_search"
                     msgid="8264924765203268293" >"Paieška"
+                </string>
+                <string
+                    name="abc_shareactionprovider_share_with_application"
+                    msgid="7165123711973476752" >"Bendrinti naudojant „%s“"
                 </string>
             </file>
             <file
@@ -6739,16 +6739,16 @@ false
                     msgid="3588849162933574182" >"Več možnosti"
                 </string>
                 <string
-                    name="abc_action_mode_done"
-                    msgid="4076576682505996667" >"Končano"
+                    name="abc_shareactionprovider_share_with"
+                    msgid="3421042268587513524" >"Deljenje z"
                 </string>
                 <string
                     name="abc_activity_chooser_view_see_all"
                     msgid="7468859129482906941" >"Pokaži vse"
                 </string>
                 <string
-                    name="abc_shareactionprovider_share_with"
-                    msgid="3421042268587513524" >"Deljenje z"
+                    name="abc_action_mode_done"
+                    msgid="4076576682505996667" >"Končano"
                 </string>
                 <string
                     name="abc_action_bar_home_description"
@@ -6767,12 +6767,12 @@ false
                     msgid="8264924765203268293" >"Iskanje"
                 </string>
                 <string
-                    name="abc_searchview_description_query"
-                    msgid="2550479030709304392" >"Iskalna poizvedba"
-                </string>
-                <string
                     name="abc_searchview_description_submit"
                     msgid="8928215447528550784" >"Pošiljanje poizvedbe"
+                </string>
+                <string
+                    name="abc_searchview_description_query"
+                    msgid="2550479030709304392" >"Iskalna poizvedba"
                 </string>
                 <string
                     name="abc_searchview_description_voice"
@@ -8394,7 +8394,7 @@ false
                 </dimen>
                 <dimen name="list_padding" >10dp
                 </dimen>
-                <dimen name="list_height" >130dp
+                <dimen name="list_height" >140dp
                 </dimen>
                 <dimen name="group_roman_text_size" >16sp
                 </dimen>
@@ -8570,6 +8570,66 @@ false
                 name="background"
                 path="C:\Users\jeromeleow\workspace\PIC-CHE\res\drawable\background.png"
                 qualifiers=""
+                type="drawable" />
+            <file
+                name="ic_action_collapse"
+                path="C:\Users\jeromeleow\workspace\PIC-CHE\res\drawable-hdpi\ic_action_collapse.png"
+                qualifiers="hdpi-v4"
+                type="drawable" />
+            <file
+                name="ic_action_collapse"
+                path="C:\Users\jeromeleow\workspace\PIC-CHE\res\drawable-xxhdpi\ic_action_collapse.png"
+                qualifiers="xxhdpi-v4"
+                type="drawable" />
+            <file
+                name="ic_action_expand"
+                path="C:\Users\jeromeleow\workspace\PIC-CHE\res\drawable-hdpi\ic_action_expand.png"
+                qualifiers="hdpi-v4"
+                type="drawable" />
+            <file
+                name="ic_action_collapse"
+                path="C:\Users\jeromeleow\workspace\PIC-CHE\res\drawable\ic_action_collapse.png"
+                qualifiers=""
+                type="drawable" />
+            <file
+                name="ic_action_collapse"
+                path="C:\Users\jeromeleow\workspace\PIC-CHE\res\drawable-mdpi\ic_action_collapse.png"
+                qualifiers="mdpi-v4"
+                type="drawable" />
+            <file
+                name="ic_action_expand"
+                path="C:\Users\jeromeleow\workspace\PIC-CHE\res\drawable\ic_action_expand.png"
+                qualifiers=""
+                type="drawable" />
+            <file
+                name="ic_action_expand"
+                path="C:\Users\jeromeleow\workspace\PIC-CHE\res\drawable-xhdpi\ic_action_expand.png"
+                qualifiers="xhdpi-v4"
+                type="drawable" />
+            <file
+                name="ic_action_expand"
+                path="C:\Users\jeromeleow\workspace\PIC-CHE\res\drawable-mdpi\ic_action_expand.png"
+                qualifiers="mdpi-v4"
+                type="drawable" />
+            <file
+                name="ic_action_expand"
+                path="C:\Users\jeromeleow\workspace\PIC-CHE\res\drawable-xxhdpi\ic_action_expand.png"
+                qualifiers="xxhdpi-v4"
+                type="drawable" />
+            <file
+                name="ic_action_collapse"
+                path="C:\Users\jeromeleow\workspace\PIC-CHE\res\drawable-xhdpi\ic_action_collapse.png"
+                qualifiers="xhdpi-v4"
+                type="drawable" />
+            <file
+                name="ic_action_expand"
+                path="C:\Users\jeromeleow\workspace\PIC-CHE\res\drawable-xxxhdpi\ic_action_expand.png"
+                qualifiers="xxxhdpi-v4"
+                type="drawable" />
+            <file
+                name="ic_action_collapse"
+                path="C:\Users\jeromeleow\workspace\PIC-CHE\res\drawable-xxxhdpi\ic_action_collapse.png"
+                qualifiers="xxxhdpi-v4"
                 type="drawable" />
         </source>
         <source path="C:\Users\jeromeleow\workspace\PIC-CHE\build\generated\res\rs\debug" />

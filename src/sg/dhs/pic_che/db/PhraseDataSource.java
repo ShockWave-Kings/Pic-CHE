@@ -123,8 +123,7 @@ public class PhraseDataSource {
 		values.put(PhraseOpenHelper.catChinese, category.getChinese());
 		values.put(PhraseOpenHelper.catEnglish, category.getEnglish());
 		long insertid = database.insert(PhraseOpenHelper.TABLE_CATEGORY, null, values);
-		category.setId(insertid);
-		Log.i(LOGTAG, "Category inserted into DB with ID: "+insertid);
+		Log.i(LOGTAG, "Category inserted into DB with ID: "+category.getId());
 		
 		return category;
 	}

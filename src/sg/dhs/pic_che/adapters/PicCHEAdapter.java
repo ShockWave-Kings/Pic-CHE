@@ -61,6 +61,15 @@ public class PicCHEAdapter extends BaseExpandableListAdapter{
                     .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
             convertView = infalInflater.inflate(R.layout.list_group, parent, false);
         }
+        ImageView imgView = (ImageView) convertView.findViewById(R.id.groupImage);
+
+        String fileName;
+        fileName = "cat_"+category.getId()+".png";
+
+        File file = new File(Environment.getExternalStorageDirectory().getAbsolutePath()+"/PICCHE/PIC-CHE_Images/"+fileName);
+        Bitmap bm = BitmapFactory.decodeFile(file.getAbsolutePath());
+
+        imgView.setImageBitmap(bm);
 
         TextView hokkien = (TextView) convertView.findViewById(R.id.groupHokkien);
         TextView cantonese = (TextView) convertView.findViewById(R.id.groupCantonese);
