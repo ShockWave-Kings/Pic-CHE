@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<resources>
-
-    <!-- From: file:/C:/Users/jeromeleow/workspace/PIC-CHE/build/intermediates/exploded-aar/workspace/appcompat_v7_2/unspecified/res/values-w720dp-v13/values.xml -->
-    <eat-comment />
-
-    <bool name="abc_action_bar_expanded_action_views_exclusive">false</bool>
-
-</resources>

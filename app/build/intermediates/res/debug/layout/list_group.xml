@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="@dimen/list_height"
+    android:padding="5dip"
+    android:background="@drawable/custom_group">
+    
+    <ImageView
+        android:id="@+id/groupImage"
+        android:layout_width="@dimen/list_height"
+        android:layout_height="fill_parent"
+        android:contentDescription="@string/pic_desc"
+        android:src="@drawable/ic_launcher"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
+
+    <TextView
+        android:id="@+id/groupHokkien"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:gravity="right"
+        android:text="@string/hokkien"
+        android:textColor="@color/white"
+        android:textSize="@dimen/group_roman_text_size"
+        android:layout_toStartOf="@+id/groupImage"
+        android:layout_alignParentTop="true"
+        android:layout_toLeftOf="@+id/groupImage" />
+
+    <TextView
+        android:id="@+id/groupCantonese"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:gravity="right"
+        android:text="@string/cantonese"
+        android:textColor="@color/white"
+        android:textSize="@dimen/group_roman_text_size"
+        android:layout_toStartOf="@+id/groupImage"
+        android:layout_below="@+id/groupHokkien"
+        android:layout_toLeftOf="@+id/groupImage" />
+
+    <TextView
+        android:id="@+id/groupChinese"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:gravity="right"
+        android:text="@string/chinese"
+        android:textColor="@color/white"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:layout_below="@+id/groupCantonese"
+        android:layout_alignRight="@+id/groupCantonese"
+        android:layout_alignEnd="@+id/groupCantonese" />
+
+    <TextView
+        android:id="@+id/groupEnglish"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:gravity="right"
+        android:layout_alignRight="@id/groupChinese"
+        android:layout_below="@id/groupChinese"
+        android:text="@string/english"
+        android:textColor="@color/white"
+        android:textSize="@dimen/group_roman_text_size" />
+    
+
+</RelativeLayout>
+<!-- From: file:/C:/Users/jeromeleow/android-studio/PIC-CHE/app/src/main/res/layout/list_group.xml -->
