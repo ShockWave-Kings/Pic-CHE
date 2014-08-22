@@ -71,14 +71,14 @@ public class PicCHEAdapter extends BaseExpandableListAdapter{
 
         imgView.setImageBitmap(bm);
 
-        TextView hokkien = (TextView) convertView.findViewById(R.id.groupHokkien);
+        /*TextView hokkien = (TextView) convertView.findViewById(R.id.groupHokkien);
         TextView cantonese = (TextView) convertView.findViewById(R.id.groupCantonese);
-        TextView chinese = (TextView) convertView.findViewById(R.id.groupChinese);
+        TextView chinese = (TextView) convertView.findViewById(R.id.groupChinese);*/
         TextView english = (TextView) convertView.findViewById(R.id.groupEnglish);
 
-        hokkien.setText(category.getHokkien());
+        /*.setText(category.getHokkien());
         cantonese.setText(category.getCantonese());
-        chinese.setText(category.getChinese());
+        chinese.setText(category.getChinese());*/
         english.setText(category.getEnglish());
 
         return convertView;

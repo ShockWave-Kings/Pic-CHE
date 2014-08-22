@@ -546,10 +546,11 @@
     <!-- From: file:/C:/Users/jeromeleow/android-studio/PIC-CHE/app/src/main/res/values/dimens.xml -->
     <eat-comment />
 
-    <dimen name="group_roman_text_size">16sp</dimen>
+    <dimen name="group_roman_text_size">18sp</dimen>
     <dimen name="header_text_size">45sp</dimen>
     <dimen name="list_height">140dp</dimen>
     <dimen name="list_padding">10dp</dimen>
+    <dimen name="navigation_drawer_width">300dp</dimen>
     <!-- From: file:/C:/Users/jeromeleow/android-studio/PIC-CHE/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/20.0.0/res/values/values.xml -->
     <eat-comment />
 
@@ -578,6 +579,7 @@
     <!-- From: file:/C:/Users/jeromeleow/android-studio/PIC-CHE/app/src/main/res/values/strings.xml -->
     <eat-comment />
 
+    <string name="action_example">Example action</string>
     <string name="action_refresh">Check for new phrases</string>
     <string name="action_settings">Settings</string>
     <string name="app_name">PIC-CHE</string>
@@ -587,12 +589,18 @@
     <string name="english">English: </string>
     <string name="hello_world">Hello world!</string>
     <string name="hokkien">Hokkien: </string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="pic_desc">Picture of the phrase</string>
     <string name="play_all">Play All</string>
     <string name="self_add_phrase">Add new Phrase</string>
     <string name="self_phrase_title">New Phrase</string>
+    <string name="title_activity_navigation_avtivity">Categories</string>
     <string name="title_activity_new_phrase">New Phrase</string>
     <string name="title_activity_phrase">Phrase</string>
+    <string name="title_section1">Section 1</string>
+    <string name="title_section2">Section 2</string>
+    <string name="title_section3">Section 3</string>
     <!-- From: file:/C:/Users/jeromeleow/android-studio/PIC-CHE/app/src/main/res/values/styles.xml -->
     <eat-comment />
 

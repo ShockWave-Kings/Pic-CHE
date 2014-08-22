@@ -8,8 +8,6 @@
                 android:startColor="@color/P500"
                 android:endColor="@color/P500"
                 android:angle="270" />
-            <corners
-                android:radius="3dp" />
             <padding
                 android:left="10dp"
                 android:top="10dp"
@@ -23,8 +21,6 @@
                 android:endColor="@color/P500"
                 android:startColor="@color/P600"
                 android:angle="270" />
-            <corners
-                android:radius="3dp" />
             <padding
                 android:left="10dp"
                 android:top="10dp"
@@ -39,8 +35,6 @@
                 android:startColor="@color/P400"
                 android:endColor="@color/P400"
                 android:angle="270" />
-            <corners
-                android:radius="3dp" />
             <padding
                 android:left="10dp"
                 android:top="10dp"

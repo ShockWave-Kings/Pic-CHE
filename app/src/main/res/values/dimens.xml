@@ -1,3 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
 
     <!-- Default screen margins, per the Android Design guidelines. -->
@@ -7,6 +8,7 @@
     <dimen name="list_padding">10dp</dimen>
     <dimen name="button_padding">3dp</dimen>
     <dimen name="header_text_size">45sp</dimen>
-    <dimen name="group_roman_text_size">16sp</dimen>
+    <dimen name="group_roman_text_size">18sp</dimen>
+    <dimen name="navigation_drawer_width">300dp</dimen>
 
 </resources>
