@@ -7,6 +7,7 @@ import android.app.Fragment;
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.media.MediaPlayer;
@@ -155,6 +156,10 @@ public class NavigationAvtivity extends Activity
                 Toast.makeText(getBaseContext(), "Not connected to internet!", Toast.LENGTH_SHORT).show();
             }
 
+        }
+        if(id == R.id.action_add_phrase) {
+            Intent intent = new Intent(getApplicationContext(), NewPhraseActivity.class);
+            startActivity(intent);
         }
         return super.onOptionsItemSelected(item);
     }
