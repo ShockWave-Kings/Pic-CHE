@@ -5,15 +5,17 @@ import android.app.Activity;
 import android.app.ActionBar;
 import android.app.Fragment;
 import android.app.FragmentManager;
+import android.app.FragmentTransaction;
 import android.content.Context;
-import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.media.MediaPlayer;
 import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.AsyncTask;
-import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
 import android.util.Log;
-import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -21,9 +23,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.support.v4.widget.DrawerLayout;
 import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
+import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.ListView;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import org.apache.http.HttpEntity;
@@ -204,19 +206,24 @@ public class NavigationAvtivity extends Activity
             listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                 @Override
                 public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                    Intent intent = new Intent(getActivity(), PhraseActivity.class);
-                    Phrase phrase;
-                    phrase = phrases.get(position);
-                    intent.putExtra(EXTRA_HOKKIEN, phrase.getHokkien());
-                    intent.putExtra(EXTRA_CANTONESE, phrase.getCantonese());
-                    intent.putExtra(EXTRA_CHINESE, phrase.getChinese());
-                    intent.putExtra(EXTRA_ENGLISH, phrase.getEnglish());
+                    PhraseFragment fragment = new PhraseFragment();
+                    Bundle args = new Bundle();
+                    Phrase phrase = phrases.get(position);
+                    args.putString(EXTRA_HOKKIEN, phrase.getHokkien());
+                    args.putString(EXTRA_CANTONESE, phrase.getCantonese());
+                    args.putString(EXTRA_CHINESE, phrase.getChinese());
+                    args.putString(EXTRA_ENGLISH, phrase.getEnglish());
                     if(phrase.getCatId() == 256)
-                        intent.putExtra(EXTRA_ID, "self_" + Long.toString(phrase.getId()));
+                        args.putString(EXTRA_ID, "self_" + Long.toString(phrase.getId()));
                     else
-                        intent.putExtra(EXTRA_ID, Long.toString(phrase.getId()));
+                        args.putString(EXTRA_ID, Long.toString(phrase.getId()));
+                    fragment.setArguments(args);
 
-                    getActivity().startActivity(intent);
+                    FragmentTransaction transaction = getFragmentManager().beginTransaction();
+                    transaction.replace(R.id.container, fragment);
+                    transaction.addToBackStack(null);
+
+                    transaction.commit();
                 }
             });
 
@@ -244,10 +251,155 @@ public class NavigationAvtivity extends Activity
         }
     }
 
+    public static class PhraseFragment extends Fragment {
+
+        String LOGTAG = "Phrase Activity";
+
+        public PhraseFragment() {
+        }
+
+        @Override
+        public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                                 Bundle savedInstanceState) {
+            View rootView = inflater.inflate(R.layout.fragment_phrase,
+                    container, false);
+
+            Bundle args = getArguments();
+            String hokkien = args.getString(EXTRA_HOKKIEN);
+            String cantonese = args.getString(EXTRA_CANTONESE);
+            String chinese = args.getString(EXTRA_CHINESE);
+            String english = args.getString(EXTRA_ENGLISH);
+            final String ID = args.getString(EXTRA_ID);
+
+            Button hok = (Button) rootView.findViewById(R.id.phraseHokButton);
+            hok.setText(hokkien);
+            hok.setTextSize(22);
+            hok.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    playAudio("hok", ID);
+                }
+            });
+
+            Button can = (Button) rootView.findViewById(R.id.phraseCanButton);
+            can.setText(cantonese);
+            can.setTextSize(22);
+            can.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    playAudio("can", ID);
+                }
+            });
+
+            Button chi = (Button) rootView.findViewById(R.id.phraseChiButton);
+            chi.setText(chinese);
+            chi.setTextSize(22);
+            chi.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    playAudio("chi", ID);
+                }
+            });
+
+            Button eng = (Button) rootView.findViewById(R.id.phraseEngButton);
+            eng.setText(english);
+            eng.setTextSize(22);
+            eng.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    playAudio("eng", ID);
+                }
+            });
+
+            Button all = (Button) rootView.findViewById(R.id.phrasePlayAllButton);
+            all.setTextSize(22);
+            all.setOnClickListener(new View.OnClickListener(){
+                @Override
+                public void onClick(View v) {
+                    playAll(ID);
+                }
+            });
+
+            ImageView img = (ImageView) rootView.findViewById(R.id.phraseImageView);
+            int width = getActivity().getWindowManager().getDefaultDisplay().getWidth(); //Set width to be same as height
+            img.getLayoutParams().height = width;
+            String fileName = ID+".png";
+            File dir = new File(Environment.getExternalStorageDirectory().getAbsolutePath()+"/PICCHE/PIC-CHE_Images/"+fileName);
+            Bitmap bmp = BitmapFactory.decodeFile(dir.getAbsolutePath()); //Set imageview location to be file on sd card
+            img.setImageBitmap(bmp);
+            img.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    playAll(ID);
+                }
+            });
+
+            return rootView;
+        }
+
+        MediaPlayer playAudio(String language, String ID){
+            MediaPlayer mp = null;
+            try {
+                File audio = new File(Environment.getExternalStorageDirectory().getAbsolutePath()+"/PICCHE/PIC-CHE_Audio/"+ID+"_"+language+".mp3");
+                mp = new MediaPlayer();
+                mp.setDataSource(audio.getAbsolutePath());
+                mp.setOnCompletionListener(new MediaPlayer.OnCompletionListener(){
+                    public void onCompletion(MediaPlayer player) {
+                        Log.d(LOGTAG, "Completed");
+                        player.stop();
+                        player.release();
+                    }
+                });
+                mp.prepare();
+                mp.start();
+            } catch (IllegalArgumentException e) {
+                Log.e(LOGTAG, "IllegalArgumentException "+e);
+            } catch (SecurityException e) {
+                Log.e(LOGTAG, "SecurityException "+e);
+            } catch (IllegalStateException e) {
+                Log.e(LOGTAG, "IllegalStateException "+e);
+            } catch (IOException e) {
+                Log.e(LOGTAG, "IOException "+e);
+            }
+            return mp;
+        }
+
+        void playAll(String _ID) {
+            final String ID = _ID;
+            playAudio("hok", ID).setOnCompletionListener(new MediaPlayer.OnCompletionListener(){
+                public void onCompletion(MediaPlayer mp) {
+                    mp.stop();
+                    mp.release();
+                    playAudio("can", ID).setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+                        @Override
+                        public void onCompletion(MediaPlayer mp) {
+                            mp.stop();
+                            mp.release();
+                            playAudio("chi", ID).setOnCompletionListener(new MediaPlayer.OnCompletionListener(){
+                                public void onCompletion(MediaPlayer mp) {
+                                    mp.stop();
+                                    mp.release();
+                                    playAudio("eng", ID).setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+                                        @Override
+                                        public void onCompletion(MediaPlayer mp) {
+                                            mp.stop();
+                                            mp.release();
+                                        }
+                                    });
+                                }
+                            });
+                        }
+                    });
+                }
+            });
+        }
+    }
+
     //Checks if device is connected to the internet
     private boolean isNetworkConnected() {
         ConnectivityManager cm = (ConnectivityManager) getBaseContext().getSystemService(Context.CONNECTIVITY_SERVICE);
-        return (cm.getNetworkInfo(ConnectivityManager.TYPE_WIFI).isConnected());
+        NetworkInfo netInfo = cm.getActiveNetworkInfo();
+        return (netInfo != null && netInfo.isConnectedOrConnecting());
     }
 
     private class ServerPhrases extends AsyncTask<String, Void, String> {
@@ -668,6 +820,8 @@ public class NavigationAvtivity extends Activity
         }
 
     }
+
+
 
     @Override
     public void onPause() {
