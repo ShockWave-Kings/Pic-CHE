@@ -196,7 +196,8 @@ public class NavigationAvtivity extends Activity
             dataSource.open();
 
             List<Category> categories = dataSource.findAllCategories();
-            long catID = categories.get(index).getId();
+            Category category = categories.get(index);
+            long catID = category.getId();
 
             final List<Phrase> phrases = dataSource.findPhraseByCategory(catID);
             ListView listView = (ListView) rootView.findViewById(R.id.phraseListView);
@@ -226,8 +227,10 @@ public class NavigationAvtivity extends Activity
                     transaction.commit();
                 }
             });
-
             dataSource.close();
+
+            getActivity().getActionBar().setTitle(category.getEnglish());
+
             return rootView;
         }
 
@@ -270,6 +273,8 @@ public class NavigationAvtivity extends Activity
             String chinese = args.getString(EXTRA_CHINESE);
             String english = args.getString(EXTRA_ENGLISH);
             final String ID = args.getString(EXTRA_ID);
+
+            getActivity().getActionBar().setTitle(english);
 
             Button hok = (Button) rootView.findViewById(R.id.phraseHokButton);
             hok.setText(hokkien);
