@@ -77,11 +77,11 @@ public class PhraseActivity extends ActionBarActivity {
                     container, false);
 
             Bundle args = getActivity().getIntent().getExtras();
-            String hokkien = args.getString(MainActivity.EXTRA_HOKKIEN);
-            String cantonese = args.getString(MainActivity.EXTRA_CANTONESE);
-            String chinese = args.getString(MainActivity.EXTRA_CHINESE);
-            String english = args.getString(MainActivity.EXTRA_ENGLISH);
-            final String ID = args.getString(MainActivity.EXTRA_ID);
+            String hokkien = args.getString(NavigationAvtivity.EXTRA_HOKKIEN);
+            String cantonese = args.getString(NavigationAvtivity.EXTRA_CANTONESE);
+            String chinese = args.getString(NavigationAvtivity.EXTRA_CHINESE);
+            String english = args.getString(NavigationAvtivity.EXTRA_ENGLISH);
+            final String ID = args.getString(NavigationAvtivity.EXTRA_ID);
 
             Button hok = (Button) rootView.findViewById(R.id.phraseHokButton);
             hok.setText(hokkien);

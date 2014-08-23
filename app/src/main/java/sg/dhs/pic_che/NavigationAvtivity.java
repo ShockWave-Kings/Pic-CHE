@@ -20,6 +20,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.support.v4.widget.DrawerLayout;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -55,6 +56,12 @@ import sg.dhs.pic_che.model.Phrase;
 
 public class NavigationAvtivity extends Activity
         implements NavigationDrawerFragment.NavigationDrawerCallbacks {
+
+    public static String EXTRA_HOKKIEN = "sg.dhs.pic_che.HOKKIEN";
+    public static String EXTRA_CANTONESE = "sg.dhs.pic_che.CANTONESE";
+    public static String EXTRA_CHINESE = "sg.dhs.pic_che.CHINESE";
+    public static String EXTRA_ENGLISH = "sg.dhs.pic_che.ENGLISH";
+    public static String EXTRA_ID = "sg.dhs.pic_che.ID";
 
     PhraseDataSource datasource;
 
@@ -189,10 +196,29 @@ public class NavigationAvtivity extends Activity
             List<Category> categories = dataSource.findAllCategories();
             long catID = categories.get(index).getId();
 
-            List<Phrase> phrases = dataSource.findPhraseByCategory(catID);
+            final List<Phrase> phrases = dataSource.findPhraseByCategory(catID);
             ListView listView = (ListView) rootView.findViewById(R.id.phraseListView);
             PhraseAdapter adapter = new PhraseAdapter(getActivity(), phrases);
             listView.setAdapter(adapter);
+
+            listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                @Override
+                public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                    Intent intent = new Intent(getActivity(), PhraseActivity.class);
+                    Phrase phrase;
+                    phrase = phrases.get(position);
+                    intent.putExtra(EXTRA_HOKKIEN, phrase.getHokkien());
+                    intent.putExtra(EXTRA_CANTONESE, phrase.getCantonese());
+                    intent.putExtra(EXTRA_CHINESE, phrase.getChinese());
+                    intent.putExtra(EXTRA_ENGLISH, phrase.getEnglish());
+                    if(phrase.getCatId() == 256)
+                        intent.putExtra(EXTRA_ID, "self_" + Long.toString(phrase.getId()));
+                    else
+                        intent.putExtra(EXTRA_ID, Long.toString(phrase.getId()));
+
+                    getActivity().startActivity(intent);
+                }
+            });
 
             dataSource.close();
             return rootView;
