@@ -30,7 +30,8 @@
     <color name="black">#000000</color>
 
     <string name="title_activity_new_phrase">New Phrase</string>
-    <string name="title_activity_navigation_avtivity">Categories</string>
+    <string name="title_activity_navigation_avtivity">PIC-CHE</string>
+    <string name="title_activity_categories">Categories</string>
     <string name="title_section1">Section 1</string>
     <string name="title_section2">Section 2</string>
     <string name="title_section3">Section 3</string>

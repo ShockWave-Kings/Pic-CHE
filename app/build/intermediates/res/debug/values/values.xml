@@ -595,7 +595,8 @@
     <string name="play_all">Play All</string>
     <string name="self_add_phrase">Add new Phrase</string>
     <string name="self_phrase_title">New Phrase</string>
-    <string name="title_activity_navigation_avtivity">Categories</string>
+    <string name="title_activity_categories">Categories</string>
+    <string name="title_activity_navigation_avtivity">PIC-CHE</string>
     <string name="title_activity_new_phrase">New Phrase</string>
     <string name="title_activity_phrase">Phrase</string>
     <string name="title_section1">Section 1</string>

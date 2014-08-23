@@ -142,6 +142,9 @@ public class NavigationAvtivity extends Activity
                 new ServerCategory().execute(url);
 
             }
+            else {
+                Toast.makeText(getBaseContext(), "Not connected to internet!", Toast.LENGTH_SHORT).show();
+            }
 
         }
         return super.onOptionsItemSelected(item);
@@ -178,14 +181,20 @@ public class NavigationAvtivity extends Activity
                 Bundle savedInstanceState) {
             View rootView = inflater.inflate(R.layout.fragment_navigation_avtivity, container, false);
 
+            int index = getArguments().getInt(ARG_SECTION_NUMBER)-1;
+
             dataSource = new PhraseDataSource(getActivity());
             dataSource.open();
 
-            List<Phrase> phrases = dataSource.findAllPhrases();
+            List<Category> categories = dataSource.findAllCategories();
+            long catID = categories.get(index).getId();
+
+            List<Phrase> phrases = dataSource.findPhraseByCategory(catID);
             ListView listView = (ListView) rootView.findViewById(R.id.phraseListView);
             PhraseAdapter adapter = new PhraseAdapter(getActivity(), phrases);
             listView.setAdapter(adapter);
 
+            dataSource.close();
             return rootView;
         }
 
@@ -481,10 +490,9 @@ public class NavigationAvtivity extends Activity
                 } catch (IOException e) {
                     Log.e(LOGTAG, "IOException: "+e);
                 }
-
-
-
             }
+
+            datasource.close();
 
             return result;
         }
@@ -620,6 +628,8 @@ public class NavigationAvtivity extends Activity
                     Log.e(LOGTAG, "IOException: "+e);
                 }
             }
+
+            datasource.close();
 
             return result;
         }

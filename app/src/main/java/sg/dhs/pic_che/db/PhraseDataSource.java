@@ -90,6 +90,31 @@ public class PhraseDataSource {
 		
 		return phrases;
 	}
+
+    public List<Phrase> findPhraseByCategory(long catID) {
+        List<Phrase> phrases = new ArrayList<Phrase>();
+        String[] whereArgs = {Long.toString(catID)};
+        Cursor cursor = database.query(PhraseOpenHelper.TABLE_PHRASE,
+                allColumnsPhrases,
+                PhraseOpenHelper.catID + "=?", whereArgs,
+                null, null,
+                PhraseOpenHelper.id);
+
+        if(cursor.getCount()>0){
+            while(cursor.moveToNext()){
+                Phrase phrase = new Phrase();
+                phrase.setId(cursor.getLong(cursor.getColumnIndex(PhraseOpenHelper.id)));
+                phrase.setCatId(cursor.getInt(cursor.getColumnIndex(PhraseOpenHelper.catID)));
+                phrase.setHokkien(cursor.getString(cursor.getColumnIndex(PhraseOpenHelper.hokkien)));
+                phrase.setCantonese(cursor.getString(cursor.getColumnIndex(PhraseOpenHelper.cantonese)));
+                phrase.setChinese(cursor.getString(cursor.getColumnIndex(PhraseOpenHelper.chinese)));
+                phrase.setEnglish(cursor.getString(cursor.getColumnIndex(PhraseOpenHelper.english)));
+                phrases.add(phrase);
+            }
+        }
+
+        return phrases;
+    }
 	
 	public int getPhraseCount() {
 		Cursor cursor = database.query(PhraseOpenHelper.TABLE_PHRASE, allColumnsPhrases,

@@ -6752,24 +6752,24 @@ false
                     msgid="3588849162933574182" >"Več možnosti"
                 </string>
                 <string
-                    name="abc_shareactionprovider_share_with"
-                    msgid="3421042268587513524" >"Deljenje z"
+                    name="abc_action_mode_done"
+                    msgid="4076576682505996667" >"Končano"
                 </string>
                 <string
                     name="abc_activity_chooser_view_see_all"
                     msgid="7468859129482906941" >"Pokaži vse"
                 </string>
                 <string
-                    name="abc_action_mode_done"
-                    msgid="4076576682505996667" >"Končano"
-                </string>
-                <string
-                    name="abc_searchview_description_submit"
-                    msgid="8928215447528550784" >"Pošiljanje poizvedbe"
+                    name="abc_shareactionprovider_share_with"
+                    msgid="3421042268587513524" >"Deljenje z"
                 </string>
                 <string
                     name="abc_searchview_description_query"
                     msgid="2550479030709304392" >"Iskalna poizvedba"
+                </string>
+                <string
+                    name="abc_searchview_description_submit"
+                    msgid="8928215447528550784" >"Pošiljanje poizvedbe"
                 </string>
                 <string
                     name="abc_searchview_description_voice"
@@ -8532,6 +8532,8 @@ false
 
                 <string name="hello_world" >Hello world!
                 </string>
+                <string name="title_activity_categories" >Categories
+                </string>
                 <string name="navigation_drawer_open" >Open navigation drawer
                 </string>
 
@@ -8544,7 +8546,7 @@ false
                 </string>
                 <string name="title_activity_phrase" >Phrase
                 </string>
-                <string name="title_activity_navigation_avtivity" >Categories
+                <string name="title_activity_navigation_avtivity" >PIC-CHE
                 </string>
 
                 <color name="P700" >#d01716
