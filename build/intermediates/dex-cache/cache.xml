@@ -2,28 +2,28 @@
 <pre-dex-items>
 
     <item
-        dex="C:\Users\jeromeleow\android-studio\PIC-CHE\app\build\intermediates\pre-dexed\debug\internal_impl-20.0.0-db96a95e21a58d78deeab6fe519f84d51bcb8cf6.jar"
-        jar="C:\Users\jeromeleow\android-studio\PIC-CHE\app\build\intermediates\exploded-aar\com.android.support\support-v4\20.0.0\libs\internal_impl-20.0.0.jar"
+        dex="D:\Software\AndroidStudio\pic-che\app\build\intermediates\pre-dexed\debug\classes-540577ccb142662a24d194cf662318a425bc25f6.jar"
+        jar="D:\Software\AndroidStudio\pic-che\app\build\intermediates\exploded-aar\com.android.support\appcompat-v7\20.0.0\classes.jar"
+        jumboMode="false"
+        revision="20.0.0"
+        sha1="f21927d22fe31889ecce94dd697a2e75b137e0ef"/>
+    <item
+        dex="D:\Software\AndroidStudio\pic-che\app\build\intermediates\pre-dexed\debug\internal_impl-20.0.0-81e0d4a85b76eb272a11fa60aa0a8db38294cbe7.jar"
+        jar="D:\Software\AndroidStudio\pic-che\app\build\intermediates\exploded-aar\com.android.support\support-v4\20.0.0\libs\internal_impl-20.0.0.jar"
         jumboMode="false"
         revision="20.0.0"
         sha1="e40b3078e3fbd353c9f44da8df25a8fc0078209d"/>
     <item
-        dex="C:\Users\jeromeleow\android-studio\PIC-CHE\app\build\intermediates\pre-dexed\debug\support-annotations-20.0.0-2bfdfa873e68ea3c4e9cea5eaaa468382e38c188.jar"
-        jar="C:\Users\jeromeleow\AppData\Local\Android\android-studio1\sdk\extras\android\m2repository\com\android\support\support-annotations\20.0.0\support-annotations-20.0.0.jar"
-        jumboMode="false"
-        revision="20.0.0"
-        sha1="9d9013e9ff35fc3756411e62873c363c70c638fa"/>
-    <item
-        dex="C:\Users\jeromeleow\android-studio\PIC-CHE\app\build\intermediates\pre-dexed\debug\classes-85bf0f17414e3632c65006492fd5333d3addbbf8.jar"
-        jar="C:\Users\jeromeleow\android-studio\PIC-CHE\app\build\intermediates\exploded-aar\com.android.support\support-v4\20.0.0\classes.jar"
+        dex="D:\Software\AndroidStudio\pic-che\app\build\intermediates\pre-dexed\debug\classes-8a2684c27f8c51cf03bebbbabd99862a59c69693.jar"
+        jar="D:\Software\AndroidStudio\pic-che\app\build\intermediates\exploded-aar\com.android.support\support-v4\20.0.0\classes.jar"
         jumboMode="false"
         revision="20.0.0"
         sha1="8694693636ab36910c8100ce527c258ff3ebece0"/>
     <item
-        dex="C:\Users\jeromeleow\android-studio\PIC-CHE\app\build\intermediates\pre-dexed\debug\classes-d43af88f157e2566377f005df3f1fbd948b43bc3.jar"
-        jar="C:\Users\jeromeleow\android-studio\PIC-CHE\app\build\intermediates\exploded-aar\com.android.support\appcompat-v7\20.0.0\classes.jar"
+        dex="D:\Software\AndroidStudio\pic-che\app\build\intermediates\pre-dexed\debug\support-annotations-20.0.0-a4e99bb09db83315001218d362c2ad030bbe2f2c.jar"
+        jar="C:\Program Files (x86)\Android\android-sdk\extras\android\m2repository\com\android\support\support-annotations\20.0.0\support-annotations-20.0.0.jar"
         jumboMode="false"
         revision="20.0.0"
-        sha1="f21927d22fe31889ecce94dd697a2e75b137e0ef"/>
+        sha1="9d9013e9ff35fc3756411e62873c363c70c638fa"/>
 
 </pre-dex-items>

@@ -40,5 +40,6 @@
     <string name="action_example">Example action</string>
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="check_new_phrases">You have no phrases in your phone!</string>
+    <string name="action_search">Search</string>
 
 </resources>

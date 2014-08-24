@@ -5,6 +5,7 @@ import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Environment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,7 +14,9 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import java.io.File;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 
 import sg.dhs.pic_che.R;
 import sg.dhs.pic_che.model.Phrase;
@@ -24,10 +27,14 @@ import sg.dhs.pic_che.model.Phrase;
 public class PhraseAdapter extends BaseAdapter {
     private Activity context;
     private List<Phrase> phrases;
+    private List<Phrase> phrases_filter = new ArrayList<Phrase>();
+    private List<Phrase> phrases_back;
 
     public PhraseAdapter(Activity context, List<Phrase> phrases){
         this.context = context;
         this.phrases = phrases;
+        phrases_back = new ArrayList<Phrase>();
+        phrases_back.addAll(phrases);
     }
 
     @Override
@@ -81,4 +88,33 @@ public class PhraseAdapter extends BaseAdapter {
 
         return convertView;
     }
+
+    // Filter Class
+    public void filter(String charText) {
+        Log.d("FilterPICCHE","Filter started");
+        Log.d("FilterPICCHE",phrases_back.size()+"");
+        Log.d("FilterPICCHE",phrases.size()+"");
+        charText = charText.toLowerCase(Locale.getDefault());
+
+        phrases.clear();
+        Log.d("FilterPICCHE",phrases_back.size()+"");
+        if (charText.length() == 0) {
+            Log.d("FilterPICCHE","Empty");
+            phrases.addAll(phrases_back);
+        } else {
+            Log.d("FilterPICCHE","Else reach");
+            for (Phrase phrase : phrases_back) {
+                String combined = phrase.getChinese() + phrase.getCantonese() + phrase.getEnglish() + phrase.getHokkien();
+                Log.d("FilterPICCHE","Original:"+combined);
+                if (combined.toLowerCase(Locale.getDefault()).contains(charText)) {
+                    phrases.add(phrase);
+                    Log.d("FilterPICCHE",phrase.getEnglish());
+                }
+
+            }
+
+        }
+        notifyDataSetChanged();
+    }
+
 }

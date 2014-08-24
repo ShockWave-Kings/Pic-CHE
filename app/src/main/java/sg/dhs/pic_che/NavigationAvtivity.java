@@ -17,15 +17,19 @@ import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Environment;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.support.v4.widget.DrawerLayout;
 import android.widget.AdapterView;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.Toast;
@@ -51,6 +55,7 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 
 import sg.dhs.pic_che.adapters.PhraseAdapter;
 import sg.dhs.pic_che.db.PhraseDataSource;
@@ -134,6 +139,9 @@ public class NavigationAvtivity extends Activity
             restoreActionBar();
             return true;
         }
+
+        //MenuInflater inflater = getMenuInflater();
+        //inflater.inflate(R.menu.navigation_avtivity, menu);
         return super.onCreateOptionsMenu(menu);
     }
 
@@ -201,8 +209,34 @@ public class NavigationAvtivity extends Activity
 
                 final List<Phrase> phrases = dataSource.findPhraseByCategory(catID);
                 ListView listView = (ListView) rootView.findViewById(R.id.phraseListView);
-                PhraseAdapter adapter = new PhraseAdapter(getActivity(), phrases);
+                final PhraseAdapter adapter = new PhraseAdapter(getActivity(), phrases);
                 listView.setAdapter(adapter);
+
+                // Locate the EditText in listview_main.xml
+                final EditText editsearch = (EditText) rootView.findViewById(R.id.search);
+
+                editsearch.addTextChangedListener(new TextWatcher() {
+
+                    @Override
+                    public void afterTextChanged(Editable arg0) {
+                        // TODO Auto-generated method stub
+                        String text = editsearch.getText().toString().toLowerCase(Locale.getDefault());
+                        adapter.filter(text);
+                    }
+
+                    @Override
+                    public void beforeTextChanged(CharSequence arg0, int arg1,
+                                                  int arg2, int arg3) {
+                        // TODO Auto-generated method stub
+                    }
+
+                    @Override
+                    public void onTextChanged(CharSequence arg0, int arg1, int arg2,
+                                              int arg3) {
+                        // TODO Auto-generated method stub
+                    }
+                });
+
 
                 listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                     @Override

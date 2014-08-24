@@ -59,4 +59,4 @@
         android:contentDescription="@string/arrow_desc"
         android:src="@drawable/ic_action_next_item" />
 
-</RelativeLayout><!-- From: file:/C:/Users/jeromeleow/android-studio/PIC-CHE/app/src/main/res/layout/list_row.xml -->
+</RelativeLayout><!-- From: file:/D:/Software/AndroidStudio/pic-che/app/src/main/res/layout/list_row.xml -->
