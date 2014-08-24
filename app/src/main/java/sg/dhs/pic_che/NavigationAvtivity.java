@@ -13,6 +13,7 @@ import android.graphics.BitmapFactory;
 import android.media.MediaPlayer;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
+import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Environment;
@@ -109,7 +110,10 @@ public class NavigationAvtivity extends Activity
         datasource = new PhraseDataSource(getBaseContext());
         datasource.open();
         List<Category> categories = datasource.findAllCategories();
-        mTitle = categories.get(number-1).getEnglish(); //-1 to account for index starting at 1
+        if(categories.size()>0){
+            Category category = categories.get(number-1); //-1 to account for index starting at 1
+            mTitle = category.getEnglish();
+        }
     }
 
     public void restoreActionBar() {
@@ -144,17 +148,7 @@ public class NavigationAvtivity extends Activity
         }
         if (id == R.id.action_refresh) {
 
-
-            if(isNetworkConnected()){
-
-                String url = "http://www.awesome.jerome.yukazunori.com/PICCHE/";
-                new ServerPhrases().execute(url);
-                new ServerCategory().execute(url);
-
-            }
-            else {
-                Toast.makeText(getBaseContext(), "Not connected to internet!", Toast.LENGTH_SHORT).show();
-            }
+            download(null);
 
         }
         if(id == R.id.action_add_phrase) {
@@ -192,7 +186,7 @@ public class NavigationAvtivity extends Activity
 
         @Override
         public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                Bundle savedInstanceState) {
+                                 Bundle savedInstanceState) {
             View rootView = inflater.inflate(R.layout.fragment_navigation_avtivity, container, false);
 
             int index = getArguments().getInt(ARG_SECTION_NUMBER)-1;
@@ -201,40 +195,48 @@ public class NavigationAvtivity extends Activity
             dataSource.open();
 
             List<Category> categories = dataSource.findAllCategories();
-            Category category = categories.get(index);
-            long catID = category.getId();
+            if(categories.size()>0) {
+                Category category = categories.get(index);
+                long catID = category.getId();
 
-            final List<Phrase> phrases = dataSource.findPhraseByCategory(catID);
-            ListView listView = (ListView) rootView.findViewById(R.id.phraseListView);
-            PhraseAdapter adapter = new PhraseAdapter(getActivity(), phrases);
-            listView.setAdapter(adapter);
+                final List<Phrase> phrases = dataSource.findPhraseByCategory(catID);
+                ListView listView = (ListView) rootView.findViewById(R.id.phraseListView);
+                PhraseAdapter adapter = new PhraseAdapter(getActivity(), phrases);
+                listView.setAdapter(adapter);
 
-            listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-                @Override
-                public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                    PhraseFragment fragment = new PhraseFragment();
-                    Bundle args = new Bundle();
-                    Phrase phrase = phrases.get(position);
-                    args.putString(EXTRA_HOKKIEN, phrase.getHokkien());
-                    args.putString(EXTRA_CANTONESE, phrase.getCantonese());
-                    args.putString(EXTRA_CHINESE, phrase.getChinese());
-                    args.putString(EXTRA_ENGLISH, phrase.getEnglish());
-                    if(phrase.getCatId() == 256)
-                        args.putString(EXTRA_ID, "self_" + Long.toString(phrase.getId()));
-                    else
-                        args.putString(EXTRA_ID, Long.toString(phrase.getId()));
-                    fragment.setArguments(args);
+                listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                    @Override
+                    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                        PhraseFragment fragment = new PhraseFragment();
+                        Bundle args = new Bundle();
+                        Phrase phrase = phrases.get(position);
+                        args.putString(EXTRA_HOKKIEN, phrase.getHokkien());
+                        args.putString(EXTRA_CANTONESE, phrase.getCantonese());
+                        args.putString(EXTRA_CHINESE, phrase.getChinese());
+                        args.putString(EXTRA_ENGLISH, phrase.getEnglish());
+                        if (phrase.getCatId() == 256)
+                            args.putString(EXTRA_ID, "self_" + Long.toString(phrase.getId()));
+                        else
+                            args.putString(EXTRA_ID, Long.toString(phrase.getId()));
+                        fragment.setArguments(args);
 
-                    FragmentTransaction transaction = getFragmentManager().beginTransaction();
-                    transaction.replace(R.id.container, fragment);
-                    transaction.addToBackStack(null);
+                        FragmentTransaction transaction = getFragmentManager().beginTransaction();
+                        transaction.replace(R.id.container, fragment);
+                        transaction.addToBackStack(null);
 
-                    transaction.commit();
-                }
-            });
+                        transaction.commit();
+                    }
+                });
+                getActivity().getActionBar().setTitle(category.getEnglish());
+            }
+            else{
+                Fragment fragment = new EmptyDB();
+                FragmentTransaction transaction = getFragmentManager().beginTransaction();
+                transaction.replace(R.id.container, fragment);
+                transaction.commit();
+            }
+
             dataSource.close();
-
-            getActivity().getActionBar().setTitle(category.getEnglish());
 
             return rootView;
         }
@@ -244,6 +246,7 @@ public class NavigationAvtivity extends Activity
             super.onAttach(activity);
             ((NavigationAvtivity) activity).onSectionAttached(
                     getArguments().getInt(ARG_SECTION_NUMBER));
+
         }
 
         @Override
@@ -831,7 +834,23 @@ public class NavigationAvtivity extends Activity
 
     }
 
+    public void download(View v){
 
+        if(isNetworkConnected()){
+
+            String url = "http://www.awesome.jerome.yukazunori.com/PICCHE/";
+            new ServerPhrases().execute(url);
+            new ServerCategory().execute(url);
+
+            FragmentTransaction transaction = getFragmentManager().beginTransaction();
+            transaction.replace(R.id.container, PlaceholderFragment.newInstance(1));
+            transaction.commit();
+
+        }
+        else {
+            Toast.makeText(getBaseContext(), "Not connected to internet!", Toast.LENGTH_SHORT).show();
+        }
+    }
 
     @Override
     public void onPause() {
@@ -843,5 +862,98 @@ public class NavigationAvtivity extends Activity
     protected void onResume() {
         super.onResume();
         datasource.open();
+    }
+
+    /**
+     * A simple {@link android.app.Fragment} subclass.
+     * Activities that contain this fragment must implement the
+     * {@link sg.dhs.pic_che.NavigationAvtivity.EmptyDB.OnFragmentInteractionListener} interface
+     * to handle interaction events.
+     * Use the {@link sg.dhs.pic_che.NavigationAvtivity.EmptyDB#newInstance} factory method to
+     * create an instance of this fragment.
+     *
+     */
+    public static class EmptyDB extends Fragment {
+        // TODO: Rename parameter arguments, choose names that match
+        // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
+        private static final String ARG_PARAM1 = "param1";
+        private static final String ARG_PARAM2 = "param2";
+
+        // TODO: Rename and change types of parameters
+        private String mParam1;
+        private String mParam2;
+
+        private OnFragmentInteractionListener mListener;
+
+        /**
+         * Use this factory method to create a new instance of
+         * this fragment using the provided parameters.
+         *
+         * @param param1 Parameter 1.
+         * @param param2 Parameter 2.
+         * @return A new instance of fragment EmptyDB.
+         */
+        // TODO: Rename and change types and number of parameters
+        public static EmptyDB newInstance(String param1, String param2) {
+            EmptyDB fragment = new EmptyDB();
+            Bundle args = new Bundle();
+            args.putString(ARG_PARAM1, param1);
+            args.putString(ARG_PARAM2, param2);
+            fragment.setArguments(args);
+            return fragment;
+        }
+        public EmptyDB() {
+            // Required empty public constructor
+        }
+
+        @Override
+        public void onCreate(Bundle savedInstanceState) {
+            super.onCreate(savedInstanceState);
+            if (getArguments() != null) {
+                mParam1 = getArguments().getString(ARG_PARAM1);
+                mParam2 = getArguments().getString(ARG_PARAM2);
+            }
+        }
+
+        @Override
+        public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                                 Bundle savedInstanceState) {
+            // Inflate the layout for this fragment
+            return inflater.inflate(R.layout.fragment_empty_db, container, false);
+        }
+
+        // TODO: Rename method, update argument and hook method into UI event
+        public void onButtonPressed(Uri uri) {
+            if (mListener != null) {
+                mListener.onFragmentInteraction(uri);
+            }
+        }
+
+        @Override
+        public void onAttach(Activity activity) {
+            super.onAttach(activity);
+        }
+
+        @Override
+        public void onDetach() {
+            super.onDetach();
+            mListener = null;
+        }
+
+        /**
+         * This interface must be implemented by activities that contain this
+         * fragment to allow an interaction in this fragment to be communicated
+         * to the activity and potentially other fragments contained in that
+         * activity.
+         * <p>
+         * See the Android Training lesson <a href=
+         * "http://developer.android.com/training/basics/fragments/communicating.html"
+         * >Communicating with Other Fragments</a> for more information.
+         */
+        public interface OnFragmentInteractionListener {
+            // TODO: Update argument type and name
+            public void onFragmentInteraction(Uri uri);
+        }
+
     }
 }
