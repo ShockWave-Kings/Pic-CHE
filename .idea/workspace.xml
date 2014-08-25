@@ -57,11 +57,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="NavigationAvtivity.java" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="NavigationAvtivity.java" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/sg/dhs/pic_che/NavigationAvtivity.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="2193" max-vertical-offset="15351">
-              <caret line="211" column="90" selection-start-line="211" selection-start-column="90" selection-end-line="211" selection-end-column="90" />
+            <state vertical-scroll-proportion="-20.42184" vertical-offset="12087" max-vertical-offset="15402">
+              <caret line="210" column="0" selection-start-line="210" selection-start-column="0" selection-end-line="210" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -77,10 +77,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="PhraseDataSource.java" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="PhraseDataSource.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/sg/dhs/pic_che/db/PhraseDataSource.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.74463516" vertical-offset="1744" max-vertical-offset="4267">
+            <state vertical-scroll-proportion="0.0" vertical-offset="826" max-vertical-offset="4267">
               <caret line="135" column="0" selection-start-line="135" selection-start-column="0" selection-end-line="135" selection-end-column="0" />
               <folding />
             </state>
@@ -813,8 +813,8 @@
         <option value="$PROJECT_DIR$/app/src/main/res/layout/fragment_phrase.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/fragment_new_phrase.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/fragment_navigation_avtivity.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/java/sg/dhs/pic_che/NavigationAvtivity.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/sg/dhs/pic_che/db/PhraseDataSource.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/sg/dhs/pic_che/NavigationAvtivity.java" />
       </list>
     </option>
   </component>
@@ -1333,7 +1333,7 @@
       <window_info id="Gradle Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32793522" sideWeight="0.5" order="9" side_tool="true" content_ui="tabs" />
       <window_info id="Build Variants" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="true" content_ui="tabs" />
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32793522" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
-      <window_info id="Android" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32658568" sideWeight="0.5" order="13" side_tool="false" content_ui="tabs" />
+      <window_info id="Android" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32523617" sideWeight="0.5" order="13" side_tool="false" content_ui="tabs" />
       <window_info id="Gradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32928476" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -1782,18 +1782,18 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/sg/dhs/pic_che/NavigationAvtivity.java">
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/sg/dhs/pic_che/db/PhraseDataSource.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="2193" max-vertical-offset="15351">
-          <caret line="211" column="90" selection-start-line="211" selection-start-column="90" selection-end-line="211" selection-end-column="90" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="418" max-vertical-offset="4267">
+          <caret line="135" column="0" selection-start-line="135" selection-start-column="0" selection-end-line="135" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/sg/dhs/pic_che/db/PhraseDataSource.java">
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/sg/dhs/pic_che/NavigationAvtivity.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.74463516" vertical-offset="1744" max-vertical-offset="4267">
-          <caret line="135" column="0" selection-start-line="135" selection-start-column="0" selection-end-line="135" selection-end-column="0" />
+        <state vertical-scroll-proportion="-20.42184" vertical-offset="12087" max-vertical-offset="15402">
+          <caret line="210" column="0" selection-start-line="210" selection-start-column="0" selection-end-line="210" selection-end-column="0" />
           <folding />
         </state>
       </provider>

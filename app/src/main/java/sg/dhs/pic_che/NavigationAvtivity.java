@@ -206,9 +206,13 @@ public class NavigationAvtivity extends Activity
             if(categories.size()>0) {
                 Category category = categories.get(index);
                 long catID = category.getId();
-                Log.d("Category", "CategoryID "+category.getId());
 
-                final List<Phrase> phrases = dataSource.findPhraseByCategory(catID);
+                final List<Phrase> phrases;
+
+                if(catID == 0)
+                    phrases = dataSource.findAllPhrases();
+                else
+                    phrases = dataSource.findPhraseByCategory(catID);
                 ListView listView = (ListView) rootView.findViewById(R.id.phraseListView);
                 final PhraseAdapter adapter = new PhraseAdapter(getActivity(), phrases);
                 listView.setAdapter(adapter);
@@ -232,7 +236,6 @@ public class NavigationAvtivity extends Activity
                     @Override
                     public void onTextChanged(CharSequence arg0, int arg1, int arg2,
                                               int arg3) {
-                        // TODO Auto-generated method stub
                     }
                 });
 
