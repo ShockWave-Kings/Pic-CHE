@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <!-- From: file:/D:/Software/AndroidStudio/pic-che/app/src/main/res/values-v14/styles.xml -->
+    <!-- From: file:/C:/Users/jeromeleow/android-studio/PIC-CHE/app/src/main/res/values-v14/styles.xml -->
     <eat-comment />
 
     <style name="AppBaseTheme" parent="Theme.AppCompat.Light.DarkActionBar">
@@ -9,7 +9,7 @@
         <!-- API 14 theme customizations can go here. -->
         <item name="android:actionBarStyle">@style/MyActionBarTheme</item>
     </style>
-    <!-- From: file:/D:/Software/AndroidStudio/pic-che/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/20.0.0/res/values-v14/values.xml -->
+    <!-- From: file:/C:/Users/jeromeleow/android-studio/PIC-CHE/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/20.0.0/res/values-v14/values.xml -->
     <eat-comment />
 
     <style name="TextAppearance.AppCompat.Base.SearchResult.Subtitle" parent="@android:TextAppearance.Holo.SearchResult.Subtitle" />

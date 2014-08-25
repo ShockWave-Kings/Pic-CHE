@@ -2,7 +2,7 @@
     android:id="@+id/scrollView1"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="@drawable/background" >
+    android:background="@color/P50" >
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -77,4 +77,4 @@
         
     </LinearLayout>
 
-</ScrollView><!-- From: file:/D:/Software/AndroidStudio/pic-che/app/src/main/res/layout/fragment_phrase.xml -->
+</ScrollView><!-- From: file:/C:/Users/jeromeleow/android-studio/PIC-CHE/app/src/main/res/layout/fragment_phrase.xml -->

@@ -206,6 +206,7 @@ public class NavigationAvtivity extends Activity
             if(categories.size()>0) {
                 Category category = categories.get(index);
                 long catID = category.getId();
+                Log.d("Category", "CategoryID "+category.getId());
 
                 final List<Phrase> phrases = dataSource.findPhraseByCategory(catID);
                 ListView listView = (ListView) rootView.findViewById(R.id.phraseListView);
@@ -219,7 +220,6 @@ public class NavigationAvtivity extends Activity
 
                     @Override
                     public void afterTextChanged(Editable arg0) {
-                        // TODO Auto-generated method stub
                         String text = editsearch.getText().toString().toLowerCase(Locale.getDefault());
                         adapter.filter(text);
                     }
@@ -227,7 +227,6 @@ public class NavigationAvtivity extends Activity
                     @Override
                     public void beforeTextChanged(CharSequence arg0, int arg1,
                                                   int arg2, int arg3) {
-                        // TODO Auto-generated method stub
                     }
 
                     @Override
@@ -606,6 +605,8 @@ public class NavigationAvtivity extends Activity
                     }
                 } catch (IOException e) {
                     Log.e(LOGTAG, "IOException: "+e);
+                    File img = new File(ImageDirectory, i + ".png");
+                    img.delete();
                 }
 
                 try {
@@ -633,6 +634,8 @@ public class NavigationAvtivity extends Activity
                     }
                 } catch (IOException e) {
                     Log.e(LOGTAG, "IOException: "+e);
+                    File hokAudio = new File(AudioDirectory, i + "_hok.mp3");
+                    hokAudio.delete();
                 }
 
                 try {
@@ -660,6 +663,8 @@ public class NavigationAvtivity extends Activity
                     }
                 } catch (IOException e) {
                     Log.e(LOGTAG, "IOException: "+e);
+                    File canAudio = new File(AudioDirectory, i + "_can.mp3");
+                    canAudio.delete();
                 }
 
                 try {
@@ -687,6 +692,8 @@ public class NavigationAvtivity extends Activity
                     }
                 } catch (IOException e) {
                     Log.e(LOGTAG, "IOException: "+e);
+                    File chiAudio = new File(AudioDirectory, i + "_chi.mp3");
+                    chiAudio.delete();
                 }
 
                 try {
@@ -714,6 +721,8 @@ public class NavigationAvtivity extends Activity
                     }
                 } catch (IOException e) {
                     Log.e(LOGTAG, "IOException: "+e);
+                    File engAudio = new File(AudioDirectory, i + "_eng.mp3");
+                    engAudio.delete();
                 }
             }
 
@@ -851,6 +860,8 @@ public class NavigationAvtivity extends Activity
                     }
                 } catch (IOException e) {
                     Log.e(LOGTAG, "IOException: "+e);
+                    File img = new File(ImageDirectory, "cat_" + category.getId() + ".png");
+                    img.delete();
                 }
             }
 

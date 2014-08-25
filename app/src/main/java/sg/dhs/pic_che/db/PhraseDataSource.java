@@ -93,23 +93,44 @@ public class PhraseDataSource {
 
     public List<Phrase> findPhraseByCategory(long catID) {
         List<Phrase> phrases = new ArrayList<Phrase>();
-        String[] whereArgs = {Long.toString(catID)};
-        Cursor cursor = database.query(PhraseOpenHelper.TABLE_PHRASE,
-                allColumnsPhrases,
-                PhraseOpenHelper.catID + "=?", whereArgs,
-                null, null,
-                PhraseOpenHelper.id);
+        if(catID == 256){
+            Cursor cursor = database.query(PhraseOpenHelper.TABLE_SELF,
+                    allColumnsPhrases,
+                    null, null, null, null,
+                    PhraseOpenHelper.id);
 
-        if(cursor.getCount()>0){
-            while(cursor.moveToNext()){
-                Phrase phrase = new Phrase();
-                phrase.setId(cursor.getLong(cursor.getColumnIndex(PhraseOpenHelper.id)));
-                phrase.setCatId(cursor.getInt(cursor.getColumnIndex(PhraseOpenHelper.catID)));
-                phrase.setHokkien(cursor.getString(cursor.getColumnIndex(PhraseOpenHelper.hokkien)));
-                phrase.setCantonese(cursor.getString(cursor.getColumnIndex(PhraseOpenHelper.cantonese)));
-                phrase.setChinese(cursor.getString(cursor.getColumnIndex(PhraseOpenHelper.chinese)));
-                phrase.setEnglish(cursor.getString(cursor.getColumnIndex(PhraseOpenHelper.english)));
-                phrases.add(phrase);
+            if (cursor.getCount() > 0) {
+                while (cursor.moveToNext()) {
+                    Phrase phrase = new Phrase();
+                    phrase.setId(cursor.getLong(cursor.getColumnIndex(PhraseOpenHelper.id)));
+                    phrase.setCatId(cursor.getInt(cursor.getColumnIndex(PhraseOpenHelper.catID)));
+                    phrase.setHokkien(cursor.getString(cursor.getColumnIndex(PhraseOpenHelper.hokkien)));
+                    phrase.setCantonese(cursor.getString(cursor.getColumnIndex(PhraseOpenHelper.cantonese)));
+                    phrase.setChinese(cursor.getString(cursor.getColumnIndex(PhraseOpenHelper.chinese)));
+                    phrase.setEnglish(cursor.getString(cursor.getColumnIndex(PhraseOpenHelper.english)));
+                    phrases.add(phrase);
+                }
+            }
+        }
+        else {
+            String[] whereArgs = {Long.toString(catID)};
+            Cursor cursor = database.query(PhraseOpenHelper.TABLE_PHRASE,
+                    allColumnsPhrases,
+                    PhraseOpenHelper.catID + "=?", whereArgs,
+                    null, null,
+                    PhraseOpenHelper.id);
+
+            if (cursor.getCount() > 0) {
+                while (cursor.moveToNext()) {
+                    Phrase phrase = new Phrase();
+                    phrase.setId(cursor.getLong(cursor.getColumnIndex(PhraseOpenHelper.id)));
+                    phrase.setCatId(cursor.getInt(cursor.getColumnIndex(PhraseOpenHelper.catID)));
+                    phrase.setHokkien(cursor.getString(cursor.getColumnIndex(PhraseOpenHelper.hokkien)));
+                    phrase.setCantonese(cursor.getString(cursor.getColumnIndex(PhraseOpenHelper.cantonese)));
+                    phrase.setChinese(cursor.getString(cursor.getColumnIndex(PhraseOpenHelper.chinese)));
+                    phrase.setEnglish(cursor.getString(cursor.getColumnIndex(PhraseOpenHelper.english)));
+                    phrases.add(phrase);
+                }
             }
         }
 

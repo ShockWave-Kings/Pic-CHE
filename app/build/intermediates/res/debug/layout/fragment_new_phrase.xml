@@ -1,7 +1,7 @@
 <ScrollView
     android:layout_height="fill_parent"
     android:layout_width="fill_parent"
-    android:background="@drawable/background"
+    android:background="@color/P50"
     xmlns:android="http://schemas.android.com/apk/res/android" >
     <LinearLayout
         android:orientation="vertical"
@@ -127,4 +127,4 @@
             android:onClick="selfAdd"/>
 
     </LinearLayout>
-</ScrollView><!-- From: file:/D:/Software/AndroidStudio/pic-che/app/src/main/res/layout/fragment_new_phrase.xml -->
+</ScrollView><!-- From: file:/C:/Users/jeromeleow/android-studio/PIC-CHE/app/src/main/res/layout/fragment_new_phrase.xml -->

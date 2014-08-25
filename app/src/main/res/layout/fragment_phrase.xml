@@ -2,7 +2,7 @@
     android:id="@+id/scrollView1"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="@drawable/background" >
+    android:background="@color/P50" >
 
     <LinearLayout
         android:layout_width="match_parent"
