@@ -5,7 +5,7 @@ android {
     buildToolsVersion "20.0.0"
 
     defaultConfig {
-        applicationId "sg.dhs.pic_che"
+        applicationId "sg.dhs.shockwave_kings.pic_che"
         minSdkVersion 14
         targetSdkVersion 19
     }

@@ -3,5 +3,5 @@
     android:id="@+id/container"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="sg.dhs.pic_che.NewPhraseActivity"
+    tools:context="sg.dhs.shockwave_kings.pic_che.NewPhraseActivity"
     tools:ignore="MergeRootFrame" />

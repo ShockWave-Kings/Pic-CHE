@@ -1,33 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 <selector xmlns:android="http://schemas.android.com/apk/res/android">
-    <item android:state_pressed="true" >
-        <shape
-            android:shape="rectangle">
-            <gradient
-                android:startColor="@color/P400"
-                android:endColor="@color/P400"
-                android:angle="270" />
-            <padding
-                android:left="10dp"
-                android:top="10dp"
-                android:right="10dp"
-                android:bottom="10dp" />
-        </shape>
-    </item>
 
-    <item>
-        <shape>
-            <gradient
-                android:startColor="@color/P300"
-                android:endColor="@color/P300"
-                android:angle="270" />
-            <padding
-                android:left="10dp"
-                android:top="10dp"
-                android:right="10dp"
-                android:bottom="10dp" />
-        </shape>
-    </item>
+    <item android:state_activated="true" android:drawable="@color/P400" />
+    <item android:state_selected="true" android:drawable="@color/P400" />
+    <item android:state_pressed="true" android:drawable="@color/P400" />
+    <item android:state_checked="true" android:drawable="@color/P400" />
+    <item android:drawable="@color/P300"/>
 
 </selector>

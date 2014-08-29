@@ -6,4 +6,4 @@
     android:divider="@android:color/transparent"
     android:dividerHeight="0dp"
     android:background="@color/P300"
-    tools:context="sg.dhs.pic_che.NavigationDrawerFragment" />
+    tools:context="sg.dhs.shockwave_kings.pic_che.NavigationDrawerFragment" />
