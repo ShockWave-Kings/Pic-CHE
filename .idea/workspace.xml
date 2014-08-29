@@ -64,13 +64,31 @@
       <file leaf-file-name="NavigationAvtivity.java" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/sg/dhs/shockwave_kings/pic_che/NavigationAvtivity.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="1.7685775" vertical-offset="11390" max-vertical-offset="16830">
-              <caret line="773" column="87" selection-start-line="773" selection-start-column="87" selection-end-line="773" selection-end-column="87" />
+            <state vertical-scroll-proportion="0.21656051" vertical-offset="1037" max-vertical-offset="16966">
+              <caret line="67" column="71" selection-start-line="67" selection-start-column="71" selection-end-line="67" selection-end-column="71" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#18973#18974#0" expanded="true" />
-                <element signature="e#19034#19035#0" expanded="true" />
-                <element signature="e#19125#19159#0" expanded="true" />
+                <element signature="e#15868#18307#0" expanded="true" />
+                <element signature="e#16478#18185#0" expanded="true" />
+                <element signature="e#17112#18000#0" expanded="true" />
+                <element signature="e#17945#17946#0" expanded="true" />
+                <element signature="e#18146#18147#0" expanded="true" />
+                <element signature="e#18284#18285#0" expanded="true" />
+                <element signature="e#18932#18933#0" expanded="true" />
+                <element signature="e#18993#18994#0" expanded="true" />
+                <element signature="e#19084#19118#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="NavigationDrawerFragment.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/sg/dhs/shockwave_kings/pic_che/NavigationDrawerFragment.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0" vertical-offset="518" max-vertical-offset="4998">
+              <caret line="41" column="19" selection-start-line="41" selection-start-column="19" selection-end-line="41" selection-end-column="19" />
+              <folding>
+                <element signature="imports" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -1630,13 +1648,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/sg/dhs/shockwave_kings/pic_che/NavigationDrawerFragment.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.21892655" vertical-offset="253" max-vertical-offset="4998">
-          <caret line="24" column="30" selection-start-line="24" selection-start-column="30" selection-end-line="24" selection-end-column="30" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/build/generated/source/r/debug/sg/dhs/shockwave_kings/pic_che/R.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.15777262" vertical-offset="0" max-vertical-offset="51051">
@@ -1696,15 +1707,31 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/sg/dhs/shockwave_kings/pic_che/NavigationAvtivity.java">
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/sg/dhs/shockwave_kings/pic_che/NavigationDrawerFragment.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="1.7685775" vertical-offset="11390" max-vertical-offset="16830">
-          <caret line="773" column="87" selection-start-line="773" selection-start-column="87" selection-end-line="773" selection-end-column="87" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="518" max-vertical-offset="4998">
+          <caret line="41" column="19" selection-start-line="41" selection-start-column="19" selection-end-line="41" selection-end-column="19" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#18973#18974#0" expanded="true" />
-            <element signature="e#19034#19035#0" expanded="true" />
-            <element signature="e#19125#19159#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/sg/dhs/shockwave_kings/pic_che/NavigationAvtivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.21656051" vertical-offset="1037" max-vertical-offset="16966">
+          <caret line="67" column="71" selection-start-line="67" selection-start-column="71" selection-end-line="67" selection-end-column="71" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#15868#18307#0" expanded="true" />
+            <element signature="e#16478#18185#0" expanded="true" />
+            <element signature="e#17112#18000#0" expanded="true" />
+            <element signature="e#17945#17946#0" expanded="true" />
+            <element signature="e#18146#18147#0" expanded="true" />
+            <element signature="e#18284#18285#0" expanded="true" />
+            <element signature="e#18932#18933#0" expanded="true" />
+            <element signature="e#18993#18994#0" expanded="true" />
+            <element signature="e#19084#19118#0" expanded="true" />
           </folding>
         </state>
       </provider>

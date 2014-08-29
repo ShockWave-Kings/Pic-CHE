@@ -58,7 +58,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
 
-import sg.dhs.shockwave_kings.pic_che.R;
 import sg.dhs.shockwave_kings.pic_che.adapters.PhraseAdapter;
 import sg.dhs.shockwave_kings.pic_che.db.PhraseDataSource;
 import sg.dhs.shockwave_kings.pic_che.model.Category;
