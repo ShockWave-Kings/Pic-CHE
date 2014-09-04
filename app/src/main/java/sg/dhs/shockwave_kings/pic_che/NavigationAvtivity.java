@@ -58,6 +58,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
 
+
 import sg.dhs.shockwave_kings.pic_che.adapters.PhraseAdapter;
 import sg.dhs.shockwave_kings.pic_che.db.PhraseDataSource;
 import sg.dhs.shockwave_kings.pic_che.model.Category;
@@ -153,9 +154,7 @@ public class NavigationAvtivity extends Activity
         // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
         if (id == R.id.action_refresh) {
-
             download(null);
-
         }
         if(id == R.id.action_add_phrase) {
             Intent intent = new Intent(getApplicationContext(), NewPhraseActivity.class);
@@ -771,6 +770,10 @@ public class NavigationAvtivity extends Activity
             }
 
             Toast.makeText(getBaseContext(), "Downloaded!", Toast.LENGTH_SHORT).show();
+
+            FragmentTransaction transaction = getFragmentManager().beginTransaction();
+            transaction.replace(R.id.container, PlaceholderFragment.newInstance(1));
+            transaction.commit();
         }
 
     }

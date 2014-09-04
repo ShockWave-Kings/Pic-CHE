@@ -13,6 +13,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
@@ -23,7 +24,6 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 
-import sg.dhs.shockwave_kings.pic_che.R;
 import sg.dhs.shockwave_kings.pic_che.db.PhraseDataSource;
 import sg.dhs.shockwave_kings.pic_che.model.Phrase;
 import sg.dhs.shockwave_kings.pic_che.technology.ImageLoader;

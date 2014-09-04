@@ -548,9 +548,9 @@
 
     <dimen name="group_roman_text_size">18sp</dimen>
     <dimen name="header_text_size">45sp</dimen>
-    <dimen name="list_height">130dp</dimen>
+    <dimen name="list_height">140dp</dimen>
     <dimen name="list_padding">10dp</dimen>
-    <dimen name="navigation_drawer_height">70dp</dimen>
+    <dimen name="navigation_drawer_height">80dp</dimen>
     <dimen name="navigation_drawer_width">300dp</dimen>
     <!-- From: file:/C:/Users/jeromeleow/android-studio/PIC-CHE/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/20.0.0/res/values/values.xml -->
     <eat-comment />
@@ -580,6 +580,8 @@
     <!-- From: file:/C:/Users/jeromeleow/android-studio/PIC-CHE/app/src/main/res/values/strings.xml -->
     <eat-comment />
 
+    <string name="action_add_phrase">Add Phrase</string>
+    <string name="action_clear">Delete Phrases</string>
     <string name="action_example">Example action</string>
     <string name="action_refresh">Download Phrases</string>
     <string name="action_search">Search</string>
@@ -590,6 +592,7 @@
     <string name="cantonese">Cantonese: </string>
     <string name="check_new_phrases">You have no phrases in your phone!</string>
     <string name="chinese">中文: </string>
+    <string name="desc_hok_mic">Hokkien recording microphone</string>
     <string name="english">English: </string>
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="hello_world">Hello world!</string>

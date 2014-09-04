@@ -5,7 +5,10 @@
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
     <string name="action_refresh">Download Phrases</string>
+    <string name="action_clear">Delete Phrases</string>
+    <string name="action_add_phrase">Add Phrase</string>
     <string name="pic_desc">Picture of the phrase</string>
+    <string name="desc_hok_mic">Hokkien recording microphone</string>
     <string name="arrow_desc">Navigation arrow</string>
     <string name="hokkien">Hokkien: </string>
     <string name="cantonese">Cantonese: </string>
