@@ -30,7 +30,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@color/P50"
-            android:layout_gravity="center_horizontal">
+            android:layout_gravity="center_horizontal"
+            android:weightSum="1">
 
             <TextView
                 android:layout_width="wrap_content"
@@ -40,10 +41,11 @@
                 android:id="@+id/textViewHok" />
 
             <EditText
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:inputType="text"
-                android:id="@+id/selfHokkien" />
+                android:id="@+id/selfHokkien"
+                android:layout_weight="1" />
         </LinearLayout>
 
         <LinearLayout
@@ -51,7 +53,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@color/P50"
-            android:layout_gravity="center_horizontal">
+            android:layout_gravity="center_horizontal"
+            android:weightSum="1">
 
             <TextView
                 android:layout_width="wrap_content"
@@ -61,10 +64,11 @@
                 android:id="@+id/textViewCan" />
 
             <EditText
-                android:layout_width="match_parent"
+                android:layout_width="202dp"
                 android:layout_height="wrap_content"
                 android:inputType="text"
-                android:id="@+id/selfCantonese" />
+                android:id="@+id/selfCantonese"
+                android:layout_weight="1" />
         </LinearLayout>
 
         <LinearLayout
@@ -72,7 +76,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@color/P50"
-            android:layout_gravity="center_horizontal">
+            android:layout_gravity="center_horizontal"
+            android:weightSum="1">
 
             <TextView
                 android:layout_width="wrap_content"
@@ -82,10 +87,11 @@
                 android:id="@+id/textViewChi" />
 
             <EditText
-                android:layout_width="match_parent"
+                android:layout_width="271dp"
                 android:layout_height="wrap_content"
                 android:inputType="text"
-                android:id="@+id/selfChinese" />
+                android:id="@+id/selfChinese"
+                android:layout_weight="1" />
         </LinearLayout>
 
         <LinearLayout
@@ -93,7 +99,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@color/P50"
-            android:layout_gravity="center_horizontal">
+            android:layout_gravity="center_horizontal"
+            android:weightSum="1">
 
             <TextView
                 android:layout_width="wrap_content"
@@ -103,10 +110,11 @@
                 android:id="@+id/textViewEng" />
 
             <EditText
-                android:layout_width="match_parent"
+                android:layout_width="209dp"
                 android:layout_height="wrap_content"
                 android:inputType="text"
-                android:id="@+id/selfEnglish" />
+                android:id="@+id/selfEnglish"
+                android:layout_weight="1" />
         </LinearLayout>
 
         <ImageView

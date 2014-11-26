@@ -1,7 +1,7 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     xmlns:yourapp="http://schemas.android.com/apk/res-auto"
-    tools:context="sg.dhs.shockwave_kings.pic_che.NavigationAvtivity" >
+    tools:context="sg.dhs.shockwave_kings.pic_che.NavigationActivity" >
 
     <item
         android:id="@+id/action_refresh"
@@ -11,5 +11,15 @@
     <item
         android:id="@+id/action_add_phrase"
         android:title="@string/action_add_phrase"
+        yourapp:showAsAction="never" />
+
+    <item
+        android:id="@+id/action_credits"
+        android:title="@string/title_credits"
+        yourapp:showAsAction="never" />
+
+    <item
+        android:id="@+id/action_help"
+        android:title="@string/title_help"
         yourapp:showAsAction="never" />
 </menu>

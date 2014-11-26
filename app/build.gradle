@@ -2,7 +2,7 @@ apply plugin: 'com.android.application'
 
 android {
     compileSdkVersion 19
-    buildToolsVersion "20.0.0"
+    buildToolsVersion '21.0.2'
 
     defaultConfig {
         applicationId "sg.dhs.shockwave_kings.pic_che"
@@ -19,6 +19,6 @@ android {
 }
 
 dependencies {
-    compile 'com.android.support:support-v4:20.0.0'
-    compile 'com.android.support:appcompat-v7:20.0.0'
+    compile 'com.android.support:support-v4:19.1.0'
+    compile 'com.android.support:appcompat-v7:19.1.0'
 }

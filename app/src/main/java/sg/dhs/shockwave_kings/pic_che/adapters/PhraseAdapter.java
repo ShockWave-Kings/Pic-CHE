@@ -78,34 +78,26 @@ public class PhraseAdapter extends BaseAdapter {
         TextView chinese = (TextView) convertView.findViewById(R.id.chinese);
         TextView english = (TextView) convertView.findViewById(R.id.english);
 
-        hokkien.setText(phrase.getHokkien());
-        cantonese.setText(phrase.getCantonese());
-        chinese.setText(phrase.getChinese());
-        english.setText(phrase.getEnglish());
+        hokkien.setText("Hok: "+phrase.getHokkien());
+        cantonese.setText("Can: "+phrase.getCantonese());
+        chinese.setText("中文:"+phrase.getChinese());
+        english.setText("Eng: "+phrase.getEnglish());
 
         return convertView;
     }
 
     // Filter Class
     public void filter(String charText) {
-        Log.d("FilterPICCHE","Filter started");
-        Log.d("FilterPICCHE",phrases_back.size()+"");
-        Log.d("FilterPICCHE",phrases.size()+"");
         charText = charText.toLowerCase(Locale.getDefault());
 
         phrases.clear();
-        Log.d("FilterPICCHE",phrases_back.size()+"");
         if (charText.length() == 0) {
-            Log.d("FilterPICCHE","Empty");
             phrases.addAll(phrases_back);
         } else {
-            Log.d("FilterPICCHE","Else reach");
             for (Phrase phrase : phrases_back) {
                 String combined = phrase.getChinese() + phrase.getCantonese() + phrase.getEnglish() + phrase.getHokkien();
-                Log.d("FilterPICCHE","Original:"+combined);
                 if (combined.toLowerCase(Locale.getDefault()).contains(charText)) {
                     phrases.add(phrase);
-                    Log.d("FilterPICCHE",phrase.getEnglish());
                 }
 
             }

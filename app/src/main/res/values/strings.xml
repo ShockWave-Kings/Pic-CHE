@@ -31,6 +31,7 @@
     <color name="P900">#b0120a</color>
     <color name="white">#FFFFFF</color>
     <color name="black">#000000</color>
+    <color name="green">#4CAF50</color>
 
     <string name="title_activity_new_phrase">New Phrase</string>
     <string name="title_activity_navigation_avtivity">PIC-CHE</string>
@@ -45,5 +46,44 @@
     <string name="check_new_phrases">You have no phrases in your phone!</string>
     <string name="action_search">Search</string>
     <string name="async_progress">Downloading, please wait...</string>
+    <string name="title_credits">Credits</string>
+    <string name="title_help">Help</string>
+
+    <string-array name="help_letter">
+        <item>a</item>
+        <item>e</item>
+        <item>eh</item>
+        <item>ey</item>
+        <item>i</item>
+        <item>o</item>
+        <item>oh</item>
+        <item>u</item>
+        <item>v</item>
+    </string-array>
+
+    <string-array name="help_example">
+        <item>a-ka</item>
+        <item>he</item>
+        <item>geh</item>
+        <item>lang-gey</item>
+        <item>ci</item>
+        <item>loh-ho</item>
+        <item>oh</item>
+        <item>gu</item>
+        <item>hv</item>
+    </string-array>
+
+    <string-array name="credits">
+        <item>Lead Programmer: Jerome Leow</item>
+        <item>Programmer: Li Zhao Qi</item>
+        <item>Images: Chan Si Hon</item>
+        <item>Hokkien Audio: Leow Yee Zhi</item>
+        <item>Cantonese Audio: Calvin Wen</item>
+        <item>Chinese Audio: Li Zhao Qi</item>
+        <item>English Audio: Chan Si Hon</item>
+    </string-array>
+
+    <string name="title_activity_credits">Credits</string>
+    <string name="title_activity_help_page">HelpPage</string>
 
 </resources>
