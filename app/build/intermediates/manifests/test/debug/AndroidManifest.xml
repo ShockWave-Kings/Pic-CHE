@@ -2,7 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="sg.dhs.shockwave_kings.pic_che.test">
 
-    <uses-sdk android:minSdkVersion="14" android:targetSdkVersion="19" />
+    <uses-sdk android:minSdkVersion="14" android:targetSdkVersion="21" />
 
     <application>
         <uses-library android:name="android.test.runner" />

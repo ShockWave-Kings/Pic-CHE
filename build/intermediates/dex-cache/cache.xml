@@ -2,16 +2,28 @@
 <pre-dex-items>
 
     <item
-        dex="C:\Users\jeromeleow\android-studio\PIC-CHE\app\build\intermediates\pre-dexed\debug\classes-6038cf32098366b7ef971db3acab92fff65326a0.jar"
-        jar="C:\Users\jeromeleow\android-studio\PIC-CHE\app\build\intermediates\exploded-aar\com.android.support\appcompat-v7\19.1.0\classes.jar"
+        dex="C:\Users\jeromeleow\android-studio\PIC-CHE\app\build\intermediates\pre-dexed\debug\internal_impl-21.0.2-ba5875bed606e32a67b79bcbe8fddb1f7b42a530.jar"
+        jar="C:\Users\jeromeleow\android-studio\PIC-CHE\app\build\intermediates\exploded-aar\com.android.support\support-v4\21.0.2\libs\internal_impl-21.0.2.jar"
         jumboMode="false"
-        revision="19.1.0"
-        sha1="3499ceba05ca1f6037c6a2fad73df8f636224a28"/>
+        revision="21.0.2"
+        sha1="962e8b12569c56dbdcf8367eb4eac8bb129cd18f"/>
     <item
-        dex="C:\Users\jeromeleow\android-studio\PIC-CHE\app\build\intermediates\pre-dexed\debug\support-v4-19.1.0-98073fe7aaf633c290b1011fe20845886bd3182c.jar"
-        jar="C:\Users\jeromeleow\sdk\extras\android\m2repository\com\android\support\support-v4\19.1.0\support-v4-19.1.0.jar"
+        dex="C:\Users\jeromeleow\android-studio\PIC-CHE\app\build\intermediates\pre-dexed\debug\support-annotations-21.0.2-30aec26d9fa0cd905055032ee554dc97baf2d27b.jar"
+        jar="C:\Users\jeromeleow\AppData\Local\sdk\extras\android\m2repository\com\android\support\support-annotations\21.0.2\support-annotations-21.0.2.jar"
         jumboMode="false"
-        revision="19.1.0"
-        sha1="85f201b380937e61a9dce6ca90ccf6872abbfb67"/>
+        revision="21.0.2"
+        sha1="99373741f99a0556ee293c41e8faa1ca3ae8a4e6"/>
+    <item
+        dex="C:\Users\jeromeleow\android-studio\PIC-CHE\app\build\intermediates\pre-dexed\debug\classes-cda5449c900fbafaf30010a4367b91c4c3b34e7a.jar"
+        jar="C:\Users\jeromeleow\android-studio\PIC-CHE\app\build\intermediates\exploded-aar\com.android.support\appcompat-v7\21.0.2\classes.jar"
+        jumboMode="false"
+        revision="21.0.2"
+        sha1="7ae2d38807a43b2f2185ff4089a92c790b579e54"/>
+    <item
+        dex="C:\Users\jeromeleow\android-studio\PIC-CHE\app\build\intermediates\pre-dexed\debug\classes-72415b2ec7d7de6c6a2b6f1314e03086bdbb4b63.jar"
+        jar="C:\Users\jeromeleow\android-studio\PIC-CHE\app\build\intermediates\exploded-aar\com.android.support\support-v4\21.0.2\classes.jar"
+        jumboMode="false"
+        revision="21.0.2"
+        sha1="d1bf02de1c56d942e7a9d093b8610ba1ef4128e3"/>
 
 </pre-dex-items>
